@@ -1,0 +1,1462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CIE AS Physics 9702 — Topics 4.1, 4.2 &amp; 5</title>
+<meta name="description" content="Revision notes and flashcards for Cambridge International AS Level Physics 9702: 4.1 Turning effects of forces, 4.2 Equilibrium of forces, and Topic 5 Work, energy and power.">
+<style>
+:root {
+  --bg: #efe8db;
+  --bg-deep: #e4dccb;
+  --paper: #fffdf8;
+  --ink: #1b1814;
+  --ink-soft: #4c463d;
+  --muted: #787064;
+  --line: #ddd3c2;
+  --line-strong: #c9bda8;
+  --blue: #153a5c;
+  --blue-mid: #1f5a86;
+  --sky: #d9e7f3;
+  --sky-2: #edf3f8;
+  --gold: #8a6910;
+  --gold-bg: #f6ebd2;
+  --rust: #9a3a1c;
+  --rust-bg: #f8e6df;
+  --green: #1b5a43;
+  --green-bg: #dceee5;
+  --shadow: 0 1px 2px rgba(40,30,10,.04), 0 10px 28px rgba(40,30,10,.08);
+  --radius: 18px;
+  --font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", "Segoe UI", sans-serif;
+  --display: "Iowan Old Style", "Palatino Linotype", Palatino, "Times New Roman", Georgia, serif;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: var(--font);
+  color: var(--ink);
+  background:
+    radial-gradient(1200px 500px at 10% -10%, #f8f1e2 0%, transparent 55%),
+    radial-gradient(900px 400px at 100% 0%, #e4ecf3 0%, transparent 45%),
+    var(--bg);
+  line-height: 1.6;
+  font-size: 17px;
+  min-height: 100vh;
+}
+body.cards-on { background: #e8e2d4; }
+h1, h2, h3, h4 { font-family: var(--display); font-weight: 600; letter-spacing: -0.02em; line-height: 1.25; color: var(--blue); margin: 0 0 .5em; }
+h1 { font-size: clamp(1.6rem, 3vw, 2.15rem); color: var(--ink); }
+h2 { font-size: clamp(1.45rem, 2.4vw, 1.9rem); margin-top: 2.4rem; }
+h3 { font-size: 1.22rem; margin-top: 1.7rem; color: var(--ink); }
+p { margin: 0 0 1em; }
+a { color: var(--blue-mid); }
+.eq, .formula, var, .math {
+  font-family: "Times New Roman", "Iowan Old Style", Palatino, Times, serif;
+  font-style: italic;
+  font-weight: 400;
+}
+sub, sup { font-size: .72em; font-style: normal; }
+sup { line-height: 0; }
+/* Header */
+.top {
+  position: sticky; top: 0; z-index: 40;
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  padding: .75rem 1.25rem;
+  background: rgba(255,253,248,.86);
+  backdrop-filter: saturate(1.2) blur(14px);
+  -webkit-backdrop-filter: saturate(1.2) blur(14px);
+  border-bottom: 1px solid var(--line);
+}
+.brand { display: flex; align-items: center; gap: .9rem; min-width: 0; }
+.badge {
+  flex: 0 0 auto;
+  background: var(--blue); color: #f6efe2;
+  font-size: .72rem; font-weight: 700; letter-spacing: .12em;
+  padding: .45rem .55rem; border-radius: 8px;
+  font-family: var(--font);
+}
+.brand h1 { font-size: 1.05rem; margin: 0; }
+.brand p { margin: 0; font-size: .78rem; color: var(--muted); letter-spacing: .01em; }
+.tabs { display: flex; background: var(--bg-deep); padding: 4px; border-radius: 999px; gap: 2px; }
+.tabs button {
+  appearance: none; border: 0; background: transparent;
+  font: inherit; font-size: .9rem; font-weight: 600;
+  color: var(--ink-soft); padding: .45rem 1rem; border-radius: 999px;
+  cursor: pointer; transition: .15s background, .15s color;
+}
+.tabs button[aria-selected="true"] { background: var(--paper); color: var(--blue); box-shadow: 0 1px 4px rgba(40,30,10,.12); }
+.tabs button:hover:not([aria-selected="true"]) { color: var(--ink); }
+/* Layout */
+.wrap { max-width: 880px; margin: 0 auto; padding: 1.5rem 1.25rem 4.5rem; }
+#view-notes, #view-cards { display: none; }
+body[data-view="notes"] #view-notes,
+body[data-view="cards"] #view-cards { display: block; }
+/* Hero */
+.hero {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.6rem 1.6rem 1.35rem;
+  box-shadow: var(--shadow);
+  margin-bottom: 1.5rem;
+}
+.hero .kicker { font-size: .78rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); margin: 0 0 .4rem; }
+.hero h2 { margin: 0 0 .6rem; font-size: clamp(1.55rem, 3vw, 2rem); }
+.hero p { color: var(--ink-soft); margin: 0 0 .9rem; max-width: 62ch; }
+.pills { display: flex; flex-wrap: wrap; gap: .45rem; }
+.pill {
+  display: inline-flex; align-items: center; gap: .4rem;
+  font-size: .82rem; font-weight: 600;
+  background: var(--sky-2); color: var(--blue);
+  border: 1px solid #d0dde8;
+  padding: .28rem .7rem; border-radius: 999px;
+  text-decoration: none;
+}
+.pill:hover { background: var(--sky); }
+/* Note cards */
+.toc {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: .75rem;
+  margin: 1.1rem 0 0;
+}
+.toc a {
+  display: block; text-decoration: none; color: inherit;
+  background: var(--sky-2); border: 1px solid #d4e0ea; border-radius: 14px;
+  padding: .85rem .95rem; transition: .15s transform, .15s box-shadow;
+}
+.toc a:hover { transform: translateY(-1px); box-shadow: var(--shadow); }
+.toc b { display: block; color: var(--blue); font-size: .95rem; margin-bottom: .15rem; }
+.toc span { font-size: .8rem; color: var(--ink-soft); }
+section.topic {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.5rem 1.55rem 1.7rem;
+  box-shadow: var(--shadow);
+  margin: 1.25rem 0 0;
+}
+section.topic > h2 { margin-top: 0; padding-bottom: .55rem; border-bottom: 1px solid var(--line); }
+.syllabus { font-size: .86rem; color: var(--ink-soft); margin: .7rem 0 1.1rem; }
+.syllabus ol { margin: .35rem 0 0; padding-left: 1.3rem; }
+.syllabus li { margin: .15rem 0; }
+.def, .tip, .warn, .derive {
+  border-radius: 12px; padding: .85rem 1rem .9rem 1.05rem; margin: 1rem 0;
+}
+.def { background: var(--gold-bg); border-left: 4px solid var(--gold); }
+.tip { background: var(--green-bg); border-left: 4px solid var(--green); }
+.warn { background: var(--rust-bg); border-left: 4px solid var(--rust); }
+.derive { background: var(--sky-2); border-left: 4px solid var(--blue-mid); }
+.def .lbl, .tip .lbl, .warn .lbl, .derive .lbl {
+  display: block; font-size: .72rem; font-weight: 700; letter-spacing: .12em;
+  text-transform: uppercase; margin-bottom: .25rem;
+}
+.def .lbl { color: var(--gold); }
+.tip .lbl { color: var(--green); }
+.warn .lbl { color: var(--rust); }
+.derive .lbl { color: var(--blue-mid); }
+.def p, .tip p, .warn p, .derive p { margin: 0; }
+.def p + p, .tip p + p, .warn p + p, .derive p + p { margin-top: .45rem; }
+.formula-box {
+  display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .5rem 1.2rem;
+  background: var(--blue); color: #f4efe4;
+  border-radius: 12px; padding: .9rem 1.15rem; margin: 1rem 0;
+  font-family: "Times New Roman", Palatino, Times, serif;
+  font-size: 1.28rem;
+}
+.formula-box .unit { font-family: var(--font); font-size: .78rem; font-style: normal; opacity: .8; letter-spacing: .04em; }
+.fig {
+  margin: 1.15rem 0 1.3rem;
+  background: linear-gradient(180deg, #fbf8f1, #f3eee3);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  overflow: hidden;
+}
+.fig svg { display: block; width: 100%; height: auto; }
+.fig figcaption {
+  font-size: .8rem; color: var(--ink-soft);
+  padding: .45rem .9rem .65rem;
+  border-top: 1px solid var(--line);
+  background: #faf7f0;
+}
+.example {
+  background: #faf8f3; border: 1px dashed var(--line-strong);
+  border-radius: 12px; padding: 1rem 1.1rem; margin: 1.1rem 0 0;
+}
+.example .lbl { font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--blue-mid); margin-bottom: .35rem; }
+.example h4 { font-family: var(--font); font-size: .98rem; margin: 0 0 .4rem; color: var(--ink); }
+.example .ans { margin-top: .55rem; padding-top: .55rem; border-top: 1px solid var(--line); }
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.summary-table { width: 100%; border-collapse: collapse; font-size: .95rem; margin: .6rem 0 0; }
+.summary-table th, .summary-table td { text-align: left; padding: .55rem .65rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+.summary-table th { font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+.summary-table .eqcell { font-family: "Times New Roman", Palatino, Times, serif; font-size: 1.08rem; white-space: nowrap; }
+.to-cards {
+  display: block; width: 100%; margin-top: 1.5rem;
+  appearance: none; border: 0; cursor: pointer;
+  background: var(--blue); color: #f6efe2;
+  font: inherit; font-weight: 650; font-size: 1rem;
+  padding: .95rem 1.2rem; border-radius: 14px;
+  box-shadow: var(--shadow);
+}
+.to-cards:hover { background: var(--blue-mid); }
+/* Flashcards */
+.card-desk { max-width: 640px; margin: 0 auto; }
+.filters { display: flex; flex-wrap: wrap; gap: .4rem; margin: 0 0 1rem; justify-content: center; }
+.filters button, .toolbtn {
+  appearance: none; border: 1px solid var(--line-strong); background: var(--paper);
+  font: inherit; font-size: .82rem; font-weight: 600; color: var(--ink-soft);
+  padding: .35rem .75rem; border-radius: 999px; cursor: pointer;
+}
+.filters button[aria-pressed="true"] { background: var(--blue); color: #f6efe2; border-color: var(--blue); }
+.tools { display: flex; justify-content: space-between; align-items: center; gap: .6rem; margin-bottom: .85rem; flex-wrap: wrap; }
+.tools .left, .tools .right { display: flex; gap: .4rem; align-items: center; }
+.progress-wrap { flex: 1; min-width: 140px; }
+.progress-label { display: flex; justify-content: space-between; font-size: .75rem; color: var(--muted); font-weight: 600; margin-bottom: .25rem; }
+.bar { height: 7px; background: var(--bg-deep); border-radius: 99px; overflow: hidden; }
+.bar > i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--green), #3d9b72); border-radius: 99px; transition: width .25s; }
+.stage { perspective: 1600px; margin: .4rem 0 1rem; min-height: 380px; }
+.flip {
+  position: relative; width: 100%; min-height: 380px;
+  transform-style: preserve-3d; transition: transform .55s cubic-bezier(.2,.7,.2,1);
+  cursor: pointer; user-select: none;
+}
+.flip.is-flipped { transform: rotateY(180deg); }
+.face {
+  position: absolute; inset: 0;
+  backface-visibility: hidden; -webkit-backface-visibility: hidden;
+  background: var(--paper); border: 1px solid var(--line);
+  border-radius: 22px; box-shadow: var(--shadow);
+  padding: 1.4rem 1.5rem 1.3rem;
+  display: flex; flex-direction: column;
+  overflow: auto;
+}
+.face-back { transform: rotateY(180deg); background: linear-gradient(180deg, #fffdf8, #f4efe4); }
+.face .tag {
+  align-self: flex-start;
+  font-size: .7rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--blue); background: var(--sky); padding: .22rem .55rem; border-radius: 999px;
+}
+.face .kind { margin-left: auto; font-size: .7rem; font-weight: 650; letter-spacing: .08em; text-transform: uppercase; color: var(--gold); }
+.face .toprow { display: flex; align-items: center; gap: .5rem; margin-bottom: 1.1rem; }
+.face .q, .face .a {
+  flex: 1; display: flex; flex-direction: column; justify-content: center;
+  font-family: var(--display); font-size: clamp(1.25rem, 3vw, 1.65rem);
+  line-height: 1.35; color: var(--ink); margin: 0;
+}
+.face .a { font-size: clamp(1.05rem, 2.4vw, 1.38rem); }
+.face .a .big {
+  font-family: "Times New Roman", Palatino, Times, serif;
+  font-size: 1.45em; color: var(--blue); display: block; margin: .25rem 0 .4rem;
+  font-style: italic;
+}
+.face .hint { font-family: var(--font); font-size: .85rem; color: var(--muted); margin-top: .7rem; font-style: normal; }
+.face .tap { font-family: var(--font); font-size: .75rem; color: var(--muted); text-align: center; margin-top: auto; padding-top: .8rem; }
+.actions { display: grid; grid-template-columns: auto 1fr 1fr auto; gap: .5rem; }
+.actions button {
+  appearance: none; border: 1px solid var(--line-strong); background: var(--paper);
+  font: inherit; font-weight: 650; font-size: .92rem;
+  padding: .75rem .6rem; border-radius: 12px; cursor: pointer; color: var(--ink);
+}
+.actions .navbtn { width: 48px; color: var(--blue); }
+.actions .know { background: var(--green-bg); border-color: #b7d8c8; color: var(--green); }
+.actions .again { background: var(--gold-bg); border-color: #e3d2a4; color: #6d5410; }
+.actions button:disabled { opacity: .4; cursor: default; }
+.done-box {
+  display: none; text-align: center;
+  background: var(--paper); border: 1px solid var(--line); border-radius: 22px;
+  padding: 2rem 1.4rem; box-shadow: var(--shadow); margin: .4rem 0 1rem;
+}
+.done-box h2 { margin: 0 0 .4rem; }
+.keys { text-align: center; font-size: .78rem; color: var(--muted); margin-top: 1rem; }
+kbd {
+  display: inline-block; border: 1px solid var(--line-strong); background: var(--paper);
+  border-bottom-width: 2px; border-radius: 5px; padding: 0 .35rem; font-size: .75rem;
+  font-family: var(--font); color: var(--ink-soft);
+}
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
+@media (max-width: 720px) {
+  .toc, .grid-2 { grid-template-columns: 1fr; }
+  .top { flex-wrap: wrap; }
+  .actions { grid-template-columns: 1fr 1fr; }
+  .actions .navbtn { width: 100%; }
+  .wrap { padding-left: 1rem; padding-right: 1rem; }
+  body { font-size: 16px; }
+}
+@media print {
+  .top, .to-cards, #view-cards, .tabs { display: none !important; }
+  #view-notes { display: block !important; }
+  body, .hero, section.topic, .fig, .def, .example { background: #fff; box-shadow: none; }
+  section.topic { break-inside: avoid; }
+}
+</style>
+</head>
+<body data-view="notes">
+<header class="top">
+  <div class="brand">
+    <div class="badge">9702</div>
+    <div>
+      <h1>CIE AS Physics</h1>
+      <p>Topics 4.1, 4.2 &amp; 5 · 2025–2027 syllabus</p>
+    </div>
+  </div>
+  <nav class="tabs" role="tablist" aria-label="View">
+    <button type="button" role="tab" id="tab-notes" aria-selected="true" data-view="notes">Notes</button>
+    <button type="button" role="tab" id="tab-cards" aria-selected="false" data-view="cards">Flashcards</button>
+  </nav>
+</header>
+<main class="wrap">
+<div id="view-notes">
+  <div class="hero">
+    <p class="kicker">Cambridge International AS Level · 9702</p>
+    <h2>Turning effects, equilibrium, and work, energy &amp; power</h2>
+    <p>A concise teaching page for <strong>4.1 Turning effects of forces</strong>, <strong>4.2 Equilibrium of forces</strong>, and all of <strong>Topic 5 Work, energy and power</strong>, followed by interactive flashcards. Definitions and equations use the wording and symbols of the 2025–2027 syllabus. These energy and moment formulae are <em>not</em> printed on the exam data sheet — you must recall them.</p>
+    <div class="pills">
+      <a class="pill" href="#t41">4.1 Turning effects</a>
+      <a class="pill" href="#t42">4.2 Equilibrium</a>
+      <a class="pill" href="#t51">5.1 Energy conservation</a>
+      <a class="pill" href="#t52">5.2 <span class="eq">E<sub>P</sub></span> and <span class="eq">E<sub>K</sub></span></a>
+    </div>
+    <div class="toc">
+      <a href="#t41"><b>4.1 Turning effects of forces</b><span>Centre of gravity, moment, couple and torque</span></a>
+      <a href="#t42"><b>4.2 Equilibrium of forces</b><span>Principle of moments, equilibrium, vector triangle</span></a>
+      <a href="#t5"><b>5 Work, energy and power</b><span>Work, conservation, efficiency, power, <span class="eq">mgΔh</span> and <span class="eq">½mv²</span></span></a>
+    </div>
+  </div>
+
+  <!-- ===================== 4.1 ===================== -->
+  <section class="topic" id="t41">
+    <h2>4.1 Turning effects of forces</h2>
+    <div class="syllabus">
+      You should be able to:
+      <ol>
+        <li>understand that the weight of an object may be taken as acting at a single point known as its <strong>centre of gravity</strong></li>
+        <li>define and apply the <strong>moment of a force</strong></li>
+        <li>understand that a <strong>couple</strong> is a pair of forces that acts to produce rotation only</li>
+        <li>define and apply the <strong>torque of a couple</strong></li>
+      </ol>
+    </div>
+
+    <h3>Centre of gravity</h3>
+    <div class="def">
+      <span class="lbl">Definition — memorise this</span>
+      <p>The <strong>centre of gravity</strong> of an object is the point at which its entire weight may be taken as acting.</p>
+    </div>
+    <p>For calculations, you can replace the object’s distributed weight with a single arrow <span class="eq">W = mg</span> drawn downward from the centre of gravity (C.G.). For a uniform, regular object the C.G. lies at the geometric centre. For an irregular object it can be found experimentally by hanging the object from two different points and seeing where the vertical plumb lines cross.</p>
+    <p>In a uniform gravitational field (near the Earth’s surface) the centre of gravity coincides with the centre of mass.</p>
+
+    <figure class="fig" aria-label="Centre of gravity diagram">
+      <svg viewBox="0 0 840 300" xmlns="http://www.w3.org/2000/svg" role="img">
+        <title>Weight acts at the centre of gravity</title>
+        <text x="20" y="28" fill="#8a6910" font-size="13" font-family="-apple-system, Helvetica, sans-serif" font-weight="700" letter-spacing="1.5">FIG. 1</text>
+        <text x="68" y="28" fill="#153a5c" font-size="15" font-family="Palatino, Times, serif" font-weight="600">Weight acts at the centre of gravity</text>
+        <!-- irregular lamina -->
+        <path d="M80 80 C120 55, 190 50, 230 85 C270 70, 310 95, 300 145 C330 175, 280 230, 210 225 C170 250, 110 230, 95 185 C60 170, 55 115, 80 80 Z" fill="#d9e7f3" stroke="#153a5c" stroke-width="2.2"/>
+        <circle cx="190" cy="150" r="5" fill="#9a3a1c"/>
+        <text x="202" y="146" fill="#9a3a1c" font-size="14" font-family="Palatino, Times, serif" font-style="italic">C.G.</text>
+        <line x1="190" y1="155" x2="190" y2="250" stroke="#9a3a1c" stroke-width="2.2" marker-end="url(#arrR)"/>
+        <text x="200" y="230" fill="#9a3a1c" font-size="16" font-family="Palatino, Times, serif" font-style="italic">W = mg</text>
+        <!-- uniform bar -->
+        <rect x="430" y="125" width="360" height="36" rx="3" fill="#d9e7f3" stroke="#153a5c" stroke-width="2.2"/>
+        <line x1="430" y1="118" x2="790" y2="118" stroke="#787064" stroke-width="1" stroke-dasharray="4 3"/>
+        <line x1="430" y1="110" x2="430" y2="118" stroke="#787064" stroke-width="1"/>
+        <line x1="790" y1="110" x2="790" y2="118" stroke="#787064" stroke-width="1"/>
+        <text x="580" y="108" fill="#787064" font-size="13" font-family="Palatino, Times, serif" font-style="italic">uniform rod, length L</text>
+        <circle cx="610" cy="143" r="5" fill="#9a3a1c"/>
+        <text x="622" y="138" fill="#9a3a1c" font-size="14" font-family="Palatino, Times, serif" font-style="italic">C.G. at L/2</text>
+        <line x1="610" y1="148" x2="610" y2="250" stroke="#9a3a1c" stroke-width="2.2" marker-end="url(#arrR)"/>
+        <text x="622" y="230" fill="#9a3a1c" font-size="16" font-family="Palatino, Times, serif" font-style="italic">W</text>
+        <defs>
+          <marker id="arrR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0 0 L10 5 L0 10 z" fill="#9a3a1c"/>
+          </marker>
+        </defs>
+      </svg>
+      <figcaption>Fig. 1  For an irregular object the centre of gravity may not look “central”. For a uniform rod it is at the midpoint. In both cases the whole weight acts there.</figcaption>
+    </figure>
+
+    <h3>Moment of a force</h3>
+    <div class="def">
+      <span class="lbl">Definition — memorise this</span>
+      <p>The <strong>moment</strong> of a force about a point is the product of the force and the <strong>perpendicular distance</strong> from that point to the <strong>line of action</strong> of the force.</p>
+    </div>
+    <div class="formula-box">
+      <span>moment = <i>F</i> × <i>d</i><sub>⊥</sub></span>
+      <span class="unit">unit: N&nbsp;m &nbsp;·&nbsp; direction: clockwise or anticlockwise</span>
+    </div>
+    <p>The line of action is the infinite straight line along which the force points. The distance you need is not necessarily the distance to the point of application — it is the shortest (perpendicular) gap from the pivot to that line.</p>
+    <p>If a force <span class="eq">F</span> is applied at a distance <span class="eq">r</span> from the pivot, and the angle between the force and the line from the pivot to the point of application is <span class="eq">θ</span>, then</p>
+    <div class="formula-box">
+      <span>moment = <i>F r</i> sin&nbsp;<i>θ</i></span>
+      <span class="unit">because &nbsp;<i>d</i><sub>⊥</sub> = <i>r</i> sin&nbsp;<i>θ</i></span>
+    </div>
+    <p>A force through the pivot (<span class="eq">d<sub>⊥</sub> = 0</span>), or a force parallel to the line from the pivot (<span class="eq">θ = 0°</span> or <span class="eq">180°</span>), has zero moment: it does not tend to turn the object.</p>
+
+    <figure class="fig" aria-label="Moment of a force">
+      <svg viewBox="0 0 840 310" xmlns="http://www.w3.org/2000/svg" role="img">
+        <title>Moment equals force times perpendicular distance</title>
+        <defs>
+          <marker id="arrB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#153a5c"/></marker>
+          <marker id="arrRust" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#9a3a1c"/></marker>
+        </defs>
+        <text x="20" y="28" fill="#8a6910" font-size="13" font-family="-apple-system, Helvetica, sans-serif" font-weight="700" letter-spacing="1.5">FIG. 2</text>
+        <text x="68" y="28" fill="#153a5c" font-size="15" font-family="Palatino, Times, serif" font-weight="600">Moment = force × perpendicular distance to the line of action</text>
+        <!-- left: perpendicular force -->
+        <polygon points="120,150 150,190 90,190" fill="#f6ebd2" stroke="#8a6910" stroke-width="2"/>
+        <line x1="120" y1="150" x2="340" y2="150" stroke="#153a5c" stroke-width="6" stroke-linecap="round"/>
+        <line x1="320" y1="150" x2="320" y2="250" stroke="#9a3a1c" stroke-width="2.4" marker-end="url(#arrRust)"/>
+        <text x="328" y="215" fill="#9a3a1c" font-size="16" font-family="Palatino, Times, serif" font-style="italic">F</text>
+        <line x1="120" y1="150" x2="120" y2="250" stroke="#1b5a43" stroke-width="1.4" stroke-dasharray="5 4"/>
+        <line x1="120" y1="250" x2="320" y2="250" stroke="#1b5a43" stroke-width="1.4"/>
+        <text x="200" y="272" fill="#1b5a43" font-size="15" font-family="Palatino, Times, serif" font-style="italic">d⊥</text>
+        <text x="95" y="205" fill="#8a6910" font-size="13" font-family="-apple-system, Helvetica, sans-serif">pivot</text>
+        <path d="M170 130 A40 40 0 0 1 210 150" fill="none" stroke="#1f5a86" stroke-width="1.6" marker-end="url(#arrB)"/>
+        <text x="212" y="128" fill="#1f5a86" font-size="12" font-family="-apple-system, Helvetica, sans-serif">clockwise</text>
+        <text x="90" y="70" fill="#4c463d" font-size="13" font-family="-apple-system, Helvetica, sans-serif">(a) force already perpendicular</text>
+        <!-- right: angled force -->
+        <polygon points="500,150 530,190 470,190" fill="#f6ebd2" stroke="#8a6910" stroke-width="2"/>
+        <line x1="500" y1="150" x2="740" y2="150" stroke="#153a5c" stroke-width="6" stroke-linecap="round"/>
+        <!-- force at 55 deg approx -->
+        <line x1="700" y1="150" x2="790" y2="260" stroke="#9a3a1c" stroke-width="2.4" marker-end="url(#arrRust)"/>
+        <text x="800" y="250" fill="#9a3a1c" font-size="16" font-family="Palatino, Times, serif" font-style="italic">F</text>
+        <!-- line of action extended backwards -->
+        <line x1="700" y1="150" x2="620" y2="52" stroke="#9a3a1c" stroke-width="1.2" stroke-dasharray="4 3"/>
+        <!-- perpendicular from pivot to line of action: line of action through (700,150) direction (90,110) -->
+        <!-- I'll draw a visual perpendicular dashed green from pivot to the dashed extension -->
+        <line x1="500" y1="150" x2="620" y2="52" stroke="#1b5a43" stroke-width="1.6" stroke-dasharray="5 4"/>
+        <circle cx="620" cy="52" r="3.5" fill="#1b5a43"/>
+        <text x="508" y="120" fill="#1b5a43" font-size="15" font-family="Palatino, Times, serif" font-style="italic">d⊥ = r sin θ</text>
+        <text x="475" y="215" fill="#8a6910" font-size="13" font-family="-apple-system, Helvetica, sans-serif">pivot</text>
+        <text x="640" y="142" fill="#153a5c" font-size="14" font-family="Palatino, Times, serif" font-style="italic">r</text>
+        <!-- angle arc at point of application -->
+        <path d="M655 150 A45 45 0 0 1 675 175" fill="none" stroke="#1f5a86" stroke-width="1.4"/>
+        <text x="678" y="178" fill="#1f5a86" font-size="15" font-family="Palatino, Times, serif" font-style="italic">θ</text>
+        <text x="470" y="70" fill="#4c463d" font-size="13" font-family="-apple-system, Helvetica, sans-serif">(b) force at an angle — use d⊥, not r</text>
+      </svg>
+      <figcaption>Fig. 2  (a) When the force is already perpendicular to the rod, d⊥ is just the distance along the rod. (b) When the force is at an angle, drop a perpendicular from the pivot onto the line of action. moment = F r sin θ.</figcaption>
+    </figure>
+
+    <div class="example">
+      <div class="lbl">Worked example</div>
+      <h4>Moment with a force at an angle</h4>
+      <p>A force of 40&nbsp;N is applied to a door at 0.80&nbsp;m from the hinge. The force is at 30° to the door, in the plane of the door’s swing. Calculate the moment about the hinge.</p>
+      <div class="ans">
+        <p>The perpendicular distance from the hinge to the line of action is <span class="eq">d<sub>⊥</sub> = 0.80 × sin&nbsp;30° = 0.40&nbsp;m</span>.</p>
+        <p>moment = <span class="eq">F × d<sub>⊥</sub> = 40 × 0.40 = 16&nbsp;N&nbsp;m</span> (tending to open the door).</p>
+      </div>
+    </div>
+
+    <div class="warn">
+      <span class="lbl">Exam trap</span>
+      <p>The unit of moment is <strong>N&nbsp;m</strong>, never the joule. A joule is also 1&nbsp;N&nbsp;m, but a joule is a unit of energy. A moment is a turning effect, not a form of energy — writing “J” loses the mark.</p>
+    </div>
+
+    <h3>Couples and the torque of a couple</h3>
+    <div class="def">
+      <span class="lbl">Definitions — memorise these</span>
+      <p>A <strong>couple</strong> is a pair of forces that acts to produce <strong>rotation only</strong>. The two forces are equal in magnitude, opposite in direction, and have parallel lines of action that are separated (they are not in the same straight line).</p>
+      <p style="margin-top:.5rem">The <strong>torque of a couple</strong> is the product of one of the forces and the perpendicular distance between the two lines of action.</p>
+    </div>
+    <div class="formula-box">
+      <span>torque of a couple = <i>F</i> × <i>d</i></span>
+      <span class="unit">unit: N&nbsp;m &nbsp;·&nbsp; same about every point</span>
+    </div>
+    <p>Because the forces are equal and opposite, the <strong>resultant force is zero</strong>, so the object’s centre of mass does not accelerate. There is still a turning effect, which is why a couple produces rotation only. A useful property: the torque of a given couple is the same no matter which point you take moments about.</p>
+    <p>Examples: turning a steering wheel, a screwdriver, or the two hands on a tap.</p>
+
+    <figure class="fig" aria-label="A couple">
+      <svg viewBox="0 0 840 280" xmlns="http://www.w3.org/2000/svg" role="img">
+        <title>A couple produces rotation only</title>
+        <defs>
+          <marker id="arrR2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#9a3a1c"/></marker>
+          <marker id="arrB2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#153a5c"/></marker>
+        </defs>
+        <text x="20" y="28" fill="#8a6910" font-size="13" font-family="-apple-system, Helvetica, sans-serif" font-weight="700" letter-spacing="1.5">FIG. 3</text>
+        <text x="68" y="28" fill="#153a5c" font-size="15" font-family="Palatino, Times, serif" font-weight="600">A couple: equal, opposite, parallel forces, separated by distance d</text>
+        <rect x="230" y="120" width="380" height="28" rx="4" fill="#d9e7f3" stroke="#153a5c" stroke-width="2"/>
+        <!-- F up on left -->
+        <line x1="270" y1="134" x2="270" y2="50" stroke="#9a3a1c" stroke-width="2.4" marker-end="url(#arrR2)"/>
+        <text x="280" y="72" fill="#9a3a1c" font-size="17" font-family="Palatino, Times, serif" font-style="italic">F</text>
+        <!-- F down on right -->
+        <line x1="570" y1="134" x2="570" y2="230" stroke="#9a3a1c" stroke-width="2.4" marker-end="url(#arrR2)"/>
+        <text x="580" y="215" fill="#9a3a1c" font-size="17" font-family="Palatino, Times, serif" font-style="italic">F</text>
+        <!-- d between lines -->
+        <line x1="270" y1="250" x2="570" y2="250" stroke="#1b5a43" stroke-width="1.5"/>
+        <line x1="270" y1="242" x2="270" y2="258" stroke="#1b5a43" stroke-width="1.5"/>
+        <line x1="570" y1="242" x2="570" y2="258" stroke="#1b5a43" stroke-width="1.5"/>
+        <text x="400" y="272" fill="#1b5a43" font-size="16" font-family="Palatino, Times, serif" font-style="italic">d</text>
+        <path d="M400 100 A36 36 0 0 1 445 134" fill="none" stroke="#1f5a86" stroke-width="1.8" marker-end="url(#arrB2)"/>
+        <text x="620" y="140" fill="#153a5c" font-size="17" font-family="Palatino, Times, serif" font-style="italic">torque = F d</text>
+        <text x="620" y="164" fill="#4c463d" font-size="13" font-family="-apple-system, Helvetica, sans-serif">resultant force = 0</text>
+        <text x="620" y="184" fill="#4c463d" font-size="13" font-family="-apple-system, Helvetica, sans-serif">rotation only</text>
+      </svg>
+      <figcaption>Fig. 3  The two forces cancel as a resultant force, so there is no translational acceleration. The perpendicular separation d means they do not cancel as moments, so the object turns. Torque = F d.</figcaption>
+    </figure>
+  </section>
+
+  <!-- ===================== 4.2 ===================== -->
+  <section class="topic" id="t42">
+    <h2>4.2 Equilibrium of forces</h2>
+    <div class="syllabus">
+      You should be able to:
+      <ol>
+        <li>state and apply the <strong>principle of moments</strong></li>
+        <li>understand that, when there is <strong>no resultant force</strong> and <strong>no resultant torque</strong>, a system is in equilibrium</li>
+        <li>use a <strong>vector triangle</strong> to represent coplanar forces in equilibrium</li>
+      </ol>
+    </div>
+
+    <h3>The principle of moments</h3>
+    <div class="def">
+      <span class="lbl">Definition — memorise this</span>
+      <p>The <strong>principle of moments</strong>: for a system in equilibrium, the sum of the clockwise moments about any point is equal to the sum of the anticlockwise moments about the same point.</p>
+    </div>
+    <div class="formula-box">
+      <span>Σ clockwise moments = Σ anticlockwise moments</span>
+      <span class="unit">about the same point</span>
+    </div>
+    <p>You may take moments about <em>any</em> convenient point. A standard trick is to choose a point on the line of action of an unknown force (often a support reaction). That force then has zero moment, and it drops out of the equation.</p>
+
+    <figure class="fig" aria-label="Principle of moments on a beam">
+      <svg viewBox="0 0 840 300" xmlns="http://www.w3.org/2000/svg" role="img">
+        <title>Principle of moments applied to a beam</title>
+        <defs>
+          <marker id="arrR3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#9a3a1c"/></marker>
+          <marker id="arrG3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#1b5a43"/></marker>
+        </defs>
+        <text x="20" y="28" fill="#8a6910" font-size="13" font-family="-apple-system, Helvetica, sans-serif" font-weight="700" letter-spacing="1.5">FIG. 4</text>
+        <text x="68" y="28" fill="#153a5c" font-size="15" font-family="Palatino, Times, serif" font-weight="600">Uniform beam in equilibrium — moments about the pivot</text>
+        <!-- beam -->
+        <line x1="80" y1="130" x2="760" y2="130" stroke="#153a5c" stroke-width="7" stroke-linecap="round"/>
+        <text x="80" y="118" fill="#153a5c" font-size="15" font-family="Palatino, Times, serif" font-weight="600">A</text>
+        <text x="750" y="118" fill="#153a5c" font-size="15" font-family="Palatino, Times, serif" font-weight="600">B</text>
+        <!-- pivot 0.80 m from A: beam 2.4 m, so 0.8/2.4 * 680 = 227 from x=80 → x=307 -->
+        <polygon points="307,138 337,178 277,178" fill="#f6ebd2" stroke="#8a6910" stroke-width="2"/>
+        <text x="285" y="198" fill="#8a6910" font-size="13" font-family="-apple-system, Helvetica, sans-serif">pivot</text>
+        <!-- load W at A -->
+        <line x1="80" y1="130" x2="80" y2="230" stroke="#9a3a1c" stroke-width="2.3" marker-end="url(#arrR3)"/>
+        <text x="90" y="210" fill="#9a3a1c" font-size="16" font-family="Palatino, Times, serif" font-style="italic">W</text>
+        <!-- weight at centre: 1.2/2.4*680=340 from 80 → 420 -->
+        <line x1="420" y1="130" x2="420" y2="230" stroke="#9a3a1c" stroke-width="2.3" marker-end="url(#arrR3)"/>
+        <text x="430" y="200" fill="#9a3a1c" font-size="16" font-family="Palatino, Times, serif" font-style="italic">180 N</text>
+        <circle cx="420" cy="130" r="4.5" fill="#9a3a1c"/>
+        <text x="428" y="118" fill="#9a3a1c" font-size="12" font-family="-apple-system, Helvetica, sans-serif">C.G.</text>
+        <!-- reaction up -->
+        <line x1="307" y1="138" x2="307" y2="55" stroke="#1b5a43" stroke-width="2.3" marker-end="url(#arrG3)"/>
+        <text x="317" y="75" fill="#1b5a43" font-size="16" font-family="Palatino, Times, serif" font-style="italic">R</text>
+        <!-- distances -->
+        <line x1="80" y1="260" x2="307" y2="260" stroke="#4c463d" stroke-width="1.2"/>
+        <line x1="80" y1="254" x2="80" y2="266" stroke="#4c463d" stroke-width="1.2"/>
+        <line x1="307" y1="254" x2="307" y2="266" stroke="#4c463d" stroke-width="1.2"/>
+        <text x="155" y="282" fill="#4c463d" font-size="14" font-family="Palatino, Times, serif" font-style="italic">0.80 m</text>
+        <line x1="307" y1="260" x2="420" y2="260" stroke="#4c463d" stroke-width="1.2"/>
+        <line x1="420" y1="254" x2="420" y2="266" stroke="#4c463d" stroke-width="1.2"/>
+        <text x="330" y="282" fill="#4c463d" font-size="14" font-family="Palatino, Times, serif" font-style="italic">0.40 m</text>
+        <line x1="80" y1="70" x2="760" y2="70" stroke="#787064" stroke-width="1" stroke-dasharray="4 3"/>
+        <line x1="80" y1="64" x2="80" y2="76" stroke="#787064"/>
+        <line x1="760" y1="64" x2="760" y2="76" stroke="#787064"/>
+        <text x="390" y="60" fill="#787064" font-size="13" font-family="Palatino, Times, serif" font-style="italic">2.4 m</text>
+      </svg>
+      <figcaption>Fig. 4  The worked example below. Taking moments about the pivot eliminates the unknown reaction R, because R acts through the pivot so its moment is zero.</figcaption>
+    </figure>
+
+    <div class="example">
+      <div class="lbl">Worked example</div>
+      <h4>A uniform beam on a pivot</h4>
+      <p>A uniform beam AB has length 2.4&nbsp;m and weight 180&nbsp;N. It rests horizontally on a pivot 0.80&nbsp;m from A, with a load <span class="eq">W</span> at end A, and is in equilibrium. Find <span class="eq">W</span> and the support reaction <span class="eq">R</span>.</p>
+      <div class="ans">
+        <p>The beam’s weight acts at its centre, 1.2&nbsp;m from A, so 0.40&nbsp;m to the right of the pivot.</p>
+        <p>Take moments about the pivot.</p>
+        <p>Anticlockwise: <span class="eq">W × 0.80</span>. &nbsp; Clockwise: <span class="eq">180 × 0.40 = 72&nbsp;N&nbsp;m</span>.</p>
+        <p>Principle of moments: <span class="eq">W × 0.80 = 72  ⇒  W = 90&nbsp;N</span>.</p>
+        <p>No resultant force (vertical): <span class="eq">R = 90 + 180 = 270&nbsp;N</span> upward.</p>
+      </div>
+    </div>
+
+    <h3>The two conditions for equilibrium</h3>
+    <div class="def">
+      <span class="lbl">Statement — memorise this</span>
+      <p>A system is in equilibrium when there is <strong>no resultant force</strong> and <strong>no resultant torque</strong> (moment).</p>
+    </div>
+    <div class="grid-2">
+      <div class="example" style="margin:0">
+        <div class="lbl">Translational equilibrium</div>
+        <p style="margin:0">No resultant force: <span class="eq">ΣF<sub>x</sub> = 0</span> and <span class="eq">ΣF<sub>y</sub> = 0</span>. The centre of mass does not accelerate (it is at rest or moves at constant velocity).</p>
+      </div>
+      <div class="example" style="margin:0">
+        <div class="lbl">Rotational equilibrium</div>
+        <p style="margin:0">No resultant torque: <span class="eq">Σ moments = 0</span> about any point. The object does not have an angular acceleration (it is not starting to spin, or it rotates at a constant rate).</p>
+      </div>
+    </div>
+    <p style="margin-top:1rem">Both conditions must hold. A couple is a reminder that “no resultant force” is not enough on its own — a couple has zero resultant force but is <em>not</em> in equilibrium, because there is a resultant torque.</p>
+
+    <h3>The vector triangle</h3>
+    <p>If three <strong>coplanar</strong> forces act on a system that is in equilibrium, the forces can be represented by a closed <strong>vector triangle</strong>. Draw the three force vectors tip-to-tail. Because the resultant is zero, the tip of the last vector meets the tail of the first — the triangle closes.</p>
+    <p>Each side is <strong>parallel</strong> to one of the forces and has a length <strong>proportional</strong> to that force’s magnitude. You can then use scale drawing, or trigonometry (sine or cosine rule) on the triangle, to find unknown forces or angles.</p>
+    <p>For more than three coplanar forces in equilibrium, the same idea gives a closed vector polygon.</p>
+
+    <figure class="fig" aria-label="Vector triangle of forces">
+      <svg viewBox="0 0 840 360" xmlns="http://www.w3.org/2000/svg" role="img">
+        <title>Three coplanar forces in equilibrium form a closed vector triangle</title>
+        <defs>
+          <marker id="arrR4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#9a3a1c"/></marker>
+          <marker id="arrB4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#153a5c"/></marker>
+          <marker id="arrG4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#1b5a43"/></marker>
+        </defs>
+        <text x="20" y="28" fill="#8a6910" font-size="13" font-family="-apple-system, Helvetica, sans-serif" font-weight="700" letter-spacing="1.5">FIG. 5</text>
+        <text x="68" y="28" fill="#153a5c" font-size="15" font-family="Palatino, Times, serif" font-weight="600">A lamp held by two strings, and the closed vector triangle of its three forces</text>
+
+        <!-- ceiling and wall -->
+        <line x1="36" y1="64" x2="455" y2="64" stroke="#153a5c" stroke-width="4"/>
+        <line x1="36" y1="64" x2="36" y2="300" stroke="#153a5c" stroke-width="4"/>
+        <g stroke="#153a5c" stroke-width="2">
+          <line x1="60" y1="64" x2="48" y2="48"/><line x1="95" y1="64" x2="83" y2="48"/>
+          <line x1="130" y1="64" x2="118" y2="48"/><line x1="165" y1="64" x2="153" y2="48"/>
+          <line x1="200" y1="64" x2="188" y2="48"/><line x1="235" y1="64" x2="223" y2="48"/>
+          <line x1="270" y1="64" x2="258" y2="48"/><line x1="305" y1="64" x2="293" y2="48"/>
+          <line x1="340" y1="64" x2="328" y2="48"/><line x1="375" y1="64" x2="363" y2="48"/>
+          <line x1="410" y1="64" x2="398" y2="48"/><line x1="445" y1="64" x2="433" y2="48"/>
+          <line x1="36" y1="100" x2="20" y2="88"/><line x1="36" y1="135" x2="20" y2="123"/>
+          <line x1="36" y1="170" x2="20" y2="158"/><line x1="36" y1="205" x2="20" y2="193"/>
+          <line x1="36" y1="240" x2="20" y2="228"/><line x1="36" y1="275" x2="20" y2="263"/>
+        </g>
+        <!-- strings: lamp at (200, 210). Horizontal to wall. Angled at 30° to ceiling y=64: rise=146, run=146/tan30=252.9, end x=452.9 -->
+        <line x1="36" y1="210" x2="200" y2="210" stroke="#4a6a86" stroke-width="2"/>
+        <line x1="200" y1="210" x2="453" y2="64" stroke="#4a6a86" stroke-width="2"/>
+        <circle cx="200" cy="210" r="13" fill="#f6ebd2" stroke="#153a5c" stroke-width="2.2"/>
+
+        <!-- force arrows, slightly bold, from the lamp -->
+        <line x1="186" y1="210" x2="70" y2="210" stroke="#1b5a43" stroke-width="2.5" marker-end="url(#arrG4)"/>
+        <text x="90" y="198" fill="#1b5a43" font-size="17" font-family="Palatino, Times, serif" font-style="italic">T₁</text>
+        <line x1="210" y1="204" x2="318" y2="142" stroke="#153a5c" stroke-width="2.5" marker-end="url(#arrB4)"/>
+        <text x="326" y="150" fill="#153a5c" font-size="17" font-family="Palatino, Times, serif" font-style="italic">T₂</text>
+        <line x1="200" y1="224" x2="200" y2="318" stroke="#9a3a1c" stroke-width="2.5" marker-end="url(#arrR4)"/>
+        <text x="210" y="300" fill="#9a3a1c" font-size="16" font-family="Palatino, Times, serif" font-style="italic">W = 12.0 N</text>
+        <!-- 30° between horizontal string (right of lamp is not a string; the angle is between horizontal and T2, to the right of lamp) -->
+        <path d="M250 210 A50 50 0 0 0 243 185" fill="none" stroke="#8a6910" stroke-width="1.4"/>
+        <text x="258" y="198" fill="#8a6910" font-size="15" font-family="Palatino, Times, serif" font-style="italic">30°</text>
+        <text x="70" y="348" fill="#4c463d" font-size="13" font-family="-apple-system, Helvetica, sans-serif">(a) forces on the lamp</text>
+
+        <!-- divider -->
+        <line x1="500" y1="50" x2="500" y2="345" stroke="#ddd3c2" stroke-width="1.2" stroke-dasharray="5 5"/>
+
+        <!-- vector triangle: 12 N = 100 px vertical. T1 = 20.8 N = 173 px. T2 = 24 N = 200 px.
+             Top-left (580, 90), top-right (753, 90), bottom-left (580, 190).
+             Hypotenuse from (580,190) to (753,90): dx=173, dy=-100, angle=atan(100/173)=30.04°. Perfect. -->
+        <text x="560" y="72" fill="#4c463d" font-size="13" font-family="-apple-system, Helvetica, sans-serif">(b) closed vector triangle</text>
+        <line x1="580" y1="90" x2="580" y2="190" stroke="#9a3a1c" stroke-width="2.7" marker-end="url(#arrR4)"/>
+        <text x="520" y="145" fill="#9a3a1c" font-size="16" font-family="Palatino, Times, serif" font-style="italic">W</text>
+        <text x="512" y="165" fill="#9a3a1c" font-size="13" font-family="-apple-system, Helvetica, sans-serif">12.0 N</text>
+        <line x1="753" y1="90" x2="580" y2="90" stroke="#1b5a43" stroke-width="2.7" marker-end="url(#arrG4)"/>
+        <text x="628" y="80" fill="#1b5a43" font-size="16" font-family="Palatino, Times, serif" font-style="italic">T₁ = 20.8 N</text>
+        <line x1="580" y1="190" x2="753" y2="90" stroke="#153a5c" stroke-width="2.7" marker-end="url(#arrB4)"/>
+        <text x="690" y="172" fill="#153a5c" font-size="16" font-family="Palatino, Times, serif" font-style="italic">T₂ = 24.0 N</text>
+        <path d="M690 90 A48 48 0 0 1 714 104" fill="none" stroke="#8a6910" stroke-width="1.4"/>
+        <text x="722" y="118" fill="#8a6910" font-size="15" font-family="Palatino, Times, serif" font-style="italic">30°</text>
+        <path d="M580 104 L594 104 L594 90" fill="none" stroke="#4c463d" stroke-width="1.3"/>
+      </svg>
+      <figcaption>Fig. 5  A 12.0 N lamp hangs from a horizontal string and a string at 30° to the horizontal. The three forces form a closed right-angled triangle. From the triangle: T₂ = 12.0 / sin 30° = 24.0 N, and T₁ = 24.0 × cos 30° = 20.8 N.</figcaption>
+    </figure>
+
+    <div class="tip">
+      <span class="lbl">Exam tip</span>
+      <p>If you are asked to “draw a vector triangle”, do it as a <em>separate</em> diagram, not just the free-body arrows on the object. Label each side with the force’s name and, if known, its magnitude. Mark the angles. State the scale if it is a scale drawing.</p>
+    </div>
+  </section>
+  <!-- ===================== TOPIC 5 ===================== -->
+  <section class="topic" id="t5">
+    <h2>5 Work, energy and power</h2>
+    <p class="syllabus">The syllabus assumes you already know the forms of energy and energy transfers from IGCSE / O Level. Topic 5 is in two parts: <a href="#t51">5.1 Energy conservation</a> (work, conservation, efficiency, power) and <a href="#t52">5.2 Gravitational potential energy and kinetic energy</a>.</p>
+
+    <h3 id="t51">5.1 Energy conservation</h3>
+
+    <h4 style="font-family:var(--display);color:var(--blue);font-size:1.08rem;margin-top:1.2rem">Work done</h4>
+    <div class="def">
+      <span class="lbl">Definition — memorise this</span>
+      <p><strong>Work done</strong> by a force is the product of the force and the displacement <strong>in the direction of the force</strong>.</p>
+    </div>
+    <div class="formula-box">
+      <span><i>W</i> = <i>F s</i> cos&nbsp;<i>θ</i></span>
+      <span class="unit">unit: J &nbsp;·&nbsp; 1 J = 1 N&nbsp;m &nbsp;·&nbsp; <i>θ</i> is the angle between <i>F</i> and <i>s</i></span>
+    </div>
+    <p>Work is a <strong>scalar</strong>. If the force is parallel to the displacement, <span class="eq">θ = 0°</span> and <span class="eq">W = F s</span>. If the force is perpendicular to the displacement (<span class="eq">θ = 90°</span>), <span class="eq">cos 90° = 0</span> so <span class="eq">W = 0</span> — a useful fact for circular motion and for the normal contact force on a level surface. A force opposite to the motion (<span class="eq">θ = 180°</span>) does negative work: the object loses energy.</p>
+
+    <figure class="fig" aria-label="Work done by a force at an angle">
+      <svg viewBox="0 0 840 290" xmlns="http://www.w3.org/2000/svg" role="img">
+        <title>Work done equals F s cos theta</title>
+        <defs>
+          <marker id="arrR5" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#9a3a1c"/></marker>
+          <marker id="arrB5" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#153a5c"/></marker>
+          <marker id="arrG5" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#1b5a43"/></marker>
+        </defs>
+        <text x="20" y="28" fill="#8a6910" font-size="13" font-family="-apple-system, Helvetica, sans-serif" font-weight="700" letter-spacing="1.5">FIG. 6</text>
+        <text x="68" y="28" fill="#153a5c" font-size="15" font-family="Palatino, Times, serif" font-weight="600">Only the component of force along the displacement does work</text>
+        <!-- ground -->
+        <line x1="60" y1="210" x2="560" y2="210" stroke="#153a5c" stroke-width="3"/>
+        <g stroke="#153a5c" stroke-width="1.5">
+          <line x1="90" y1="210" x2="78" y2="224"/><line x1="130" y1="210" x2="118" y2="224"/>
+          <line x1="170" y1="210" x2="158" y2="224"/><line x1="210" y1="210" x2="198" y2="224"/>
+          <line x1="250" y1="210" x2="238" y2="224"/><line x1="290" y1="210" x2="278" y2="224"/>
+          <line x1="330" y1="210" x2="318" y2="224"/><line x1="370" y1="210" x2="358" y2="224"/>
+          <line x1="410" y1="210" x2="398" y2="224"/><line x1="450" y1="210" x2="438" y2="224"/>
+          <line x1="490" y1="210" x2="478" y2="224"/><line x1="530" y1="210" x2="518" y2="224"/>
+        </g>
+        <!-- crate -->
+        <rect x="160" y="148" width="90" height="62" fill="#d9e7f3" stroke="#153a5c" stroke-width="2.2" rx="2"/>
+        <text x="178" y="185" fill="#153a5c" font-size="14" font-family="-apple-system, Helvetica, sans-serif">crate</text>
+        <!-- displacement -->
+        <line x1="160" y1="250" x2="430" y2="250" stroke="#1b5a43" stroke-width="2" marker-end="url(#arrG5)"/>
+        <text x="280" y="274" fill="#1b5a43" font-size="16" font-family="Palatino, Times, serif" font-style="italic">s</text>
+        <!-- F at 25 degrees from front of crate -->
+        <line x1="250" y1="148" x2="390" y2="80" stroke="#9a3a1c" stroke-width="2.5" marker-end="url(#arrR5)"/>
+        <text x="400" y="88" fill="#9a3a1c" font-size="17" font-family="Palatino, Times, serif" font-style="italic">F</text>
+        <!-- F cos theta horizontal -->
+        <line x1="250" y1="148" x2="400" y2="148" stroke="#153a5c" stroke-width="1.8" stroke-dasharray="5 4" marker-end="url(#arrB5)"/>
+        <text x="310" y="140" fill="#153a5c" font-size="15" font-family="Palatino, Times, serif" font-style="italic">F cos θ</text>
+        <path d="M300 148 A50 50 0 0 0 290 124" fill="none" stroke="#8a6910" stroke-width="1.4"/>
+        <text x="308" y="128" fill="#8a6910" font-size="16" font-family="Palatino, Times, serif" font-style="italic">θ</text>
+        <!-- formula callout -->
+        <text x="560" y="130" fill="#153a5c" font-size="22" font-family="Palatino, Times, serif" font-style="italic">W = F s cos θ</text>
+        <text x="560" y="160" fill="#4c463d" font-size="14" font-family="-apple-system, Helvetica, sans-serif">θ = angle between F and s</text>
+        <text x="560" y="184" fill="#4c463d" font-size="14" font-family="-apple-system, Helvetica, sans-serif">If θ = 0°,  W = F s</text>
+        <text x="560" y="208" fill="#4c463d" font-size="14" font-family="-apple-system, Helvetica, sans-serif">If θ = 90°,  W = 0</text>
+      </svg>
+      <figcaption>Fig. 6  The vertical component F sin θ does no work if the crate moves horizontally. Only F cos θ, the component along s, contributes: W = (F cos θ) s = F s cos θ.</figcaption>
+    </figure>
+
+    <div class="example">
+      <div class="lbl">Worked example</div>
+      <h4>Work done at an angle</h4>
+      <p>A crate is pulled 6.0&nbsp;m along a floor by a force of 50&nbsp;N at 25° to the horizontal. Calculate the work done by this force.</p>
+      <div class="ans">
+        <p><span class="eq">W = F s</span> cos&nbsp;<span class="eq">θ</span> = <span class="eq">50 × 6.0 × cos&nbsp;25° = 272&nbsp;J</span> (3 significant figures).</p>
+      </div>
+    </div>
+
+    <h4 style="font-family:var(--display);color:var(--blue);font-size:1.08rem;margin-top:1.6rem">Principle of conservation of energy</h4>
+    <div class="def">
+      <span class="lbl">Definition — memorise this</span>
+      <p>The <strong>principle of conservation of energy</strong>: energy cannot be created or destroyed. It can be transferred from one form to another, but the <strong>total energy</strong> of a closed system remains constant.</p>
+    </div>
+    <p>In a mechanics problem this usually means that a loss in one form equals a gain in others. If there is no air resistance and no friction, gravitational potential energy and kinetic energy simply swap. If resistive forces act, some energy is transferred to <strong>thermal energy</strong> (internal energy of the object and the surroundings). The total is still constant; it is just no longer all mechanical.</p>
+
+    <h4 style="font-family:var(--display);color:var(--blue);font-size:1.08rem;margin-top:1.6rem">Efficiency</h4>
+    <div class="def">
+      <span class="lbl">Definition — memorise this</span>
+      <p>The <strong>efficiency</strong> of a system is the ratio of useful energy output from the system to the total energy input. The same ratio can be written with power, because power is energy per unit time.</p>
+    </div>
+    <div class="formula-box">
+      <span>efficiency = useful energy output / total energy input</span>
+      <span class="unit">or &nbsp; useful power output / total power input</span>
+    </div>
+    <p>Efficiency is a ratio: a number between 0 and 1. It is often written as a percentage (multiply by 100%). Real machines always have efficiency less than 1, because some input energy is wasted, usually as thermal energy.</p>
+
+    <figure class="fig" aria-label="Sankey diagram for efficiency">
+      <svg viewBox="0 0 840 230" xmlns="http://www.w3.org/2000/svg" role="img">
+        <title>Sankey diagram showing useful and wasted energy</title>
+        <text x="20" y="28" fill="#8a6910" font-size="13" font-family="-apple-system, Helvetica, sans-serif" font-weight="700" letter-spacing="1.5">FIG. 7</text>
+        <text x="68" y="28" fill="#153a5c" font-size="15" font-family="Palatino, Times, serif" font-weight="600">Efficiency is useful output divided by total input</text>
+        <!-- input arrow wide -->
+        <polygon points="40,50 300,50 300,170 40,170" fill="#d9e7f3" stroke="#153a5c" stroke-width="2"/>
+        <polygon points="40,50 20,110 40,170" fill="#d9e7f3" stroke="#153a5c" stroke-width="2"/>
+        <text x="90" y="118" fill="#153a5c" font-size="15" font-family="-apple-system, Helvetica, sans-serif" font-weight="600">total energy input</text>
+        <!-- useful output, 70% height of 120 = 84, so from y=50 to 134 -->
+        <polygon points="300,50 560,50 560,134 300,134" fill="#dceee5" stroke="#1b5a43" stroke-width="2"/>
+        <polygon points="560,50 620,92 560,134" fill="#dceee5" stroke="#1b5a43" stroke-width="2"/>
+        <text x="330" y="100" fill="#1b5a43" font-size="15" font-family="-apple-system, Helvetica, sans-serif" font-weight="600">useful energy output</text>
+        <!-- wasted 30% from y=134 to 170, then down -->
+        <polygon points="300,134 430,134 430,210 370,210 370,170 300,170" fill="#f8e6df" stroke="#9a3a1c" stroke-width="2"/>
+        <polygon points="370,210 400,230 430,210" fill="#f8e6df" stroke="#9a3a1c" stroke-width="2"/>
+        <text x="445" y="190" fill="#9a3a1c" font-size="14" font-family="-apple-system, Helvetica, sans-serif" font-weight="600">wasted (usually thermal)</text>
+        <text x="640" y="100" fill="#153a5c" font-size="18" font-family="Palatino, Times, serif" font-style="italic">efficiency = 0.70</text>
+        <text x="640" y="126" fill="#4c463d" font-size="14" font-family="-apple-system, Helvetica, sans-serif">or 70%</text>
+      </svg>
+      <figcaption>Fig. 7  A Sankey diagram is a useful picture of energy flow. The width of each arrow represents the amount of energy. Here the useful output is 70% of the input.</figcaption>
+    </figure>
+
+    <div class="example">
+      <div class="lbl">Worked example</div>
+      <h4>Efficiency from power</h4>
+      <p>A motor has an input power of 400&nbsp;W and a useful output power of 280&nbsp;W. Find its efficiency.</p>
+      <div class="ans">
+        <p>efficiency = useful power output / total power input = <span class="eq">280 / 400 = 0.70</span> (or 70%).</p>
+      </div>
+    </div>
+
+    <h4 style="font-family:var(--display);color:var(--blue);font-size:1.08rem;margin-top:1.6rem">Power</h4>
+    <div class="def">
+      <span class="lbl">Definition — memorise this</span>
+      <p><strong>Power</strong> is the work done per unit time (the rate of doing work, or the rate of energy transfer).</p>
+    </div>
+    <div class="formula-box">
+      <span><i>P</i> = <i>W</i> / <i>t</i></span>
+      <span class="unit">unit: W &nbsp;·&nbsp; 1 W = 1 J s<sup>−1</sup></span>
+    </div>
+    <div class="derive">
+      <span class="lbl">Derivation you can be asked for — P = Fv</span>
+      <p>If a constant force <span class="eq">F</span> moves an object a distance <span class="eq">s</span> in the direction of the force in time <span class="eq">t</span>,</p>
+      <p style="margin-top:.4rem"><span class="eq">P = W / t = (F s) / t = F (s / t) = F v</span>,</p>
+      <p style="margin-top:.4rem">where <span class="eq">v</span> is the speed in the direction of the force. If <span class="eq">F</span> and <span class="eq">v</span> are at an angle <span class="eq">θ</span>, then <span class="eq">P = F v</span> cos&nbsp;<span class="eq">θ</span>.</p>
+    </div>
+
+    <figure class="fig" aria-label="Power equals force times speed">
+      <svg viewBox="0 0 840 230" xmlns="http://www.w3.org/2000/svg" role="img">
+        <title>A boat moving at constant speed, power equals Fv</title>
+        <defs>
+          <marker id="arrR6" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#9a3a1c"/></marker>
+          <marker id="arrB6" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#153a5c"/></marker>
+        </defs>
+        <text x="20" y="28" fill="#8a6910" font-size="13" font-family="-apple-system, Helvetica, sans-serif" font-weight="700" letter-spacing="1.5">FIG. 8</text>
+        <text x="68" y="28" fill="#153a5c" font-size="15" font-family="Palatino, Times, serif" font-weight="600">At constant speed, driving force equals drag, and P = Fv</text>
+        <!-- water -->
+        <line x1="40" y1="160" x2="620" y2="160" stroke="#1f5a86" stroke-width="2"/>
+        <path d="M50 172 Q70 182 90 172 T130 172 T170 172 T210 172 T250 172 T290 172 T330 172 T370 172 T410 172 T450 172 T490 172 T530 172 T570 172 T610 172" fill="none" stroke="#1f5a86" stroke-width="1.3"/>
+        <!-- simple boat hull -->
+        <path d="M140 158 L165 118 L410 118 L460 158 Z" fill="#d9e7f3" stroke="#153a5c" stroke-width="2.2"/>
+        <rect x="250" y="86" width="70" height="32" fill="#f6ebd2" stroke="#153a5c" stroke-width="1.6"/>
+        <!-- F forward -->
+        <line x1="460" y1="138" x2="585" y2="138" stroke="#9a3a1c" stroke-width="2.5" marker-end="url(#arrR6)"/>
+        <text x="500" y="128" fill="#9a3a1c" font-size="16" font-family="Palatino, Times, serif" font-style="italic">F (driving force)</text>
+        <!-- v clearly above the cabin -->
+        <line x1="200" y1="68" x2="360" y2="68" stroke="#153a5c" stroke-width="2.3" marker-end="url(#arrB6)"/>
+        <text x="268" y="60" fill="#153a5c" font-size="17" font-family="Palatino, Times, serif" font-style="italic">v</text>
+        <text x="640" y="110" fill="#153a5c" font-size="22" font-family="Palatino, Times, serif" font-style="italic">P = F v</text>
+        <text x="640" y="140" fill="#4c463d" font-size="14" font-family="-apple-system, Helvetica, sans-serif">same direction</text>
+        <text x="640" y="164" fill="#4c463d" font-size="14" font-family="-apple-system, Helvetica, sans-serif">constant speed: F = drag</text>
+      </svg>
+      <figcaption>Fig. 8  A boat travelling at constant speed. The driving force does work against drag. Instantaneous power output is P = Fv.</figcaption>
+    </figure>
+
+    <div class="example">
+      <div class="lbl">Worked example</div>
+      <h4>Power at constant speed</h4>
+      <p>A boat’s engine provides a driving force of 1.5&nbsp;kN at a constant speed of 8.0&nbsp;m&nbsp;s<sup>−1</sup>. Calculate the output power.</p>
+      <div class="ans">
+        <p><span class="eq">P = F v = 1.5 × 10<sup>3</sup> × 8.0 = 1.2 × 10<sup>4</sup>&nbsp;W</span> (12&nbsp;kW).</p>
+      </div>
+    </div>
+
+    <h3 id="t52">5.2 Gravitational potential energy and kinetic energy</h3>
+
+    <h4 style="font-family:var(--display);color:var(--blue);font-size:1.08rem;margin-top:1.2rem">Gravitational potential energy</h4>
+    <div class="def">
+      <span class="lbl">Formula — recall and use</span>
+      <p>In a <strong>uniform gravitational field</strong> (near the Earth’s surface), the change in gravitational potential energy is</p>
+    </div>
+    <div class="formula-box">
+      <span>Δ<i>E</i><sub>P</sub> = <i>mg</i>Δ<i>h</i></span>
+      <span class="unit">unit: J &nbsp;·&nbsp; g = 9.81 m s<sup>−2</sup> (from the data sheet)</span>
+    </div>
+    <div class="derive">
+      <span class="lbl">Derivation from W = F s — required by the syllabus</span>
+      <p>To raise a mass <span class="eq">m</span> slowly through a vertical height <span class="eq">Δh</span> at constant speed, the applied upward force equals the weight <span class="eq">mg</span>.</p>
+      <p style="margin-top:.4rem">Work done by this force: <span class="eq">W = F s = mg × Δh</span>.</p>
+      <p style="margin-top:.4rem">That work is stored as gravitational potential energy, so <span class="eq">ΔE<sub>P</sub> = mg Δh</span>.</p>
+      <p style="margin-top:.4rem">This holds only in a <strong>uniform</strong> field, where <span class="eq">g</span> is constant. (A different formula, not needed at AS, is used at large distances from the Earth.)</p>
+    </div>
+
+    <figure class="fig" aria-label="Change in gravitational potential energy">
+      <svg viewBox="0 0 840 280" xmlns="http://www.w3.org/2000/svg" role="img">
+        <title>Raising a mass through height delta h</title>
+        <defs>
+          <marker id="arrG7" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#1b5a43"/></marker>
+          <marker id="arrR7" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#9a3a1c"/></marker>
+        </defs>
+        <text x="20" y="28" fill="#8a6910" font-size="13" font-family="-apple-system, Helvetica, sans-serif" font-weight="700" letter-spacing="1.5">FIG. 9</text>
+        <text x="68" y="28" fill="#153a5c" font-size="15" font-family="Palatino, Times, serif" font-weight="600">Work done in raising a mass is stored as gravitational potential energy</text>
+        <line x1="80" y1="240" x2="420" y2="240" stroke="#153a5c" stroke-width="3"/>
+        <g stroke="#153a5c" stroke-width="1.5">
+          <line x1="110" y1="240" x2="98" y2="254"/><line x1="160" y1="240" x2="148" y2="254"/>
+          <line x1="210" y1="240" x2="198" y2="254"/><line x1="260" y1="240" x2="248" y2="254"/>
+          <line x1="310" y1="240" x2="298" y2="254"/><line x1="360" y1="240" x2="348" y2="254"/>
+        </g>
+        <!-- lower box faded -->
+        <rect x="180" y="188" width="70" height="52" fill="#edf3f8" stroke="#9aa8b5" stroke-width="1.6" stroke-dasharray="5 3" rx="2"/>
+        <text x="192" y="218" fill="#787064" font-size="12" font-family="-apple-system, Helvetica, sans-serif">start</text>
+        <!-- upper box -->
+        <rect x="180" y="70" width="70" height="52" fill="#d9e7f3" stroke="#153a5c" stroke-width="2.2" rx="2"/>
+        <text x="198" y="100" fill="#153a5c" font-size="13" font-family="-apple-system, Helvetica, sans-serif">mass m</text>
+        <!-- height bracket -->
+        <line x1="300" y1="96" x2="300" y2="214" stroke="#1b5a43" stroke-width="1.6" marker-start="url(#arrG7)" marker-end="url(#arrG7)"/>
+        <text x="312" y="160" fill="#1b5a43" font-size="17" font-family="Palatino, Times, serif" font-style="italic">Δh</text>
+        <!-- forces on upper box -->
+        <line x1="215" y1="70" x2="215" y2="40" stroke="#1b5a43" stroke-width="2" marker-end="url(#arrG7)"/>
+        <text x="222" y="52" fill="#1b5a43" font-size="15" font-family="Palatino, Times, serif" font-style="italic">F = mg</text>
+        <line x1="215" y1="122" x2="215" y2="168" stroke="#9a3a1c" stroke-width="2" marker-end="url(#arrR7)"/>
+        <text x="222" y="158" fill="#9a3a1c" font-size="15" font-family="Palatino, Times, serif" font-style="italic">mg</text>
+        <text x="480" y="120" fill="#153a5c" font-size="22" font-family="Palatino, Times, serif" font-style="italic">W = F s = mg Δh</text>
+        <text x="480" y="154" fill="#153a5c" font-size="22" font-family="Palatino, Times, serif" font-style="italic">ΔEₚ = mg Δh</text>
+        <text x="480" y="186" fill="#4c463d" font-size="14" font-family="-apple-system, Helvetica, sans-serif">uniform gravitational field only</text>
+      </svg>
+      <figcaption>Fig. 9  Raising the mass at constant speed means the applied force equals the weight. The work done by that force equals the gain in E<sub>P</sub>.</figcaption>
+    </figure>
+
+    <div class="example">
+      <div class="lbl">Worked example</div>
+      <h4>Calculating ΔE<sub>P</sub></h4>
+      <p>A student of mass 55&nbsp;kg climbs a vertical height of 12&nbsp;m. Calculate the gain in gravitational potential energy. Take <span class="eq">g = 9.81&nbsp;m&nbsp;s<sup>−2</sup></span>.</p>
+      <div class="ans">
+        <p><span class="eq">ΔE<sub>P</sub> = mg Δh = 55 × 9.81 × 12 = 6.47 × 10<sup>3</sup>&nbsp;J</span>.</p>
+      </div>
+    </div>
+
+    <h4 style="font-family:var(--display);color:var(--blue);font-size:1.08rem;margin-top:1.6rem">Kinetic energy</h4>
+    <div class="formula-box">
+      <span><i>E</i><sub>K</sub> = ½ <i>m v</i><sup>2</sup></span>
+      <span class="unit">unit: J &nbsp;·&nbsp; must be recalled — not on the data sheet</span>
+    </div>
+    <div class="derive">
+      <span class="lbl">Derivation from the equations of motion — required by the syllabus</span>
+      <p>An object of mass <span class="eq">m</span> starts from rest (<span class="eq">u = 0</span>) and is accelerated by a constant force <span class="eq">F</span> through a displacement <span class="eq">s</span>, reaching speed <span class="eq">v</span>.</p>
+      <p style="margin-top:.45rem">Newton’s second law: <span class="eq">F = ma</span>.</p>
+      <p>Equation of motion: <span class="eq">v<sup>2</sup> = u<sup>2</sup> + 2as = 2as</span>, so <span class="eq">s = v<sup>2</sup> / 2a</span>.</p>
+      <p>Work done by the force: <span class="eq">W = F s = (ma)(v<sup>2</sup> / 2a) = ½ m v<sup>2</sup></span>.</p>
+      <p>This work equals the kinetic energy gained, so <span class="eq">E<sub>K</sub> = ½ m v<sup>2</sup></span>.</p>
+      <p style="margin-top:.45rem">If the object already has speed <span class="eq">u</span>, the same steps give <span class="eq">W = ½ m v<sup>2</sup> − ½ m u<sup>2</sup> = ΔE<sub>K</sub></span>. This is the work–energy idea: the work done by the <em>resultant</em> force equals the change in kinetic energy.</p>
+    </div>
+
+    <figure class="fig" aria-label="Kinetic energy and energy exchange">
+      <svg viewBox="0 0 840 300" xmlns="http://www.w3.org/2000/svg" role="img">
+        <title>Falling object converts gravitational potential energy to kinetic energy</title>
+        <defs>
+          <marker id="arrR8" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#9a3a1c"/></marker>
+        </defs>
+        <text x="20" y="28" fill="#8a6910" font-size="13" font-family="-apple-system, Helvetica, sans-serif" font-weight="700" letter-spacing="1.5">FIG. 10</text>
+        <text x="96" y="28" fill="#153a5c" font-size="15" font-family="Palatino, Times, serif" font-weight="600">If resistive forces are negligible, a loss in Eₚ equals a gain in Eₖ</text>
+        <!-- three positions of a ball -->
+        <!-- ground -->
+        <line x1="60" y1="260" x2="500" y2="260" stroke="#153a5c" stroke-width="3"/>
+        <g stroke="#153a5c" stroke-width="1.5">
+          <line x1="90" y1="260" x2="78" y2="274"/><line x1="140" y1="260" x2="128" y2="274"/>
+          <line x1="190" y1="260" x2="178" y2="274"/><line x1="240" y1="260" x2="228" y2="274"/>
+          <line x1="290" y1="260" x2="278" y2="274"/><line x1="340" y1="260" x2="328" y2="274"/>
+          <line x1="390" y1="260" x2="378" y2="274"/><line x1="440" y1="260" x2="428" y2="274"/>
+          <line x1="490" y1="260" x2="478" y2="274"/>
+        </g>
+        <!-- top -->
+        <circle cx="150" cy="70" r="18" fill="#d9e7f3" stroke="#153a5c" stroke-width="2.2"/>
+        <text x="142" y="75" fill="#153a5c" font-size="12" font-family="-apple-system, Helvetica, sans-serif" font-weight="700">1</text>
+        <text x="178" y="66" fill="#153a5c" font-size="13" font-family="Palatino, Times, serif" font-style="italic">Eₚ = mg Δh</text>
+        <text x="178" y="86" fill="#153a5c" font-size="13" font-family="Palatino, Times, serif" font-style="italic">Eₖ = 0</text>
+        <!-- mid -->
+        <circle cx="150" cy="150" r="18" fill="#dceee5" stroke="#1b5a43" stroke-width="2.2"/>
+        <text x="142" y="155" fill="#1b5a43" font-size="12" font-family="-apple-system, Helvetica, sans-serif" font-weight="700">2</text>
+        <text x="178" y="146" fill="#1b5a43" font-size="13" font-family="Palatino, Times, serif" font-style="italic">Eₚ smaller</text>
+        <text x="178" y="166" fill="#1b5a43" font-size="13" font-family="Palatino, Times, serif" font-style="italic">Eₖ larger</text>
+        <line x1="150" y1="90" x2="150" y2="128" stroke="#9a3a1c" stroke-width="1.8" marker-end="url(#arrR8)" stroke-dasharray="3 3"/>
+        <!-- bottom -->
+        <circle cx="150" cy="240" r="18" fill="#f6ebd2" stroke="#8a6910" stroke-width="2.2"/>
+        <text x="142" y="245" fill="#8a6910" font-size="12" font-family="-apple-system, Helvetica, sans-serif" font-weight="700">3</text>
+        <text x="178" y="236" fill="#8a6910" font-size="13" font-family="Palatino, Times, serif" font-style="italic">Eₚ = 0</text>
+        <text x="178" y="256" fill="#8a6910" font-size="13" font-family="Palatino, Times, serif" font-style="italic">Eₖ = mg Δh = ½mv²</text>
+        <line x1="150" y1="170" x2="150" y2="218" stroke="#9a3a1c" stroke-width="1.8" marker-end="url(#arrR8)" stroke-dasharray="3 3"/>
+        <!-- height -->
+        <line x1="80" y1="70" x2="80" y2="240" stroke="#787064" stroke-width="1.3"/>
+        <line x1="74" y1="70" x2="86" y2="70" stroke="#787064"/>
+        <line x1="74" y1="240" x2="86" y2="240" stroke="#787064"/>
+        <text x="48" y="160" fill="#787064" font-size="15" font-family="Palatino, Times, serif" font-style="italic">Δh</text>
+        <!-- right panel -->
+        <text x="500" y="90" fill="#153a5c" font-size="18" font-family="Palatino, Times, serif" font-style="italic">no resistance:</text>
+        <text x="500" y="120" fill="#153a5c" font-size="18" font-family="Palatino, Times, serif" font-style="italic">mg Δh = ½ m v²</text>
+        <text x="500" y="150" fill="#153a5c" font-size="16" font-family="Palatino, Times, serif" font-style="italic">v = √(2g Δh)</text>
+        <text x="500" y="200" fill="#9a3a1c" font-size="18" font-family="Palatino, Times, serif" font-style="italic">with resistance:</text>
+        <text x="500" y="230" fill="#9a3a1c" font-size="16" font-family="Palatino, Times, serif" font-style="italic">mg Δh = ½ m v² + thermal</text>
+        <text x="500" y="258" fill="#4c463d" font-size="13" font-family="-apple-system, Helvetica, sans-serif">total energy still conserved</text>
+      </svg>
+      <figcaption>Fig. 10  A falling object. Without air resistance the loss in E<sub>P</sub> equals the gain in E<sub>K</sub>. With air resistance the object is slower than √(2gΔh); the “missing” energy has become thermal energy.</figcaption>
+    </figure>
+
+    <div class="example">
+      <div class="lbl">Worked example</div>
+      <h4>Energy transfer, with and without resistance</h4>
+      <p>An apple of mass 0.15&nbsp;kg falls 3.0&nbsp;m from rest. Take <span class="eq">g = 9.81&nbsp;m&nbsp;s<sup>−2</sup></span>.</p>
+      <p>(a) If air resistance is negligible, find its speed just before it lands.</p>
+      <p>(b) If it actually lands at 6.0&nbsp;m&nbsp;s<sup>−1</sup>, how much energy has been transferred to thermal energy?</p>
+      <div class="ans">
+        <p>(a) Loss in <span class="eq">E<sub>P</sub></span> = gain in <span class="eq">E<sub>K</sub></span>:</p>
+        <p><span class="eq">mg Δh = ½ m v<sup>2</sup></span>  ⇒  <span class="eq">v = √(2g Δh) = √(2 × 9.81 × 3.0) = 7.67&nbsp;m&nbsp;s<sup>−1</sup></span>.</p>
+        <p>(b) Loss in <span class="eq">E<sub>P</sub> = 0.15 × 9.81 × 3.0 = 4.41&nbsp;J</span>.</p>
+        <p>Gain in <span class="eq">E<sub>K</sub> = ½ × 0.15 × (6.0)<sup>2</sup> = 2.70&nbsp;J</span>.</p>
+        <p>Energy transferred to thermal = <span class="eq">4.41 − 2.70 = 1.71&nbsp;J</span>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SUMMARY ===================== -->
+  <section class="topic" id="summary">
+    <h2>Formulae to recall</h2>
+    <p>None of the equations below appear on the AS data sheet. You must remember them, including the derivations marked ★.</p>
+    <table class="summary-table">
+      <thead>
+        <tr><th>Quantity</th><th>Equation</th><th>Notes</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Moment of a force</td><td class="eqcell">moment = <i>F</i> <i>d</i><sub>⊥</sub> = <i>F r</i> sin&nbsp;<i>θ</i></td><td>Unit N&nbsp;m, not J. <i>d</i><sub>⊥</sub> is to the line of action.</td></tr>
+        <tr><td>Torque of a couple</td><td class="eqcell">torque = <i>F</i> <i>d</i></td><td><i>d</i> is the perpendicular separation of the two forces. Same about any point.</td></tr>
+        <tr><td>Principle of moments</td><td class="eqcell">Σ clockwise = Σ anticlockwise</td><td>For a system in equilibrium, about any one point.</td></tr>
+        <tr><td>Equilibrium</td><td class="eqcell">Σ<i>F</i> = 0 &nbsp;and&nbsp; Σ torque = 0</td><td>Both conditions are required.</td></tr>
+        <tr><td>Work done</td><td class="eqcell"><i>W</i> = <i>F s</i> cos&nbsp;<i>θ</i></td><td>Unit J. <i>θ</i> between force and displacement.</td></tr>
+        <tr><td>Efficiency</td><td class="eqcell">useful output / total input</td><td>Use energy or power. A ratio, or ×&nbsp;100%.</td></tr>
+        <tr><td>Power</td><td class="eqcell"><i>P</i> = <i>W</i>/<i>t</i> &nbsp; and &nbsp; <i>P</i> = <i>F v</i> ★</td><td>Unit W. Derive <i>P</i> = <i>Fv</i> from <i>W</i> = <i>Fs</i>.</td></tr>
+        <tr><td>Gravitational potential energy</td><td class="eqcell">Δ<i>E</i><sub>P</sub> = <i>mg</i>Δ<i>h</i> ★</td><td>Uniform field only. Derive from <i>W</i> = <i>Fs</i>.</td></tr>
+        <tr><td>Kinetic energy</td><td class="eqcell"><i>E</i><sub>K</sub> = ½ <i>m v</i><sup>2</sup> ★</td><td>Derive from the equations of motion.</td></tr>
+      </tbody>
+    </table>
+
+    <div class="warn" style="margin-top:1.2rem">
+      <span class="lbl">Before the exam</span>
+      <p>Use <span class="eq">g = 9.81&nbsp;m&nbsp;s<sup>−2</sup></span> unless the question gives another value. State the point you are taking moments about. Always use the perpendicular distance. For energy, check whether resistive forces are mentioned — if they are, <span class="eq">mg Δh</span> is not equal to <span class="eq">½mv<sup>2</sup></span>.</p>
+    </div>
+
+    <button type="button" class="to-cards" id="go-cards">Open the flashcards — test yourself on these definitions and equations</button>
+  </section>
+</div>
+<div id="view-cards">
+  <div class="card-desk">
+    <div class="filters" role="group" aria-label="Filter by topic" id="filters"></div>
+    <div class="tools">
+      <div class="progress-wrap">
+        <div class="progress-label"><span id="prog-text">0 known</span><span id="prog-count">1 / 0</span></div>
+        <div class="bar" aria-hidden="true"><i id="prog-bar"></i></div>
+      </div>
+      <div class="right">
+        <button type="button" class="toolbtn" id="btn-shuffle">Shuffle</button>
+        <button type="button" class="toolbtn" id="btn-reset">Reset progress</button>
+      </div>
+    </div>
+
+    <div class="stage" id="stage">
+      <div class="flip" id="flip" tabindex="0" role="button" aria-label="Flashcard, press to flip">
+        <div class="face face-front">
+          <div class="toprow"><span class="tag" id="front-tag"></span><span class="kind" id="front-kind"></span></div>
+          <p class="q" id="front-q"></p>
+          <div class="tap">Click or press Space to flip</div>
+        </div>
+        <div class="face face-back">
+          <div class="toprow"><span class="tag" id="back-tag"></span><span class="kind" id="back-kind"></span></div>
+          <div class="a" id="back-a"></div>
+          <div class="tap">Click or press Space to flip back</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="done-box" id="done-box">
+      <h2>Round complete</h2>
+      <p id="done-msg"></p>
+      <div style="display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap;margin-top:1rem">
+        <button type="button" class="toolbtn" id="btn-restudy" style="background:var(--gold-bg)">Restudy the ones I missed</button>
+        <button type="button" class="toolbtn" id="btn-again" style="background:var(--green-bg)">Start this topic again</button>
+      </div>
+    </div>
+
+    <div class="actions" id="actions">
+      <button type="button" class="navbtn" id="btn-prev" aria-label="Previous">←</button>
+      <button type="button" class="again" id="btn-again-card">Study again</button>
+      <button type="button" class="know" id="btn-know">I know this</button>
+      <button type="button" class="navbtn" id="btn-next" aria-label="Next">→</button>
+    </div>
+    <p class="keys"><kbd>Space</kbd> flip &nbsp; <kbd>←</kbd> <kbd>→</kbd> move &nbsp; <kbd>K</kbd> I know this &nbsp; <kbd>R</kbd> study again</p>
+  </div>
+</div>
+</main>
+
+<script>
+const CARDS = [
+  /* ---- 4.1 ---- */
+  {
+    id: "41-cg", topic: "4.1", topicName: "4.1 Turning effects", kind: "Definition",
+    q: "What is the centre of gravity of an object?",
+    a: "<span class='big'>The point at which the entire weight of the object may be taken as acting.</span><p class='hint'>For a uniform, regular object this is at the geometric centre. In a uniform gravitational field it coincides with the centre of mass.</p>"
+  },
+  {
+    id: "41-weight", topic: "4.1", topicName: "4.1 Turning effects", kind: "Fact",
+    q: "Where may the weight of an object be taken as acting?",
+    a: "At a single point: the <strong>centre of gravity</strong>. In a free-body diagram, draw one downward arrow <span class='big'><i>W</i> = <i>mg</i></span> from that point."
+  },
+  {
+    id: "41-moment-def", topic: "4.1", topicName: "4.1 Turning effects", kind: "Definition",
+    q: "Define the moment of a force about a point.",
+    a: "The product of the force and the <strong>perpendicular distance</strong> from the point to the <strong>line of action</strong> of the force."
+  },
+  {
+    id: "41-moment-eq", topic: "4.1", topicName: "4.1 Turning effects", kind: "Equation",
+    q: "Write the equation for the moment of a force, and state its unit.",
+    a: "<span class='big'>moment = <i>F</i> × <i>d</i><sub>⊥</sub></span>or equivalently <span class='big'>moment = <i>F r</i> sin&nbsp;<i>θ</i></span><p class='hint'>Unit: N&nbsp;m (never the joule). State the direction as clockwise or anticlockwise. <i>θ</i> is the angle between the force and the line from the point to the point of application.</p>"
+  },
+  {
+    id: "41-dperp", topic: "4.1", topicName: "4.1 Turning effects", kind: "Fact",
+    q: "In moment = F × d, what exactly is d?",
+    a: "The <strong>perpendicular</strong> distance from the pivot (or chosen point) to the <strong>line of action</strong> of the force — the infinite straight line along which the force points.<p class='hint'>It is not always the distance to the point where the force is applied. If the force is at an angle, drop a perpendicular onto the line of action: <i>d</i><sub>⊥</sub> = <i>r</i> sin&nbsp;<i>θ</i>.</p>"
+  },
+  {
+    id: "41-unit", topic: "4.1", topicName: "4.1 Turning effects", kind: "Fact",
+    q: "Why must the unit of a moment be written N m, and not J?",
+    a: "A joule is a unit of <strong>energy</strong>. A moment is a <strong>turning effect</strong>, not a form of energy. Although 1 J = 1 N&nbsp;m, examiners will not accept “J” for a moment."
+  },
+  {
+    id: "41-zero", topic: "4.1", topicName: "4.1 Turning effects", kind: "Fact",
+    q: "When is the moment of a force about a point equal to zero?",
+    a: "When the line of action passes through the point, so <i>d</i><sub>⊥</sub> = 0; or when the force is parallel to the line from the point to the point of application (<i>θ</i> = 0° or 180°, so sin&nbsp;<i>θ</i> = 0).<p class='hint'>This is why taking moments about the line of action of an unknown force makes that force disappear from the equation.</p>"
+  },
+  {
+    id: "41-couple-def", topic: "4.1", topicName: "4.1 Turning effects", kind: "Definition",
+    q: "What is a couple?",
+    a: "A pair of forces that acts to produce <strong>rotation only</strong>. The two forces are equal in magnitude, opposite in direction, and have parallel lines of action that are separated (not in the same straight line)."
+  },
+  {
+    id: "41-couple-why", topic: "4.1", topicName: "4.1 Turning effects", kind: "Fact",
+    q: "Why does a couple produce rotation only, with no translational acceleration?",
+    a: "The two forces are equal and opposite, so the <strong>resultant force is zero</strong> and the centre of mass does not accelerate. The lines of action are separated, so the moments do not cancel: there is a resultant torque, and the object turns."
+  },
+  {
+    id: "41-torque-def", topic: "4.1", topicName: "4.1 Turning effects", kind: "Definition",
+    q: "Define the torque of a couple.",
+    a: "The product of <strong>one of the forces</strong> and the <strong>perpendicular distance between the two lines of action</strong>."
+  },
+  {
+    id: "41-torque-eq", topic: "4.1", topicName: "4.1 Turning effects", kind: "Equation",
+    q: "Write the equation for the torque of a couple. Does the value depend on the point you choose?",
+    a: "<span class='big'>torque = <i>F</i> × <i>d</i></span><p class='hint'>Unit: N&nbsp;m. The torque of a given couple is the <strong>same about every point</strong>.</p>"
+  },
+  {
+    id: "41-example", topic: "4.1", topicName: "4.1 Turning effects", kind: "Apply",
+    q: "A 40 N force acts on a door at 0.80 m from the hinge, at 30° to the door. What is the moment about the hinge?",
+    a: "<span class='big'>moment = <i>F r</i> sin&nbsp;30° = 40 × 0.80 × 0.50 = 16 N&nbsp;m</span><p class='hint'>The perpendicular distance is 0.80 × sin 30° = 0.40 m. Do not multiply 40 × 0.80 and forget the angle.</p>"
+  },
+
+  /* ---- 4.2 ---- */
+  {
+    id: "42-pom", topic: "4.2", topicName: "4.2 Equilibrium", kind: "Definition",
+    q: "State the principle of moments.",
+    a: "For a system in equilibrium, the sum of the <strong>clockwise</strong> moments about any point is equal to the sum of the <strong>anticlockwise</strong> moments about the <strong>same point</strong>."
+  },
+  {
+    id: "42-eq-cond", topic: "4.2", topicName: "4.2 Equilibrium", kind: "Definition",
+    q: "What are the two conditions for a system to be in equilibrium?",
+    a: "There is <strong>no resultant force</strong> and <strong>no resultant torque</strong> (moment).<p class='hint'>Translational: Σ<i>F<sub>x</sub></i> = 0 and Σ<i>F<sub>y</sub></i> = 0. Rotational: Σ moments = 0 about any point. Both are required.</p>"
+  },
+  {
+    id: "42-couple-not", topic: "4.2", topicName: "4.2 Equilibrium", kind: "Fact",
+    q: "A couple has zero resultant force. Is a body acted on only by a couple in equilibrium? Why?",
+    a: "<strong>No.</strong> There is no resultant force, but there <em>is</em> a resultant torque. The body rotates (angular acceleration). Equilibrium needs both conditions."
+  },
+  {
+    id: "42-pivot-choice", topic: "4.2", topicName: "4.2 Equilibrium", kind: "Fact",
+    q: "When applying the principle of moments, which point should you take moments about?",
+    a: "Any point is valid. The useful choice is often a point on the line of action of an <strong>unknown force</strong> (for example a support reaction). That force then has zero moment and drops out, so you can find the other unknowns first."
+  },
+  {
+    id: "42-triangle", topic: "4.2", topicName: "4.2 Equilibrium", kind: "Definition",
+    q: "How is a vector triangle used for coplanar forces in equilibrium?",
+    a: "The three force vectors are drawn <strong>tip-to-tail</strong>. Because the resultant is zero, the triangle <strong>closes</strong> (the tip of the last vector meets the tail of the first).<p class='hint'>Each side is parallel to one force and proportional to its magnitude. Use a scale drawing, or the sine / cosine rule, to find unknowns. For more than three forces, use a closed polygon.</p>"
+  },
+  {
+    id: "42-how-draw", topic: "4.2", topicName: "4.2 Equilibrium", kind: "Fact",
+    q: "What must you show on a vector-triangle diagram in an exam?",
+    a: "Draw it as a <strong>separate</strong> diagram, not only the free-body arrows on the object. Each side should be parallel to its force, labelled with the force’s name and magnitude if known, with angles marked. If it is a scale drawing, state the scale."
+  },
+  {
+    id: "42-example", topic: "4.2", topicName: "4.2 Equilibrium", kind: "Apply",
+    q: "A uniform beam AB of length 2.4 m and weight 180 N rests on a pivot 0.80 m from A, with a load W at A, in equilibrium. Find W.",
+    a: "Weight acts at the centre, 0.40 m to the right of the pivot. Moments about the pivot:<p><span class='big'><i>W</i> × 0.80 = 180 × 0.40 = 72</span><span class='big'><i>W</i> = 90 N</span></p><p class='hint'>The upward reaction is then R = 90 + 180 = 270 N, from Σ<i>F</i> = 0.</p>"
+  },
+  {
+    id: "42-lamp", topic: "4.2", topicName: "4.2 Equilibrium", kind: "Apply",
+    q: "A 12.0 N lamp hangs from a horizontal string (tension T₁) and a string at 30° to the horizontal (T₂). Using a vector triangle, find T₁ and T₂.",
+    a: "The forces form a closed right-angled triangle.<span class='big'><i>T</i><sub>2</sub> = 12.0 / sin 30° = 24.0 N</span><span class='big'><i>T</i><sub>1</sub> = 24.0 × cos 30° = 20.8 N</span><p class='hint'>The vertical component of T₂ supports the weight: T₂ sin 30° = 12.0 N. The horizontal component of T₂ equals T₁.</p>"
+  },
+
+  /* ---- 5.1 ---- */
+  {
+    id: "51-work-def", topic: "5.1", topicName: "5.1 Energy conservation", kind: "Definition",
+    q: "Define work done by a force.",
+    a: "The product of the force and the displacement <strong>in the direction of the force</strong>."
+  },
+  {
+    id: "51-work-eq", topic: "5.1", topicName: "5.1 Energy conservation", kind: "Equation",
+    q: "Write the equation for work done, and state the unit. What is θ?",
+    a: "<span class='big'><i>W</i> = <i>F s</i> cos&nbsp;<i>θ</i></span><p class='hint'>Unit: the joule (J). 1 J = 1 N&nbsp;m. <i>θ</i> is the angle between the force and the displacement. Work is a scalar.</p>"
+  },
+  {
+    id: "51-work-zero", topic: "5.1", topicName: "5.1 Energy conservation", kind: "Fact",
+    q: "When is the work done by a force equal to zero, even though the object is moving?",
+    a: "When the force is <strong>perpendicular</strong> to the displacement: <i>θ</i> = 90°, so cos 90° = 0.<p class='hint'>Examples: the normal contact force on a level surface; the centripetal force in uniform circular motion (the force is radial, the displacement is tangential).</p>"
+  },
+  {
+    id: "51-work-ex", topic: "5.1", topicName: "5.1 Energy conservation", kind: "Apply",
+    q: "A 50 N force pulls a crate 6.0 m along a floor, at 25° to the horizontal. How much work does this force do?",
+    a: "<span class='big'><i>W</i> = 50 × 6.0 × cos 25° = 272 J</span><p class='hint'>3 significant figures. Only the horizontal component F cos 25° does work along the displacement.</p>"
+  },
+  {
+    id: "51-coe", topic: "5.1", topicName: "5.1 Energy conservation", kind: "Definition",
+    q: "State the principle of conservation of energy.",
+    a: "Energy cannot be created or destroyed. It can be transferred from one form to another, but the <strong>total energy of a closed system remains constant</strong>."
+  },
+  {
+    id: "51-thermal", topic: "5.1", topicName: "5.1 Energy conservation", kind: "Fact",
+    q: "If friction or air resistance acts, what happens to the “missing” mechanical energy?",
+    a: "It is transferred to <strong>thermal energy</strong> (internal energy of the object and the surroundings). The total energy is still conserved; it is no longer all mechanical.<p class='hint'>So mgΔh is then greater than ½mv², and the difference is the thermal energy transferred.</p>"
+  },
+  {
+    id: "51-eff-def", topic: "5.1", topicName: "5.1 Energy conservation", kind: "Definition",
+    q: "Define the efficiency of a system.",
+    a: "The ratio of <strong>useful energy output</strong> from the system to the <strong>total energy input</strong>. The same ratio can be written as useful power output / total power input."
+  },
+  {
+    id: "51-eff-eq", topic: "5.1", topicName: "5.1 Energy conservation", kind: "Equation",
+    q: "Write the two equivalent expressions for efficiency. Must the answer be a percentage?",
+    a: "<span class='big'>efficiency = useful energy output / total energy input</span><span class='big'>= useful power output / total power input</span><p class='hint'>It is a ratio between 0 and 1. You may write it as a percentage (× 100%) if the question asks for one, or if that is clearly expected. Real machines always have efficiency &lt; 1.</p>"
+  },
+  {
+    id: "51-eff-ex", topic: "5.1", topicName: "5.1 Energy conservation", kind: "Apply",
+    q: "A motor has input power 400 W and useful output power 280 W. What is its efficiency?",
+    a: "<span class='big'>280 / 400 = 0.70</span> (or 70%)."
+  },
+  {
+    id: "51-power-def", topic: "5.1", topicName: "5.1 Energy conservation", kind: "Definition",
+    q: "Define power.",
+    a: "Work done <strong>per unit time</strong> — the rate of doing work, or the rate of energy transfer."
+  },
+  {
+    id: "51-power-eq", topic: "5.1", topicName: "5.1 Energy conservation", kind: "Equation",
+    q: "Write the defining equation for power, and state its unit.",
+    a: "<span class='big'><i>P</i> = <i>W</i> / <i>t</i></span><p class='hint'>Unit: the watt (W). 1 W = 1 J s<sup>−1</sup>.</p>"
+  },
+  {
+    id: "51-fv-derive", topic: "5.1", topicName: "5.1 Energy conservation", kind: "Derivation",
+    q: "Derive P = Fv from the definition of power.",
+    a: "For a constant force <i>F</i> moving an object a distance <i>s</i> in the direction of the force, in time <i>t</i>:<span class='big'><i>P</i> = <i>W</i>/<i>t</i> = (<i>F s</i>)/<i>t</i> = <i>F</i>(<i>s</i>/<i>t</i>) = <i>F v</i></span><p class='hint'>If <i>F</i> and <i>v</i> are at an angle <i>θ</i>, then <i>P</i> = <i>F v</i> cos&nbsp;<i>θ</i>. The syllabus requires this derivation.</p>"
+  },
+  {
+    id: "51-fv-ex", topic: "5.1", topicName: "5.1 Energy conservation", kind: "Apply",
+    q: "A boat’s engine provides a driving force of 1.5 kN at a constant speed of 8.0 m s⁻¹. What is the output power?",
+    a: "<span class='big'><i>P</i> = <i>F v</i> = 1.5 × 10<sup>3</sup> × 8.0 = 1.2 × 10<sup>4</sup> W</span> (12 kW).<p class='hint'>At constant speed the driving force equals the drag. Convert kN to N before multiplying.</p>"
+  },
+
+  /* ---- 5.2 ---- */
+  {
+    id: "52-ep-eq", topic: "5.2", topicName: "5.2 Eₚ and Eₖ", kind: "Equation",
+    q: "Write the formula for a change in gravitational potential energy near the Earth’s surface.",
+    a: "<span class='big'>Δ<i>E</i><sub>P</sub> = <i>mg</i>Δ<i>h</i></span><p class='hint'>Unit: J. Use <i>g</i> = 9.81 m s<sup>−2</sup> unless the question gives another value. Valid only in a uniform gravitational field.</p>"
+  },
+  {
+    id: "52-ep-derive", topic: "5.2", topicName: "5.2 Eₚ and Eₖ", kind: "Derivation",
+    q: "Derive ΔE<sub>P</sub> = mgΔh from W = Fs.",
+    a: "To raise a mass <i>m</i> slowly through a vertical height Δ<i>h</i> at constant speed, the applied force equals the weight <i>mg</i>.<span class='big'><i>W</i> = <i>F s</i> = <i>mg</i> × Δ<i>h</i></span>This work is stored as gravitational potential energy, so <span class='big'>Δ<i>E</i><sub>P</sub> = <i>mg</i>Δ<i>h</i></span><p class='hint'>The syllabus requires this derivation. It applies only in a uniform field, where <i>g</i> is constant.</p>"
+  },
+  {
+    id: "52-uniform", topic: "5.2", topicName: "5.2 Eₚ and Eₖ", kind: "Fact",
+    q: "Why is ΔE<sub>P</sub> = mgΔh valid only in a uniform gravitational field?",
+    a: "The derivation uses a constant force <i>mg</i>. That is only true where <i>g</i> itself is constant — near the Earth’s surface. Over large distances from the Earth, <i>g</i> changes and a different (A Level) formula is needed."
+  },
+  {
+    id: "52-ek-eq", topic: "5.2", topicName: "5.2 Eₚ and Eₖ", kind: "Equation",
+    q: "Write the formula for kinetic energy, and the official syllabus symbol.",
+    a: "<span class='big'><i>E</i><sub>K</sub> = ½ <i>m v</i><sup>2</sup></span><p class='hint'>Unit: J. The syllabus symbol is <i>E</i><sub>K</sub> (and <i>E</i><sub>P</sub> for potential energy). This formula is not on the data sheet — you must recall it.</p>"
+  },
+  {
+    id: "52-ek-derive", topic: "5.2", topicName: "5.2 Eₚ and Eₖ", kind: "Derivation",
+    q: "Derive E<sub>K</sub> = ½mv² using the equations of motion.",
+    a: "An object of mass <i>m</i> starts from rest and is accelerated by a constant force <i>F</i> through displacement <i>s</i>, reaching speed <i>v</i>.<br><i>F</i> = <i>ma</i>. From <i>v</i><sup>2</sup> = <i>u</i><sup>2</sup> + 2<i>as</i> with <i>u</i> = 0, <i>s</i> = <i>v</i><sup>2</sup> / 2<i>a</i>.<span class='big'><i>W</i> = <i>F s</i> = (<i>ma</i>)(<i>v</i><sup>2</sup>/2<i>a</i>) = ½ <i>m v</i><sup>2</sup></span>This work is the kinetic energy gained, so <i>E</i><sub>K</sub> = ½<i>mv</i><sup>2</sup>.<p class='hint'>If the initial speed is <i>u</i>, the same steps give <i>W</i> = ½<i>mv</i><sup>2</sup> − ½<i>mu</i><sup>2</sup> = Δ<i>E</i><sub>K</sub>.</p>"
+  },
+  {
+    id: "52-work-energy", topic: "5.2", topicName: "5.2 Eₚ and Eₖ", kind: "Fact",
+    q: "What is the relationship between work done by the resultant force and kinetic energy?",
+    a: "The work done by the <strong>resultant force</strong> is equal to the <strong>change in kinetic energy</strong>:<span class='big'><i>W</i> = Δ<i>E</i><sub>K</sub> = ½<i>m v</i><sup>2</sup> − ½<i>m u</i><sup>2</sup></span>"
+  },
+  {
+    id: "52-swap", topic: "5.2", topicName: "5.2 Eₚ and Eₖ", kind: "Fact",
+    q: "An object falls through height Δh from rest, with no air resistance. Write the energy equation and the resulting speed.",
+    a: "Loss in <i>E</i><sub>P</sub> = gain in <i>E</i><sub>K</sub>:<span class='big'><i>mg</i>Δ<i>h</i> = ½ <i>m v</i><sup>2</sup></span><span class='big'><i>v</i> = √(2<i>g</i>Δ<i>h</i>)</span><p class='hint'>The mass cancels. If air resistance acts, the landing speed is smaller, and mgΔh = ½mv² + thermal energy.</p>"
+  },
+  {
+    id: "52-ep-ex", topic: "5.2", topicName: "5.2 Eₚ and Eₖ", kind: "Apply",
+    q: "A 55 kg student climbs a vertical height of 12 m. Calculate the gain in gravitational potential energy. g = 9.81 m s⁻².",
+    a: "<span class='big'>Δ<i>E</i><sub>P</sub> = 55 × 9.81 × 12 = 6.47 × 10<sup>3</sup> J</span>"
+  },
+  {
+    id: "52-fall-ex", topic: "5.2", topicName: "5.2 Eₚ and Eₖ", kind: "Apply",
+    q: "A 0.15 kg apple falls 3.0 m from rest and lands at 6.0 m s⁻¹. How much energy is transferred to thermal energy? g = 9.81 m s⁻².",
+    a: "Loss in <i>E</i><sub>P</sub> = 0.15 × 9.81 × 3.0 = 4.41 J.<br>Gain in <i>E</i><sub>K</sub> = ½ × 0.15 × 6.0<sup>2</sup> = 2.70 J.<span class='big'>thermal energy = 4.41 − 2.70 = 1.71 J</span><p class='hint'>Without resistance the speed would have been √(2gΔh) = 7.67 m s⁻¹.</p>"
+  },
+  {
+    id: "52-datasheet", topic: "5.2", topicName: "5.2 Eₚ and Eₖ", kind: "Fact",
+    q: "Which of the Topic 4 and Topic 5 formulae appear on the AS exam data sheet?",
+    a: "<strong>None of them.</strong> Moment, torque, work, efficiency, <i>P</i> = <i>W</i>/<i>t</i>, <i>P</i> = <i>Fv</i>, Δ<i>E</i><sub>P</sub> = <i>mg</i>Δ<i>h</i> and <i>E</i><sub>K</sub> = ½<i>mv</i><sup>2</sup> must all be <strong>recalled</strong>. The data sheet does give <i>g</i> = 9.81 m s<sup>−2</sup>."
+  }
+];
+
+const STORE = "cie9702-flash-v1";
+const TOPICS = [
+  { id: "all", label: "All topics" },
+  { id: "4.1", label: "4.1 Turning effects" },
+  { id: "4.2", label: "4.2 Equilibrium" },
+  { id: "5.1", label: "5.1 Work, efficiency, power" },
+  { id: "5.2", label: "5.2 Eₚ and Eₖ" }
+];
+
+let filter = "all";
+let deck = [];
+let index = 0;
+let flipped = false;
+let known = {};
+
+function loadKnown() {
+  try { known = JSON.parse(localStorage.getItem(STORE) || "{}") || {}; }
+  catch { known = {}; }
+}
+function saveKnown() {
+  try { localStorage.setItem(STORE, JSON.stringify(known)); } catch {}
+}
+
+function activeCards() {
+  return CARDS.filter(c => filter === "all" || c.topic === filter);
+}
+function rebuild(shuffle) {
+  deck = activeCards().map(c => c.id);
+  if (shuffle) {
+    for (let i = deck.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [deck[i], deck[j]] = [deck[j], deck[i]];
+    }
+  }
+  index = 0;
+  flipped = false;
+  show();
+}
+
+function cardById(id) { return CARDS.find(c => c.id === id); }
+
+function show() {
+  const stage = document.getElementById("stage");
+  const done = document.getElementById("done-box");
+  const actions = document.getElementById("actions");
+  const total = deck.length;
+  const knownInDeck = deck.filter(id => known[id]).length;
+
+  document.getElementById("prog-text").textContent = knownInDeck + " known of " + total;
+  document.getElementById("prog-bar").style.width = (total ? (100 * knownInDeck / total) : 0) + "%";
+
+  if (index >= deck.length) {
+    stage.style.display = "none";
+    actions.style.display = "none";
+    done.style.display = "block";
+    const missed = deck.filter(id => !known[id]).length;
+    document.getElementById("done-msg").textContent = missed
+      ? ("You marked " + knownInDeck + " as known. " + missed + " still need another look.")
+      : ("You marked every card in this set as known. Nice work.");
+    document.getElementById("btn-restudy").style.display = missed ? "" : "none";
+    document.getElementById("prog-count").textContent = "done";
+    return;
+  }
+
+  stage.style.display = "";
+  actions.style.display = "";
+  done.style.display = "none";
+
+  const c = cardById(deck[index]);
+  document.getElementById("front-tag").textContent = c.topicName;
+  document.getElementById("back-tag").textContent = c.topicName;
+  document.getElementById("front-kind").textContent = c.kind;
+  document.getElementById("back-kind").textContent = c.kind;
+  document.getElementById("front-q").innerHTML = "<span class=\"ainner\">" + c.q + "</span>";
+  document.getElementById("back-a").innerHTML = "<span class=\"ainner\">" + c.a + "</span>";
+  document.getElementById("flip").classList.toggle("is-flipped", flipped);
+  document.getElementById("prog-count").textContent = (index + 1) + " / " + total;
+  document.getElementById("btn-prev").disabled = index === 0;
+  document.getElementById("btn-next").disabled = false;
+  const knowBtn = document.getElementById("btn-know");
+  knowBtn.textContent = known[c.id] ? "Known ✓" : "I know this";
+}
+
+function flip() {
+  if (index >= deck.length) return;
+  flipped = !flipped;
+  document.getElementById("flip").classList.toggle("is-flipped", flipped);
+}
+function go(delta) {
+  if (index + delta < 0) return;
+  index = Math.min(index + delta, deck.length);
+  flipped = false;
+  show();
+}
+function mark(isKnown) {
+  if (index >= deck.length) return;
+  const id = deck[index];
+  if (isKnown) known[id] = true;
+  else delete known[id];
+  saveKnown();
+  go(1);
+}
+
+function setView(view) {
+  document.body.dataset.view = view;
+  document.body.classList.toggle("cards-on", view === "cards");
+  document.querySelectorAll(".tabs button").forEach(b => {
+    b.setAttribute("aria-selected", b.dataset.view === view ? "true" : "false");
+  });
+  if (view === "cards") {
+    show();
+    document.getElementById("flip").focus();
+  }
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function renderFilters() {
+  const box = document.getElementById("filters");
+  box.innerHTML = "";
+  TOPICS.forEach(t => {
+    const n = t.id === "all" ? CARDS.length : CARDS.filter(c => c.topic === t.id).length;
+    const b = document.createElement("button");
+    b.type = "button";
+    b.setAttribute("aria-pressed", t.id === filter ? "true" : "false");
+    b.textContent = t.label + " (" + n + ")";
+    b.addEventListener("click", () => {
+      filter = t.id;
+      renderFilters();
+      rebuild(false);
+    });
+    box.appendChild(b);
+  });
+}
+
+document.querySelectorAll(".tabs button").forEach(b => {
+  b.addEventListener("click", () => setView(b.dataset.view));
+});
+document.getElementById("go-cards").addEventListener("click", () => setView("cards"));
+document.getElementById("flip").addEventListener("click", flip);
+document.getElementById("btn-prev").addEventListener("click", e => { e.stopPropagation(); go(-1); });
+document.getElementById("btn-next").addEventListener("click", e => { e.stopPropagation(); go(1); });
+document.getElementById("btn-know").addEventListener("click", e => { e.stopPropagation(); mark(true); });
+document.getElementById("btn-again-card").addEventListener("click", e => { e.stopPropagation(); mark(false); });
+document.getElementById("btn-shuffle").addEventListener("click", () => rebuild(true));
+document.getElementById("btn-reset").addEventListener("click", () => {
+  const ids = activeCards().map(c => c.id);
+  ids.forEach(id => delete known[id]);
+  saveKnown();
+  rebuild(false);
+});
+document.getElementById("btn-again").addEventListener("click", () => rebuild(false));
+document.getElementById("btn-restudy").addEventListener("click", () => {
+  deck = deck.filter(id => !known[id]);
+  index = 0;
+  flipped = false;
+  show();
+});
+
+document.addEventListener("keydown", e => {
+  if (document.body.dataset.view !== "cards") return;
+  const tag = (e.target && e.target.tagName) || "";
+  if (tag === "INPUT" || tag === "TEXTAREA") return;
+  if (e.key === " " || e.key === "Enter") { e.preventDefault(); flip(); }
+  else if (e.key === "ArrowRight") go(1);
+  else if (e.key === "ArrowLeft") go(-1);
+  else if (e.key === "k" || e.key === "K") mark(true);
+  else if (e.key === "r" || e.key === "R") mark(false);
+});
+
+loadKnown();
+renderFilters();
+rebuild(false);
+</script>
+</body>
+</html>
