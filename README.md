@@ -6,7 +6,7 @@
 
 Bilingual (Chinese–English) interactive study notes and 43 flashcards. English uses the official syllabus wording and symbols; Chinese is shown alongside.
 
-**[打开讲解与抽认卡 / Open the notes and flashcards](https://jz-xbian.github.io/cie-as-physics-4-and-5/)** — 也可下载 `index.html` 在浏览器中离线使用。
+**[打开讲解与抽认卡 / Open the notes and flashcards](https://phy.jzxnet.top/)** — 首页是 FROM JZX 启动页，点 START 进入讲解（`notes.html`）。也可把 `index.html` 和 `notes.html` 放在同一文件夹里离线打开。
 
 ## 内容 / What's included
 
