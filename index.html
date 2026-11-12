@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hans">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>CIE AS Physics 9702 — Topics 4.1, 4.2 &amp; 5</title>
-<meta name="description" content="Revision notes and flashcards for Cambridge International AS Level Physics 9702: 4.1 Turning effects of forces, 4.2 Equilibrium of forces, and Topic 5 Work, energy and power.">
+<title>CIE AS Physics 9702 — Topics 4.1, 4.2 &amp; 5（中英对照）</title>
+<meta name="description" content="Cambridge International AS Physics 9702 中英对照讲解与抽认卡：4.1 力的转动效应、4.2 力的平衡，以及主题 5 功、能量和功率。">
 <style>
 :root {
   --bg: #efe8db;
@@ -217,18 +217,21 @@ section.topic > h2 { margin-top: 0; padding-bottom: .55rem; border-bottom: 1px s
 .stage { perspective: 1600px; margin: .4rem 0 1rem; min-height: 380px; }
 .flip {
   position: relative; width: 100%; min-height: 380px;
+  display: grid;
   transform-style: preserve-3d; transition: transform .55s cubic-bezier(.2,.7,.2,1);
   cursor: pointer; user-select: none;
 }
 .flip.is-flipped { transform: rotateY(180deg); }
 .face {
-  position: absolute; inset: 0;
+  grid-area: 1 / 1;
+  position: relative;
+  min-height: 380px;
   backface-visibility: hidden; -webkit-backface-visibility: hidden;
   background: var(--paper); border: 1px solid var(--line);
   border-radius: 22px; box-shadow: var(--shadow);
-  padding: 1.4rem 1.5rem 1.3rem;
+  padding: 1.4rem 1.5rem 1.5rem;
   display: flex; flex-direction: column;
-  overflow: auto;
+  overflow: visible;
 }
 .face-back { transform: rotateY(180deg); background: linear-gradient(180deg, #fffdf8, #f4efe4); }
 .face .tag {
@@ -288,6 +291,73 @@ kbd {
   body, .hero, section.topic, .fig, .def, .example { background: #fff; box-shadow: none; }
   section.topic { break-inside: avoid; }
 }
+
+/* Bilingual Chinese companion text */
+.cn {
+  display: block;
+  margin-top: 0.32em;
+  color: var(--ink-soft);
+  font-family: var(--font);
+  font-style: normal;
+  font-weight: 450;
+  font-size: 0.97em;
+  line-height: 1.7;
+  letter-spacing: 0.01em;
+}
+h1 .cn, h2 .cn, h3 .cn, h4 .cn {
+  display: block;
+  margin: 0.22em 0 0;
+  font-family: var(--font);
+  font-weight: 650;
+  letter-spacing: 0;
+  color: var(--blue-mid);
+}
+h1 .cn { display: inline; margin: 0 0 0 .4em; font-size: .86em; font-weight: 650; color: var(--ink-soft); }
+h2 .cn { font-size: 0.68em; }
+h3 .cn { font-size: 0.78em; color: var(--ink-soft); }
+h4 .cn { font-size: 0.84em; color: var(--ink-soft); }
+.lbl .cn {
+  display: inline;
+  margin-left: 0.45em;
+  font-weight: 650;
+  opacity: 0.92;
+  font-size: 0.95em;
+}
+.unit .cn { display: block; margin-top: 0.2em; margin-left: 0; font-style: normal; font-weight: 500; }
+.brand p .cn { display: inline; margin-left: 0.4em; }
+.kicker .cn { display: block; margin-left: 0; margin-top: 0.2em; }
+.toc a b .cn { display: block; font-size: 0.86em; font-weight: 650; color: var(--blue); margin: 0.1em 0 0.15em; }
+.toc a span .cn { display: block; margin-left: 0; margin-top: 0.15em; line-height: 1.45; }
+figcaption .cn { margin-top: 0.4em; }
+.summary-table th .cn, .summary-table td .cn {
+  display: block;
+  font-size: 0.88em;
+  font-weight: 450;
+  margin-top: 0.18em;
+  color: var(--ink-soft);
+}
+.face .ainner .cn {
+  display: block;
+  margin-top: 0.55em;
+  font-size: 0.92em;
+  font-family: var(--font);
+  font-style: normal;
+  font-weight: 450;
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+.face .ainner .hint.cn,
+.face .ainner p.cn {
+  margin-top: 0.2em;
+  font-size: 0.9em;
+}
+.to-cards .cn { display: block; font-size: 0.86em; margin-top: 0.28em; font-weight: 650; }
+.tabs button { white-space: nowrap; }
+.pill { white-space: nowrap; }
+@media print {
+  .cn { color: #333 !important; }
+}
+
 </style>
 </head>
 <body data-view="notes">
@@ -295,54 +365,54 @@ kbd {
   <div class="brand">
     <div class="badge">9702</div>
     <div>
-      <h1>CIE AS Physics</h1>
-      <p>Topics 4.1, 4.2 &amp; 5 · 2025–2027 syllabus</p>
+      <h1>CIE AS Physics<span class="cn">剑桥国际 AS 物理</span></h1>
+      <p>Topics 4.1, 4.2 &amp; 5 · 2025–2027 syllabus<span class="cn">主题 4.1、4.2 与主题 5 · 2025–2027 考纲 · 中英对照</span></p>
     </div>
   </div>
   <nav class="tabs" role="tablist" aria-label="View">
-    <button type="button" role="tab" id="tab-notes" aria-selected="true" data-view="notes">Notes</button>
-    <button type="button" role="tab" id="tab-cards" aria-selected="false" data-view="cards">Flashcards</button>
+    <button type="button" role="tab" id="tab-notes" aria-selected="true" data-view="notes">Notes 讲解</button>
+    <button type="button" role="tab" id="tab-cards" aria-selected="false" data-view="cards">Flashcards 抽认卡</button>
   </nav>
 </header>
 <main class="wrap">
 <div id="view-notes">
   <div class="hero">
-    <p class="kicker">Cambridge International AS Level · 9702</p>
-    <h2>Turning effects, equilibrium, and work, energy &amp; power</h2>
-    <p>A concise teaching page for <strong>4.1 Turning effects of forces</strong>, <strong>4.2 Equilibrium of forces</strong>, and all of <strong>Topic 5 Work, energy and power</strong>, followed by interactive flashcards. Definitions and equations use the wording and symbols of the 2025–2027 syllabus. These energy and moment formulae are <em>not</em> printed on the exam data sheet — you must recall them.</p>
+    <p class="kicker">Cambridge International AS Level · 9702<span class="cn">剑桥国际 AS 等级</span></p>
+    <h2>Turning effects, equilibrium, and work, energy &amp; power<span class="cn">转动效应、平衡，以及功、能量和功率</span></h2>
+    <p>A concise teaching page for <strong>4.1 Turning effects of forces</strong>, <strong>4.2 Equilibrium of forces</strong>, and all of <strong>Topic 5 Work, energy and power</strong>, followed by interactive flashcards. Definitions and equations use the wording and symbols of the 2025–2027 syllabus. These energy and moment formulae are <em>not</em> printed on the exam data sheet — you must recall them.<span class="cn">本页简明讲解<strong>4.1 力的转动效应</strong>、<strong>4.2 力的平衡</strong>，以及整个<strong>主题 5 功、能量和功率</strong>，随后是互动抽认卡。定义和公式采用 2025–2027 考纲的措辞与符号。这些能量和力矩公式<strong>并不</strong>印在考试数据表上 — 必须自己记住。</span></p>
     <div class="pills">
-      <a class="pill" href="#t41">4.1 Turning effects</a>
-      <a class="pill" href="#t42">4.2 Equilibrium</a>
-      <a class="pill" href="#t51">5.1 Energy conservation</a>
-      <a class="pill" href="#t52">5.2 <span class="eq">E<sub>P</sub></span> and <span class="eq">E<sub>K</sub></span></a>
+      <a class="pill" href="#t41">4.1 Turning effects · 转动效应</a>
+      <a class="pill" href="#t42">4.2 Equilibrium · 平衡</a>
+      <a class="pill" href="#t51">5.1 Energy conservation · 能量守恒</a>
+      <a class="pill" href="#t52">5.2 <span class="eq">E<sub>P</sub></span> and <span class="eq">E<sub>K</sub></span> · 势能与动能</a>
     </div>
     <div class="toc">
-      <a href="#t41"><b>4.1 Turning effects of forces</b><span>Centre of gravity, moment, couple and torque</span></a>
-      <a href="#t42"><b>4.2 Equilibrium of forces</b><span>Principle of moments, equilibrium, vector triangle</span></a>
-      <a href="#t5"><b>5 Work, energy and power</b><span>Work, conservation, efficiency, power, <span class="eq">mgΔh</span> and <span class="eq">½mv²</span></span></a>
+      <a href="#t41"><b>4.1 Turning effects of forces<span class="cn">力的转动效应</span></b><span>Centre of gravity, moment, couple and torque<span class="cn">重心、力矩、力偶与力偶矩</span></span></a>
+      <a href="#t42"><b>4.2 Equilibrium of forces<span class="cn">力的平衡</span></b><span>Principle of moments, equilibrium, vector triangle<span class="cn">力矩原理、平衡、矢量三角形</span></span></a>
+      <a href="#t5"><b>5 Work, energy and power<span class="cn">功、能量和功率</span></b><span>Work, conservation, efficiency, power, <span class="eq">mgΔh</span> and <span class="eq">½mv²</span><span class="cn">功、守恒、效率、功率，以及 mgΔh 与 ½mv²</span></span></a>
     </div>
   </div>
 
   <!-- ===================== 4.1 ===================== -->
   <section class="topic" id="t41">
-    <h2>4.1 Turning effects of forces</h2>
+    <h2>4.1 Turning effects of forces<span class="cn">力的转动效应</span></h2>
     <div class="syllabus">
-      You should be able to:
+      You should be able to:<span class="cn">你应当能够：</span>
       <ol>
-        <li>understand that the weight of an object may be taken as acting at a single point known as its <strong>centre of gravity</strong></li>
-        <li>define and apply the <strong>moment of a force</strong></li>
-        <li>understand that a <strong>couple</strong> is a pair of forces that acts to produce rotation only</li>
-        <li>define and apply the <strong>torque of a couple</strong></li>
+        <li>understand that the weight of an object may be taken as acting at a single point known as its <strong>centre of gravity</strong><span class="cn">理解物体的重量可视为作用在称为<strong>重心</strong>的单一点上</span></li>
+        <li>define and apply the <strong>moment of a force</strong><span class="cn">定义并运用<strong>力矩</strong></span></li>
+        <li>understand that a <strong>couple</strong> is a pair of forces that acts to produce rotation only<span class="cn">理解<strong>力偶</strong>是一对只产生转动的力</span></li>
+        <li>define and apply the <strong>torque of a couple</strong><span class="cn">定义并运用<strong>力偶矩</strong></span></li>
       </ol>
     </div>
 
-    <h3>Centre of gravity</h3>
+    <h3>Centre of gravity<span class="cn">重心</span></h3>
     <div class="def">
-      <span class="lbl">Definition — memorise this</span>
-      <p>The <strong>centre of gravity</strong> of an object is the point at which its entire weight may be taken as acting.</p>
+      <span class="lbl">Definition — memorise this<span class="cn">定义 — 请记牢</span></span>
+      <p>The <strong>centre of gravity</strong> of an object is the point at which its entire weight may be taken as acting.<span class="cn">物体的<strong>重心</strong>是其全部重量可视为作用的那一点。</span></p>
     </div>
-    <p>For calculations, you can replace the object’s distributed weight with a single arrow <span class="eq">W = mg</span> drawn downward from the centre of gravity (C.G.). For a uniform, regular object the C.G. lies at the geometric centre. For an irregular object it can be found experimentally by hanging the object from two different points and seeing where the vertical plumb lines cross.</p>
-    <p>In a uniform gravitational field (near the Earth’s surface) the centre of gravity coincides with the centre of mass.</p>
+    <p>For calculations, you can replace the object’s distributed weight with a single arrow <span class="eq">W = mg</span> drawn downward from the centre of gravity (C.G.). For a uniform, regular object the C.G. lies at the geometric centre. For an irregular object it can be found experimentally by hanging the object from two different points and seeing where the vertical plumb lines cross.<span class="cn">计算时，可用从重心（C.G.）竖直向下的一个箭头 <span class="eq">W = mg</span> 来代替物体分布的重量。形状规则的均匀物体，重心在几何中心。不规则物体可用实验确定：分别从两个不同点悬挂，看两条铅垂线的交点。</span></p>
+    <p>In a uniform gravitational field (near the Earth’s surface) the centre of gravity coincides with the centre of mass.<span class="cn">在匀强重力场中（地球表面附近），重心与质心重合。</span></p>
 
     <figure class="fig" aria-label="Centre of gravity diagram">
       <svg viewBox="0 0 840 300" xmlns="http://www.w3.org/2000/svg" role="img">
@@ -371,25 +441,25 @@ kbd {
           </marker>
         </defs>
       </svg>
-      <figcaption>Fig. 1  For an irregular object the centre of gravity may not look “central”. For a uniform rod it is at the midpoint. In both cases the whole weight acts there.</figcaption>
+      <figcaption>Fig. 1  For an irregular object the centre of gravity may not look “central”. For a uniform rod it is at the midpoint. In both cases the whole weight acts there.<span class="cn">图 1  不规则物体的重心看起来不一定在“正中”。均匀杆的重心在中点。无论哪种情况，全部重量都作用在该点。</span></figcaption>
     </figure>
 
-    <h3>Moment of a force</h3>
+    <h3>Moment of a force<span class="cn">力矩</span></h3>
     <div class="def">
-      <span class="lbl">Definition — memorise this</span>
-      <p>The <strong>moment</strong> of a force about a point is the product of the force and the <strong>perpendicular distance</strong> from that point to the <strong>line of action</strong> of the force.</p>
+      <span class="lbl">Definition — memorise this<span class="cn">定义 — 请记牢</span></span>
+      <p>The <strong>moment</strong> of a force about a point is the product of the force and the <strong>perpendicular distance</strong> from that point to the <strong>line of action</strong> of the force.<span class="cn">力对某点的<strong>力矩</strong>，等于该力与从该点到力的<strong>作用线</strong>的<strong>垂直距离</strong>（力臂）的乘积。</span></p>
     </div>
     <div class="formula-box">
       <span>moment = <i>F</i> × <i>d</i><sub>⊥</sub></span>
-      <span class="unit">unit: N&nbsp;m &nbsp;·&nbsp; direction: clockwise or anticlockwise</span>
+      <span class="unit">unit: N&nbsp;m &nbsp;·&nbsp; direction: clockwise or anticlockwise<span class="cn">单位：N m · 方向：顺时针或逆时针</span></span>
     </div>
-    <p>The line of action is the infinite straight line along which the force points. The distance you need is not necessarily the distance to the point of application — it is the shortest (perpendicular) gap from the pivot to that line.</p>
-    <p>If a force <span class="eq">F</span> is applied at a distance <span class="eq">r</span> from the pivot, and the angle between the force and the line from the pivot to the point of application is <span class="eq">θ</span>, then</p>
+    <p>The line of action is the infinite straight line along which the force points. The distance you need is not necessarily the distance to the point of application — it is the shortest (perpendicular) gap from the pivot to that line.<span class="cn">作用线是力所沿的那条无限长直线。你需要的距离不一定是到施力点的距离 — 而是从支点到该作用线的最短（垂直）间隔。</span></p>
+    <p>If a force <span class="eq">F</span> is applied at a distance <span class="eq">r</span> from the pivot, and the angle between the force and the line from the pivot to the point of application is <span class="eq">θ</span>, then<span class="cn">若力 <span class="eq">F</span> 作用在距支点 <span class="eq">r</span> 处，且力与“支点到施力点连线”之间的夹角为 <span class="eq">θ</span>，则</span></p>
     <div class="formula-box">
       <span>moment = <i>F r</i> sin&nbsp;<i>θ</i></span>
-      <span class="unit">because &nbsp;<i>d</i><sub>⊥</sub> = <i>r</i> sin&nbsp;<i>θ</i></span>
+      <span class="unit">because &nbsp;<i>d</i><sub>⊥</sub> = <i>r</i> sin&nbsp;<i>θ</i><span class="cn">因为 <i>d</i><sub>⊥</sub> = <i>r</i> sin&nbsp;<i>θ</i></span></span>
     </div>
-    <p>A force through the pivot (<span class="eq">d<sub>⊥</sub> = 0</span>), or a force parallel to the line from the pivot (<span class="eq">θ = 0°</span> or <span class="eq">180°</span>), has zero moment: it does not tend to turn the object.</p>
+    <p>A force through the pivot (<span class="eq">d<sub>⊥</sub> = 0</span>), or a force parallel to the line from the pivot (<span class="eq">θ = 0°</span> or <span class="eq">180°</span>), has zero moment: it does not tend to turn the object.<span class="cn">力的作用线通过支点（<span class="eq">d<sub>⊥</sub> = 0</span>），或力与“支点到施力点连线”平行（<span class="eq">θ = 0°</span> 或 <span class="eq">180°</span>）时，力矩为零：该力不会使物体转动。</span></p>
 
     <figure class="fig" aria-label="Moment of a force">
       <svg viewBox="0 0 840 310" xmlns="http://www.w3.org/2000/svg" role="img">
@@ -432,36 +502,36 @@ kbd {
         <text x="678" y="178" fill="#1f5a86" font-size="15" font-family="Palatino, Times, serif" font-style="italic">θ</text>
         <text x="470" y="70" fill="#4c463d" font-size="13" font-family="-apple-system, Helvetica, sans-serif">(b) force at an angle — use d⊥, not r</text>
       </svg>
-      <figcaption>Fig. 2  (a) When the force is already perpendicular to the rod, d⊥ is just the distance along the rod. (b) When the force is at an angle, drop a perpendicular from the pivot onto the line of action. moment = F r sin θ.</figcaption>
+      <figcaption>Fig. 2  (a) When the force is already perpendicular to the rod, d⊥ is just the distance along the rod. (b) When the force is at an angle, drop a perpendicular from the pivot onto the line of action. moment = F r sin θ.<span class="cn">图 2  (a) 当力已经垂直于杆时，d⊥ 就是沿杆的距离。(b) 当力成一角度时，从支点向作用线作垂线。力矩 = F r sin θ。</span></figcaption>
     </figure>
 
     <div class="example">
-      <div class="lbl">Worked example</div>
-      <h4>Moment with a force at an angle</h4>
-      <p>A force of 40&nbsp;N is applied to a door at 0.80&nbsp;m from the hinge. The force is at 30° to the door, in the plane of the door’s swing. Calculate the moment about the hinge.</p>
+      <div class="lbl">Worked example<span class="cn">例题</span></div>
+      <h4>Moment with a force at an angle<span class="cn">成角度的力的力矩</span></h4>
+      <p>A force of 40&nbsp;N is applied to a door at 0.80&nbsp;m from the hinge. The force is at 30° to the door, in the plane of the door’s swing. Calculate the moment about the hinge.<span class="cn">一门上，距铰链 0.80 m 处施加 40 N 的力。该力与门成 30°，且在门转动的平面内。求对铰链的力矩。</span></p>
       <div class="ans">
-        <p>The perpendicular distance from the hinge to the line of action is <span class="eq">d<sub>⊥</sub> = 0.80 × sin&nbsp;30° = 0.40&nbsp;m</span>.</p>
-        <p>moment = <span class="eq">F × d<sub>⊥</sub> = 40 × 0.40 = 16&nbsp;N&nbsp;m</span> (tending to open the door).</p>
+        <p>The perpendicular distance from the hinge to the line of action is <span class="eq">d<sub>⊥</sub> = 0.80 × sin&nbsp;30° = 0.40&nbsp;m</span>.<span class="cn">从铰链到作用线的垂直距离为 <span class="eq">d<sub>⊥</sub> = 0.80 × sin&nbsp;30° = 0.40&nbsp;m</span>。</span></p>
+        <p>moment = <span class="eq">F × d<sub>⊥</sub> = 40 × 0.40 = 16&nbsp;N&nbsp;m</span> (tending to open the door).<span class="cn">力矩 = <span class="eq">F × d<sub>⊥</sub> = 40 × 0.40 = 16&nbsp;N&nbsp;m</span>（使门打开的方向）。</span></p>
       </div>
     </div>
 
     <div class="warn">
-      <span class="lbl">Exam trap</span>
-      <p>The unit of moment is <strong>N&nbsp;m</strong>, never the joule. A joule is also 1&nbsp;N&nbsp;m, but a joule is a unit of energy. A moment is a turning effect, not a form of energy — writing “J” loses the mark.</p>
+      <span class="lbl">Exam trap<span class="cn">考试陷阱</span></span>
+      <p>The unit of moment is <strong>N&nbsp;m</strong>, never the joule. A joule is also 1&nbsp;N&nbsp;m, but a joule is a unit of energy. A moment is a turning effect, not a form of energy — writing “J” loses the mark.<span class="cn">力矩的单位是 <strong>N m</strong>，绝不是焦耳。焦耳虽然也等于 1 N m，但焦耳是能量的单位。力矩是转动效应，不是一种能量 — 写成 “J” 会失分。</span></p>
     </div>
 
-    <h3>Couples and the torque of a couple</h3>
+    <h3>Couples and the torque of a couple<span class="cn">力偶与力偶矩</span></h3>
     <div class="def">
-      <span class="lbl">Definitions — memorise these</span>
-      <p>A <strong>couple</strong> is a pair of forces that acts to produce <strong>rotation only</strong>. The two forces are equal in magnitude, opposite in direction, and have parallel lines of action that are separated (they are not in the same straight line).</p>
-      <p style="margin-top:.5rem">The <strong>torque of a couple</strong> is the product of one of the forces and the perpendicular distance between the two lines of action.</p>
+      <span class="lbl">Definitions — memorise these<span class="cn">定义 — 请记牢</span></span>
+      <p>A <strong>couple</strong> is a pair of forces that acts to produce <strong>rotation only</strong>. The two forces are equal in magnitude, opposite in direction, and have parallel lines of action that are separated (they are not in the same straight line).<span class="cn"><strong>力偶</strong>是一对只产生<strong>转动</strong>的力。这两个力大小相等、方向相反，作用线平行且彼此分开（不在同一直线上）。</span></p>
+      <p style="margin-top:.5rem">The <strong>torque of a couple</strong> is the product of one of the forces and the perpendicular distance between the two lines of action.<span class="cn"><strong>力偶矩</strong>等于其中一个力与两条作用线之间垂直距离的乘积。</span></p>
     </div>
     <div class="formula-box">
       <span>torque of a couple = <i>F</i> × <i>d</i></span>
-      <span class="unit">unit: N&nbsp;m &nbsp;·&nbsp; same about every point</span>
+      <span class="unit">unit: N&nbsp;m &nbsp;·&nbsp; same about every point<span class="cn">单位：N m · 对任意点都相同</span></span>
     </div>
-    <p>Because the forces are equal and opposite, the <strong>resultant force is zero</strong>, so the object’s centre of mass does not accelerate. There is still a turning effect, which is why a couple produces rotation only. A useful property: the torque of a given couple is the same no matter which point you take moments about.</p>
-    <p>Examples: turning a steering wheel, a screwdriver, or the two hands on a tap.</p>
+    <p>Because the forces are equal and opposite, the <strong>resultant force is zero</strong>, so the object’s centre of mass does not accelerate. There is still a turning effect, which is why a couple produces rotation only. A useful property: the torque of a given couple is the same no matter which point you take moments about.<span class="cn">由于两力大小相等、方向相反，<strong>合力为零</strong>，所以物体质心不会加速。但仍有转动效应，因此力偶只产生转动。一个有用的性质：给定力偶的力偶矩，无论对哪一点取矩都相同。</span></p>
+    <p>Examples: turning a steering wheel, a screwdriver, or the two hands on a tap.<span class="cn">例子：转动方向盘、螺丝刀，或用双手拧水龙头。</span></p>
 
     <figure class="fig" aria-label="A couple">
       <svg viewBox="0 0 840 280" xmlns="http://www.w3.org/2000/svg" role="img">
@@ -489,32 +559,32 @@ kbd {
         <text x="620" y="164" fill="#4c463d" font-size="13" font-family="-apple-system, Helvetica, sans-serif">resultant force = 0</text>
         <text x="620" y="184" fill="#4c463d" font-size="13" font-family="-apple-system, Helvetica, sans-serif">rotation only</text>
       </svg>
-      <figcaption>Fig. 3  The two forces cancel as a resultant force, so there is no translational acceleration. The perpendicular separation d means they do not cancel as moments, so the object turns. Torque = F d.</figcaption>
+      <figcaption>Fig. 3  The two forces cancel as a resultant force, so there is no translational acceleration. The perpendicular separation d means they do not cancel as moments, so the object turns. Torque = F d.<span class="cn">图 3  两个力作为合力相互抵消，所以没有平动加速度。它们的垂直间隔 d 意味着力矩不能抵消，所以物体转动。力偶矩 = F d。</span></figcaption>
     </figure>
   </section>
 
   <!-- ===================== 4.2 ===================== -->
   <section class="topic" id="t42">
-    <h2>4.2 Equilibrium of forces</h2>
+    <h2>4.2 Equilibrium of forces<span class="cn">力的平衡</span></h2>
     <div class="syllabus">
-      You should be able to:
+      You should be able to:<span class="cn">你应当能够：</span>
       <ol>
-        <li>state and apply the <strong>principle of moments</strong></li>
-        <li>understand that, when there is <strong>no resultant force</strong> and <strong>no resultant torque</strong>, a system is in equilibrium</li>
-        <li>use a <strong>vector triangle</strong> to represent coplanar forces in equilibrium</li>
+        <li>state and apply the <strong>principle of moments</strong><span class="cn">陈述并运用<strong>力矩原理</strong></span></li>
+        <li>understand that, when there is <strong>no resultant force</strong> and <strong>no resultant torque</strong>, a system is in equilibrium<span class="cn">理解当<strong>合力为零</strong>且<strong>合力矩为零</strong>时，系统处于平衡</span></li>
+        <li>use a <strong>vector triangle</strong> to represent coplanar forces in equilibrium<span class="cn">用<strong>矢量三角形</strong>表示处于平衡的共面力</span></li>
       </ol>
     </div>
 
-    <h3>The principle of moments</h3>
+    <h3>The principle of moments<span class="cn">力矩原理</span></h3>
     <div class="def">
-      <span class="lbl">Definition — memorise this</span>
-      <p>The <strong>principle of moments</strong>: for a system in equilibrium, the sum of the clockwise moments about any point is equal to the sum of the anticlockwise moments about the same point.</p>
+      <span class="lbl">Definition — memorise this<span class="cn">定义 — 请记牢</span></span>
+      <p>The <strong>principle of moments</strong>: for a system in equilibrium, the sum of the clockwise moments about any point is equal to the sum of the anticlockwise moments about the same point.<span class="cn"><strong>力矩原理</strong>：对于处于平衡的系统，对任意一点的顺时针力矩之和，等于对同一点的逆时针力矩之和。</span></p>
     </div>
     <div class="formula-box">
-      <span>Σ clockwise moments = Σ anticlockwise moments</span>
+      <span>Σ clockwise moments = Σ anticlockwise moments<span class="cn">Σ 顺时针力矩 = Σ 逆时针力矩</span></span>
       <span class="unit">about the same point</span>
     </div>
-    <p>You may take moments about <em>any</em> convenient point. A standard trick is to choose a point on the line of action of an unknown force (often a support reaction). That force then has zero moment, and it drops out of the equation.</p>
+    <p>You may take moments about <em>any</em> convenient point. A standard trick is to choose a point on the line of action of an unknown force (often a support reaction). That force then has zero moment, and it drops out of the equation.<span class="cn">可以对<em>任意</em>方便的点取矩。常用技巧是选在未知力（常常是支点反力）的作用线上的一点。该力的力矩便为零，从而从方程中消去。</span></p>
 
     <figure class="fig" aria-label="Principle of moments on a beam">
       <svg viewBox="0 0 840 300" xmlns="http://www.w3.org/2000/svg" role="img">
@@ -556,43 +626,43 @@ kbd {
         <line x1="760" y1="64" x2="760" y2="76" stroke="#787064"/>
         <text x="390" y="60" fill="#787064" font-size="13" font-family="Palatino, Times, serif" font-style="italic">2.4 m</text>
       </svg>
-      <figcaption>Fig. 4  The worked example below. Taking moments about the pivot eliminates the unknown reaction R, because R acts through the pivot so its moment is zero.</figcaption>
+      <figcaption>Fig. 4  The worked example below. Taking moments about the pivot eliminates the unknown reaction R, because R acts through the pivot so its moment is zero.<span class="cn">图 4  下面例题的示意图。对支点取矩可消去未知反力 R，因为 R 通过支点，力矩为零。</span></figcaption>
     </figure>
 
     <div class="example">
-      <div class="lbl">Worked example</div>
-      <h4>A uniform beam on a pivot</h4>
-      <p>A uniform beam AB has length 2.4&nbsp;m and weight 180&nbsp;N. It rests horizontally on a pivot 0.80&nbsp;m from A, with a load <span class="eq">W</span> at end A, and is in equilibrium. Find <span class="eq">W</span> and the support reaction <span class="eq">R</span>.</p>
+      <div class="lbl">Worked example<span class="cn">例题</span></div>
+      <h4>A uniform beam on a pivot<span class="cn">支点上的均匀梁</span></h4>
+      <p>A uniform beam AB has length 2.4&nbsp;m and weight 180&nbsp;N. It rests horizontally on a pivot 0.80&nbsp;m from A, with a load <span class="eq">W</span> at end A, and is in equilibrium. Find <span class="eq">W</span> and the support reaction <span class="eq">R</span>.<span class="cn">均匀梁 AB 长 2.4 m，重量 180 N。它水平搁在距 A 端 0.80 m 的支点上，A 端有载荷 <span class="eq">W</span>，系统处于平衡。求 <span class="eq">W</span> 和支点反力 <span class="eq">R</span>。</span></p>
       <div class="ans">
-        <p>The beam’s weight acts at its centre, 1.2&nbsp;m from A, so 0.40&nbsp;m to the right of the pivot.</p>
-        <p>Take moments about the pivot.</p>
-        <p>Anticlockwise: <span class="eq">W × 0.80</span>. &nbsp; Clockwise: <span class="eq">180 × 0.40 = 72&nbsp;N&nbsp;m</span>.</p>
-        <p>Principle of moments: <span class="eq">W × 0.80 = 72  ⇒  W = 90&nbsp;N</span>.</p>
-        <p>No resultant force (vertical): <span class="eq">R = 90 + 180 = 270&nbsp;N</span> upward.</p>
+        <p>The beam’s weight acts at its centre, 1.2&nbsp;m from A, so 0.40&nbsp;m to the right of the pivot.<span class="cn">梁的重量作用在其中心，距 A 1.2 m，亦即在支点右侧 0.40 m。</span></p>
+        <p>Take moments about the pivot.<span class="cn">对支点取矩。</span></p>
+        <p>Anticlockwise: <span class="eq">W × 0.80</span>. &nbsp; Clockwise: <span class="eq">180 × 0.40 = 72&nbsp;N&nbsp;m</span>.<span class="cn">逆时针：<span class="eq">W × 0.80</span>。顺时针：<span class="eq">180 × 0.40 = 72&nbsp;N&nbsp;m</span>。</span></p>
+        <p>Principle of moments: <span class="eq">W × 0.80 = 72  ⇒  W = 90&nbsp;N</span>.<span class="cn">力矩原理：<span class="eq">W × 0.80 = 72  ⇒  W = 90&nbsp;N</span>。</span></p>
+        <p>No resultant force (vertical): <span class="eq">R = 90 + 180 = 270&nbsp;N</span> upward.<span class="cn">竖直方向合力为零：<span class="eq">R = 90 + 180 = 270&nbsp;N</span>，方向向上。</span></p>
       </div>
     </div>
 
-    <h3>The two conditions for equilibrium</h3>
+    <h3>The two conditions for equilibrium<span class="cn">平衡的两个条件</span></h3>
     <div class="def">
-      <span class="lbl">Statement — memorise this</span>
-      <p>A system is in equilibrium when there is <strong>no resultant force</strong> and <strong>no resultant torque</strong> (moment).</p>
+      <span class="lbl">Statement — memorise this<span class="cn">陈述 — 请记牢</span></span>
+      <p>A system is in equilibrium when there is <strong>no resultant force</strong> and <strong>no resultant torque</strong> (moment).<span class="cn">当系统<strong>合力为零</strong>且<strong>合力矩为零</strong>时，系统处于平衡。</span></p>
     </div>
     <div class="grid-2">
       <div class="example" style="margin:0">
-        <div class="lbl">Translational equilibrium</div>
-        <p style="margin:0">No resultant force: <span class="eq">ΣF<sub>x</sub> = 0</span> and <span class="eq">ΣF<sub>y</sub> = 0</span>. The centre of mass does not accelerate (it is at rest or moves at constant velocity).</p>
+        <div class="lbl">Translational equilibrium<span class="cn">平动平衡</span></div>
+        <p style="margin:0">No resultant force: <span class="eq">ΣF<sub>x</sub> = 0</span> and <span class="eq">ΣF<sub>y</sub> = 0</span>. The centre of mass does not accelerate (it is at rest or moves at constant velocity).<span class="cn">合力为零：<span class="eq">ΣF<sub>x</sub> = 0</span> 且 <span class="eq">ΣF<sub>y</sub> = 0</span>。质心不加速（静止或匀速运动）。</span></p>
       </div>
       <div class="example" style="margin:0">
-        <div class="lbl">Rotational equilibrium</div>
-        <p style="margin:0">No resultant torque: <span class="eq">Σ moments = 0</span> about any point. The object does not have an angular acceleration (it is not starting to spin, or it rotates at a constant rate).</p>
+        <div class="lbl">Rotational equilibrium<span class="cn">转动平衡</span></div>
+        <p style="margin:0">No resultant torque: <span class="eq">Σ moments = 0</span> about any point. The object does not have an angular acceleration (it is not starting to spin, or it rotates at a constant rate).<span class="cn">合力矩为零：对任意点 <span class="eq">Σ moments = 0</span>。物体没有角加速度（不会开始旋转，或以恒定角速度旋转）。</span></p>
       </div>
     </div>
-    <p style="margin-top:1rem">Both conditions must hold. A couple is a reminder that “no resultant force” is not enough on its own — a couple has zero resultant force but is <em>not</em> in equilibrium, because there is a resultant torque.</p>
+    <p style="margin-top:1rem">Both conditions must hold. A couple is a reminder that “no resultant force” is not enough on its own — a couple has zero resultant force but is <em>not</em> in equilibrium, because there is a resultant torque.<span class="cn">两个条件都必须满足。力偶提醒我们：仅有“合力为零”是不够的 — 力偶的合力为零，但<em>并不</em>处于平衡，因为存在合力矩。</span></p>
 
-    <h3>The vector triangle</h3>
-    <p>If three <strong>coplanar</strong> forces act on a system that is in equilibrium, the forces can be represented by a closed <strong>vector triangle</strong>. Draw the three force vectors tip-to-tail. Because the resultant is zero, the tip of the last vector meets the tail of the first — the triangle closes.</p>
-    <p>Each side is <strong>parallel</strong> to one of the forces and has a length <strong>proportional</strong> to that force’s magnitude. You can then use scale drawing, or trigonometry (sine or cosine rule) on the triangle, to find unknown forces or angles.</p>
-    <p>For more than three coplanar forces in equilibrium, the same idea gives a closed vector polygon.</p>
+    <h3>The vector triangle<span class="cn">矢量三角形</span></h3>
+    <p>If three <strong>coplanar</strong> forces act on a system that is in equilibrium, the forces can be represented by a closed <strong>vector triangle</strong>. Draw the three force vectors tip-to-tail. Because the resultant is zero, the tip of the last vector meets the tail of the first — the triangle closes.<span class="cn">若三个<strong>共面</strong>力作用在处于平衡的系统上，这些力可用闭合的<strong>矢量三角形</strong>表示。把三个力矢量首尾相接画出。因为合力为零，最后一个矢量的箭头会接到第一个的箭尾 — 三角形闭合。</span></p>
+    <p>Each side is <strong>parallel</strong> to one of the forces and has a length <strong>proportional</strong> to that force’s magnitude. You can then use scale drawing, or trigonometry (sine or cosine rule) on the triangle, to find unknown forces or angles.<span class="cn">每条边与其中一个力<strong>平行</strong>，长度与该力的大小<strong>成正比</strong>。然后可用按比例作图，或对三角形用三角学（正弦或余弦定理）求未知力或角度。</span></p>
+    <p>For more than three coplanar forces in equilibrium, the same idea gives a closed vector polygon.<span class="cn">超过三个共面力处于平衡时，同样的思路给出闭合的矢量多边形。</span></p>
 
     <figure class="fig" aria-label="Vector triangle of forces">
       <svg viewBox="0 0 840 360" xmlns="http://www.w3.org/2000/svg" role="img">
@@ -654,31 +724,31 @@ kbd {
         <text x="722" y="118" fill="#8a6910" font-size="15" font-family="Palatino, Times, serif" font-style="italic">30°</text>
         <path d="M580 104 L594 104 L594 90" fill="none" stroke="#4c463d" stroke-width="1.3"/>
       </svg>
-      <figcaption>Fig. 5  A 12.0 N lamp hangs from a horizontal string and a string at 30° to the horizontal. The three forces form a closed right-angled triangle. From the triangle: T₂ = 12.0 / sin 30° = 24.0 N, and T₁ = 24.0 × cos 30° = 20.8 N.</figcaption>
+      <figcaption>Fig. 5  A 12.0 N lamp hangs from a horizontal string and a string at 30° to the horizontal. The three forces form a closed right-angled triangle. From the triangle: T₂ = 12.0 / sin 30° = 24.0 N, and T₁ = 24.0 × cos 30° = 20.8 N.<span class="cn">图 5  一个 12.0 N 的灯由一根水平绳和一根与水平成 30° 的绳悬挂。三个力构成闭合的直角三角形。由三角形：T₂ = 12.0 / sin 30° = 24.0 N，T₁ = 24.0 × cos 30° = 20.8 N。</span></figcaption>
     </figure>
 
     <div class="tip">
-      <span class="lbl">Exam tip</span>
-      <p>If you are asked to “draw a vector triangle”, do it as a <em>separate</em> diagram, not just the free-body arrows on the object. Label each side with the force’s name and, if known, its magnitude. Mark the angles. State the scale if it is a scale drawing.</p>
+      <span class="lbl">Exam tip<span class="cn">考试提示</span></span>
+      <p>If you are asked to “draw a vector triangle”, do it as a <em>separate</em> diagram, not just the free-body arrows on the object. Label each side with the force’s name and, if known, its magnitude. Mark the angles. State the scale if it is a scale drawing.<span class="cn">如果题目要求“画出矢量三角形”，要画成<em>单独</em>的图，不要只画物体上的受力箭头。每边标上力的名称，已知则标大小。标出角度。若是按比例作图，要写明比例尺。</span></p>
     </div>
   </section>
   <!-- ===================== TOPIC 5 ===================== -->
   <section class="topic" id="t5">
-    <h2>5 Work, energy and power</h2>
-    <p class="syllabus">The syllabus assumes you already know the forms of energy and energy transfers from IGCSE / O Level. Topic 5 is in two parts: <a href="#t51">5.1 Energy conservation</a> (work, conservation, efficiency, power) and <a href="#t52">5.2 Gravitational potential energy and kinetic energy</a>.</p>
+    <h2>5 Work, energy and power<span class="cn">功、能量和功率</span></h2>
+    <p class="syllabus">The syllabus assumes you already know the forms of energy and energy transfers from IGCSE / O Level. Topic 5 is in two parts: <a href="#t51">5.1 Energy conservation</a> (work, conservation, efficiency, power) and <a href="#t52">5.2 Gravitational potential energy and kinetic energy</a>.<span class="cn">考纲假定你已从 IGCSE / O Level 掌握各种形式的能量及能量转移。主题 5 分两部分：<a href="#t51">5.1 能量守恒</a>（功、守恒、效率、功率）和 <a href="#t52">5.2 重力势能和动能</a>。</span></p>
 
-    <h3 id="t51">5.1 Energy conservation</h3>
+    <h3 id="t51">5.1 Energy conservation<span class="cn">能量守恒</span></h3>
 
-    <h4 style="font-family:var(--display);color:var(--blue);font-size:1.08rem;margin-top:1.2rem">Work done</h4>
+    <h4 style="font-family:var(--display);color:var(--blue);font-size:1.08rem;margin-top:1.2rem">Work done<span class="cn">功</span></h4>
     <div class="def">
-      <span class="lbl">Definition — memorise this</span>
-      <p><strong>Work done</strong> by a force is the product of the force and the displacement <strong>in the direction of the force</strong>.</p>
+      <span class="lbl">Definition — memorise this<span class="cn">定义 — 请记牢</span></span>
+      <p><strong>Work done</strong> by a force is the product of the force and the displacement <strong>in the direction of the force</strong>.<span class="cn">力所做的<strong>功</strong>，等于该力与<strong>沿力的方向的位移</strong>的乘积。</span></p>
     </div>
     <div class="formula-box">
       <span><i>W</i> = <i>F s</i> cos&nbsp;<i>θ</i></span>
-      <span class="unit">unit: J &nbsp;·&nbsp; 1 J = 1 N&nbsp;m &nbsp;·&nbsp; <i>θ</i> is the angle between <i>F</i> and <i>s</i></span>
+      <span class="unit">unit: J &nbsp;·&nbsp; 1 J = 1 N&nbsp;m &nbsp;·&nbsp; <i>θ</i> is the angle between <i>F</i> and <i>s</i><span class="cn">单位：J · 1 J = 1 N m · θ 是 F 与 s 之间的夹角</span></span>
     </div>
-    <p>Work is a <strong>scalar</strong>. If the force is parallel to the displacement, <span class="eq">θ = 0°</span> and <span class="eq">W = F s</span>. If the force is perpendicular to the displacement (<span class="eq">θ = 90°</span>), <span class="eq">cos 90° = 0</span> so <span class="eq">W = 0</span> — a useful fact for circular motion and for the normal contact force on a level surface. A force opposite to the motion (<span class="eq">θ = 180°</span>) does negative work: the object loses energy.</p>
+    <p>Work is a <strong>scalar</strong>. If the force is parallel to the displacement, <span class="eq">θ = 0°</span> and <span class="eq">W = F s</span>. If the force is perpendicular to the displacement (<span class="eq">θ = 90°</span>), <span class="eq">cos 90° = 0</span> so <span class="eq">W = 0</span> — a useful fact for circular motion and for the normal contact force on a level surface. A force opposite to the motion (<span class="eq">θ = 180°</span>) does negative work: the object loses energy.<span class="cn">功是<strong>标量</strong>。若力与位移平行，<span class="eq">θ = 0°</span>，则 <span class="eq">W = F s</span>。若力与位移垂直（<span class="eq">θ = 90°</span>），<span class="eq">cos 90° = 0</span>，故 <span class="eq">W = 0</span> — 这对圆周运动以及水平面上的支持力很有用。与运动方向相反的力（<span class="eq">θ = 180°</span>）做负功：物体失去能量。</span></p>
 
     <figure class="fig" aria-label="Work done by a force at an angle">
       <svg viewBox="0 0 840 290" xmlns="http://www.w3.org/2000/svg" role="img">
@@ -720,35 +790,35 @@ kbd {
         <text x="560" y="184" fill="#4c463d" font-size="14" font-family="-apple-system, Helvetica, sans-serif">If θ = 0°,  W = F s</text>
         <text x="560" y="208" fill="#4c463d" font-size="14" font-family="-apple-system, Helvetica, sans-serif">If θ = 90°,  W = 0</text>
       </svg>
-      <figcaption>Fig. 6  The vertical component F sin θ does no work if the crate moves horizontally. Only F cos θ, the component along s, contributes: W = (F cos θ) s = F s cos θ.</figcaption>
+      <figcaption>Fig. 6  The vertical component F sin θ does no work if the crate moves horizontally. Only F cos θ, the component along s, contributes: W = (F cos θ) s = F s cos θ.<span class="cn">图 6  若木箱沿水平移动，竖直分量 F sin θ 不做功。只有沿 s 的分量 F cos θ 做功：W = (F cos θ) s = F s cos θ。</span></figcaption>
     </figure>
 
     <div class="example">
-      <div class="lbl">Worked example</div>
-      <h4>Work done at an angle</h4>
-      <p>A crate is pulled 6.0&nbsp;m along a floor by a force of 50&nbsp;N at 25° to the horizontal. Calculate the work done by this force.</p>
+      <div class="lbl">Worked example<span class="cn">例题</span></div>
+      <h4>Work done at an angle<span class="cn">成角度做的功</span></h4>
+      <p>A crate is pulled 6.0&nbsp;m along a floor by a force of 50&nbsp;N at 25° to the horizontal. Calculate the work done by this force.<span class="cn">用 50 N、与水平成 25° 的力，把木箱沿地面拉动 6.0 m。求该力所做的功。</span></p>
       <div class="ans">
-        <p><span class="eq">W = F s</span> cos&nbsp;<span class="eq">θ</span> = <span class="eq">50 × 6.0 × cos&nbsp;25° = 272&nbsp;J</span> (3 significant figures).</p>
+        <p><span class="eq">W = F s</span> cos&nbsp;<span class="eq">θ</span> = <span class="eq">50 × 6.0 × cos&nbsp;25° = 272&nbsp;J</span> (3 significant figures).<span class="cn"><span class="eq">W = F s</span> cos&nbsp;<span class="eq">θ</span> = <span class="eq">50 × 6.0 × cos&nbsp;25° = 272&nbsp;J</span>（三位有效数字）。</span></p>
       </div>
     </div>
 
-    <h4 style="font-family:var(--display);color:var(--blue);font-size:1.08rem;margin-top:1.6rem">Principle of conservation of energy</h4>
+    <h4 style="font-family:var(--display);color:var(--blue);font-size:1.08rem;margin-top:1.6rem">Principle of conservation of energy<span class="cn">能量守恒定律</span></h4>
     <div class="def">
-      <span class="lbl">Definition — memorise this</span>
-      <p>The <strong>principle of conservation of energy</strong>: energy cannot be created or destroyed. It can be transferred from one form to another, but the <strong>total energy</strong> of a closed system remains constant.</p>
+      <span class="lbl">Definition — memorise this<span class="cn">定义 — 请记牢</span></span>
+      <p>The <strong>principle of conservation of energy</strong>: energy cannot be created or destroyed. It can be transferred from one form to another, but the <strong>total energy</strong> of a closed system remains constant.<span class="cn"><strong>能量守恒定律</strong>：能量不能被创造或消灭。它可以从一种形式转移为另一种形式，但封闭系统的<strong>总能量</strong>保持不变。</span></p>
     </div>
-    <p>In a mechanics problem this usually means that a loss in one form equals a gain in others. If there is no air resistance and no friction, gravitational potential energy and kinetic energy simply swap. If resistive forces act, some energy is transferred to <strong>thermal energy</strong> (internal energy of the object and the surroundings). The total is still constant; it is just no longer all mechanical.</p>
+    <p>In a mechanics problem this usually means that a loss in one form equals a gain in others. If there is no air resistance and no friction, gravitational potential energy and kinetic energy simply swap. If resistive forces act, some energy is transferred to <strong>thermal energy</strong> (internal energy of the object and the surroundings). The total is still constant; it is just no longer all mechanical.<span class="cn">在力学问题中，这通常意味着一种形式减少的能量等于其他形式增加的能量。若没有空气阻力和摩擦，重力势能与动能只是互相转化。若存在阻力，部分能量会转移为<strong>热能</strong>（物体及周围的内能）。总量仍然守恒，只是不再全部是机械能。</span></p>
 
-    <h4 style="font-family:var(--display);color:var(--blue);font-size:1.08rem;margin-top:1.6rem">Efficiency</h4>
+    <h4 style="font-family:var(--display);color:var(--blue);font-size:1.08rem;margin-top:1.6rem">Efficiency<span class="cn">效率</span></h4>
     <div class="def">
-      <span class="lbl">Definition — memorise this</span>
-      <p>The <strong>efficiency</strong> of a system is the ratio of useful energy output from the system to the total energy input. The same ratio can be written with power, because power is energy per unit time.</p>
+      <span class="lbl">Definition — memorise this<span class="cn">定义 — 请记牢</span></span>
+      <p>The <strong>efficiency</strong> of a system is the ratio of useful energy output from the system to the total energy input. The same ratio can be written with power, because power is energy per unit time.<span class="cn">系统的<strong>效率</strong>是系统有用能量输出与总能量输入之比。同一比值也可用功率来写，因为功率是单位时间的能量。</span></p>
     </div>
     <div class="formula-box">
-      <span>efficiency = useful energy output / total energy input</span>
-      <span class="unit">or &nbsp; useful power output / total power input</span>
+      <span>efficiency = useful energy output / total energy input<span class="cn">效率 = 有用能量输出 / 总能量输入</span></span>
+      <span class="unit">or &nbsp; useful power output / total power input<span class="cn">或：有用功率输出 / 总功率输入</span></span>
     </div>
-    <p>Efficiency is a ratio: a number between 0 and 1. It is often written as a percentage (multiply by 100%). Real machines always have efficiency less than 1, because some input energy is wasted, usually as thermal energy.</p>
+    <p>Efficiency is a ratio: a number between 0 and 1. It is often written as a percentage (multiply by 100%). Real machines always have efficiency less than 1, because some input energy is wasted, usually as thermal energy.<span class="cn">效率是一个比值：介于 0 与 1 之间的数。也常写成百分数（乘以 100%）。实际机器的效率总是小于 1，因为部分输入能量被浪费，通常变为热能。</span></p>
 
     <figure class="fig" aria-label="Sankey diagram for efficiency">
       <svg viewBox="0 0 840 230" xmlns="http://www.w3.org/2000/svg" role="img">
@@ -770,32 +840,32 @@ kbd {
         <text x="640" y="100" fill="#153a5c" font-size="18" font-family="Palatino, Times, serif" font-style="italic">efficiency = 0.70</text>
         <text x="640" y="126" fill="#4c463d" font-size="14" font-family="-apple-system, Helvetica, sans-serif">or 70%</text>
       </svg>
-      <figcaption>Fig. 7  A Sankey diagram is a useful picture of energy flow. The width of each arrow represents the amount of energy. Here the useful output is 70% of the input.</figcaption>
+      <figcaption>Fig. 7  A Sankey diagram is a useful picture of energy flow. The width of each arrow represents the amount of energy. Here the useful output is 70% of the input.<span class="cn">图 7  桑基图可以清楚地表示能量流动。每支箭头的宽度代表能量的多少。这里有用输出是输入的 70%。</span></figcaption>
     </figure>
 
     <div class="example">
-      <div class="lbl">Worked example</div>
-      <h4>Efficiency from power</h4>
-      <p>A motor has an input power of 400&nbsp;W and a useful output power of 280&nbsp;W. Find its efficiency.</p>
+      <div class="lbl">Worked example<span class="cn">例题</span></div>
+      <h4>Efficiency from power<span class="cn">用功率求效率</span></h4>
+      <p>A motor has an input power of 400&nbsp;W and a useful output power of 280&nbsp;W. Find its efficiency.<span class="cn">一台电动机的输入功率为 400 W，有用输出功率为 280 W。求它的效率。</span></p>
       <div class="ans">
-        <p>efficiency = useful power output / total power input = <span class="eq">280 / 400 = 0.70</span> (or 70%).</p>
+        <p>efficiency = useful power output / total power input = <span class="eq">280 / 400 = 0.70</span> (or 70%).<span class="cn">效率 = 有用功率输出 / 总功率输入 = <span class="eq">280 / 400 = 0.70</span>（或 70%）。</span></p>
       </div>
     </div>
 
-    <h4 style="font-family:var(--display);color:var(--blue);font-size:1.08rem;margin-top:1.6rem">Power</h4>
+    <h4 style="font-family:var(--display);color:var(--blue);font-size:1.08rem;margin-top:1.6rem">Power<span class="cn">功率</span></h4>
     <div class="def">
-      <span class="lbl">Definition — memorise this</span>
-      <p><strong>Power</strong> is the work done per unit time (the rate of doing work, or the rate of energy transfer).</p>
+      <span class="lbl">Definition — memorise this<span class="cn">定义 — 请记牢</span></span>
+      <p><strong>Power</strong> is the work done per unit time (the rate of doing work, or the rate of energy transfer).<span class="cn"><strong>功率</strong>是单位时间内做的功（做功的快慢，或能量转移的快慢）。</span></p>
     </div>
     <div class="formula-box">
       <span><i>P</i> = <i>W</i> / <i>t</i></span>
-      <span class="unit">unit: W &nbsp;·&nbsp; 1 W = 1 J s<sup>−1</sup></span>
+      <span class="unit">unit: W &nbsp;·&nbsp; 1 W = 1 J s<sup>−1</sup><span class="cn">单位：W · 1 W = 1 J s⁻¹</span></span>
     </div>
     <div class="derive">
-      <span class="lbl">Derivation you can be asked for — P = Fv</span>
-      <p>If a constant force <span class="eq">F</span> moves an object a distance <span class="eq">s</span> in the direction of the force in time <span class="eq">t</span>,</p>
+      <span class="lbl">Derivation you can be asked for — P = Fv<span class="cn">可能要求你写出的推导 — P = Fv</span></span>
+      <p>If a constant force <span class="eq">F</span> moves an object a distance <span class="eq">s</span> in the direction of the force in time <span class="eq">t</span>,<span class="cn">若恒力 <span class="eq">F</span> 在时间 <span class="eq">t</span> 内，使物体沿力的方向移动距离 <span class="eq">s</span>，</span></p>
       <p style="margin-top:.4rem"><span class="eq">P = W / t = (F s) / t = F (s / t) = F v</span>,</p>
-      <p style="margin-top:.4rem">where <span class="eq">v</span> is the speed in the direction of the force. If <span class="eq">F</span> and <span class="eq">v</span> are at an angle <span class="eq">θ</span>, then <span class="eq">P = F v</span> cos&nbsp;<span class="eq">θ</span>.</p>
+      <p style="margin-top:.4rem">where <span class="eq">v</span> is the speed in the direction of the force. If <span class="eq">F</span> and <span class="eq">v</span> are at an angle <span class="eq">θ</span>, then <span class="eq">P = F v</span> cos&nbsp;<span class="eq">θ</span>.<span class="cn">其中 <span class="eq">v</span> 是沿力方向的速率。若 <span class="eq">F</span> 与 <span class="eq">v</span> 成夹角 <span class="eq">θ</span>，则 <span class="eq">P = F v</span> cos&nbsp;<span class="eq">θ</span>。</span></p>
     </div>
 
     <figure class="fig" aria-label="Power equals force times speed">
@@ -823,35 +893,35 @@ kbd {
         <text x="640" y="140" fill="#4c463d" font-size="14" font-family="-apple-system, Helvetica, sans-serif">same direction</text>
         <text x="640" y="164" fill="#4c463d" font-size="14" font-family="-apple-system, Helvetica, sans-serif">constant speed: F = drag</text>
       </svg>
-      <figcaption>Fig. 8  A boat travelling at constant speed. The driving force does work against drag. Instantaneous power output is P = Fv.</figcaption>
+      <figcaption>Fig. 8  A boat travelling at constant speed. The driving force does work against drag. Instantaneous power output is P = Fv.<span class="cn">图 8  以恒定速率行驶的船。驱动力克服阻力做功。瞬时输出功率为 P = Fv。</span></figcaption>
     </figure>
 
     <div class="example">
-      <div class="lbl">Worked example</div>
-      <h4>Power at constant speed</h4>
-      <p>A boat’s engine provides a driving force of 1.5&nbsp;kN at a constant speed of 8.0&nbsp;m&nbsp;s<sup>−1</sup>. Calculate the output power.</p>
+      <div class="lbl">Worked example<span class="cn">例题</span></div>
+      <h4>Power at constant speed<span class="cn">匀速时的功率</span></h4>
+      <p>A boat’s engine provides a driving force of 1.5&nbsp;kN at a constant speed of 8.0&nbsp;m&nbsp;s<sup>−1</sup>. Calculate the output power.<span class="cn">一艘船的发动机提供 1.5 kN 的驱动力，船以 8.0 m s⁻¹ 的恒定速率行驶。求输出功率。</span></p>
       <div class="ans">
-        <p><span class="eq">P = F v = 1.5 × 10<sup>3</sup> × 8.0 = 1.2 × 10<sup>4</sup>&nbsp;W</span> (12&nbsp;kW).</p>
+        <p><span class="eq">P = F v = 1.5 × 10<sup>3</sup> × 8.0 = 1.2 × 10<sup>4</sup>&nbsp;W</span> (12&nbsp;kW).<span class="cn"><span class="eq">P = F v = 1.5 × 10<sup>3</sup> × 8.0 = 1.2 × 10<sup>4</sup>&nbsp;W</span>（12 kW）。</span></p>
       </div>
     </div>
 
-    <h3 id="t52">5.2 Gravitational potential energy and kinetic energy</h3>
+    <h3 id="t52">5.2 Gravitational potential energy and kinetic energy<span class="cn">重力势能和动能</span></h3>
 
-    <h4 style="font-family:var(--display);color:var(--blue);font-size:1.08rem;margin-top:1.2rem">Gravitational potential energy</h4>
+    <h4 style="font-family:var(--display);color:var(--blue);font-size:1.08rem;margin-top:1.2rem">Gravitational potential energy<span class="cn">重力势能</span></h4>
     <div class="def">
-      <span class="lbl">Formula — recall and use</span>
-      <p>In a <strong>uniform gravitational field</strong> (near the Earth’s surface), the change in gravitational potential energy is</p>
+      <span class="lbl">Formula — recall and use<span class="cn">公式 — 需记忆并运用</span></span>
+      <p>In a <strong>uniform gravitational field</strong> (near the Earth’s surface), the change in gravitational potential energy is<span class="cn">在<strong>匀强重力场</strong>中（地球表面附近），重力势能的变化为</span></p>
     </div>
     <div class="formula-box">
       <span>Δ<i>E</i><sub>P</sub> = <i>mg</i>Δ<i>h</i></span>
-      <span class="unit">unit: J &nbsp;·&nbsp; g = 9.81 m s<sup>−2</sup> (from the data sheet)</span>
+      <span class="unit">unit: J &nbsp;·&nbsp; g = 9.81 m s<sup>−2</sup> (from the data sheet)<span class="cn">单位：J · g = 9.81 m s⁻²（来自数据表）</span></span>
     </div>
     <div class="derive">
-      <span class="lbl">Derivation from W = F s — required by the syllabus</span>
-      <p>To raise a mass <span class="eq">m</span> slowly through a vertical height <span class="eq">Δh</span> at constant speed, the applied upward force equals the weight <span class="eq">mg</span>.</p>
-      <p style="margin-top:.4rem">Work done by this force: <span class="eq">W = F s = mg × Δh</span>.</p>
-      <p style="margin-top:.4rem">That work is stored as gravitational potential energy, so <span class="eq">ΔE<sub>P</sub> = mg Δh</span>.</p>
-      <p style="margin-top:.4rem">This holds only in a <strong>uniform</strong> field, where <span class="eq">g</span> is constant. (A different formula, not needed at AS, is used at large distances from the Earth.)</p>
+      <span class="lbl">Derivation from W = F s — required by the syllabus<span class="cn">由 W = F s 推导 — 考纲要求</span></span>
+      <p>To raise a mass <span class="eq">m</span> slowly through a vertical height <span class="eq">Δh</span> at constant speed, the applied upward force equals the weight <span class="eq">mg</span>.<span class="cn">要以恒定速率把质量 <span class="eq">m</span> 缓慢升高竖直高度 <span class="eq">Δh</span>，向上的施加力等于重量 <span class="eq">mg</span>。</span></p>
+      <p style="margin-top:.4rem">Work done by this force: <span class="eq">W = F s = mg × Δh</span>.<span class="cn">该力做的功：<span class="eq">W = F s = mg × Δh</span>。</span></p>
+      <p style="margin-top:.4rem">That work is stored as gravitational potential energy, so <span class="eq">ΔE<sub>P</sub> = mg Δh</span>.<span class="cn">这份功被储存为重力势能，因此 <span class="eq">ΔE<sub>P</sub> = mg Δh</span>。</span></p>
+      <p style="margin-top:.4rem">This holds only in a <strong>uniform</strong> field, where <span class="eq">g</span> is constant. (A different formula, not needed at AS, is used at large distances from the Earth.)<span class="cn">这只在 <span class="eq">g</span> 为常量的<strong>匀强</strong>场中成立。（远离地球时要用另一个公式，AS 不要求。）</span></p>
     </div>
 
     <figure class="fig" aria-label="Change in gravitational potential energy">
@@ -887,31 +957,31 @@ kbd {
         <text x="480" y="154" fill="#153a5c" font-size="22" font-family="Palatino, Times, serif" font-style="italic">ΔEₚ = mg Δh</text>
         <text x="480" y="186" fill="#4c463d" font-size="14" font-family="-apple-system, Helvetica, sans-serif">uniform gravitational field only</text>
       </svg>
-      <figcaption>Fig. 9  Raising the mass at constant speed means the applied force equals the weight. The work done by that force equals the gain in E<sub>P</sub>.</figcaption>
+      <figcaption>Fig. 9  Raising the mass at constant speed means the applied force equals the weight. The work done by that force equals the gain in E<sub>P</sub>.<span class="cn">图 9  以恒定速率升高物体，意味着施加的力等于重量。该力做的功等于 E<sub>P</sub> 的增加。</span></figcaption>
     </figure>
 
     <div class="example">
-      <div class="lbl">Worked example</div>
-      <h4>Calculating ΔE<sub>P</sub></h4>
-      <p>A student of mass 55&nbsp;kg climbs a vertical height of 12&nbsp;m. Calculate the gain in gravitational potential energy. Take <span class="eq">g = 9.81&nbsp;m&nbsp;s<sup>−2</sup></span>.</p>
+      <div class="lbl">Worked example<span class="cn">例题</span></div>
+      <h4>Calculating ΔE<sub>P</sub><span class="cn">计算 ΔE<sub>P</sub></span></h4>
+      <p>A student of mass 55&nbsp;kg climbs a vertical height of 12&nbsp;m. Calculate the gain in gravitational potential energy. Take <span class="eq">g = 9.81&nbsp;m&nbsp;s<sup>−2</sup></span>.<span class="cn">一名质量为 55 kg 的学生竖直攀升 12 m。求重力势能的增加。取 <span class="eq">g = 9.81&nbsp;m&nbsp;s<sup>−2</sup></span>。</span></p>
       <div class="ans">
-        <p><span class="eq">ΔE<sub>P</sub> = mg Δh = 55 × 9.81 × 12 = 6.47 × 10<sup>3</sup>&nbsp;J</span>.</p>
+        <p><span class="eq">ΔE<sub>P</sub> = mg Δh = 55 × 9.81 × 12 = 6.47 × 10<sup>3</sup>&nbsp;J</span>.<span class="cn"><span class="eq">ΔE<sub>P</sub> = mg Δh = 55 × 9.81 × 12 = 6.47 × 10<sup>3</sup>&nbsp;J</span>。</span></p>
       </div>
     </div>
 
-    <h4 style="font-family:var(--display);color:var(--blue);font-size:1.08rem;margin-top:1.6rem">Kinetic energy</h4>
+    <h4 style="font-family:var(--display);color:var(--blue);font-size:1.08rem;margin-top:1.6rem">Kinetic energy<span class="cn">动能</span></h4>
     <div class="formula-box">
       <span><i>E</i><sub>K</sub> = ½ <i>m v</i><sup>2</sup></span>
-      <span class="unit">unit: J &nbsp;·&nbsp; must be recalled — not on the data sheet</span>
+      <span class="unit">unit: J &nbsp;·&nbsp; must be recalled — not on the data sheet<span class="cn">单位：J · 必须记住 — 数据表上没有</span></span>
     </div>
     <div class="derive">
-      <span class="lbl">Derivation from the equations of motion — required by the syllabus</span>
-      <p>An object of mass <span class="eq">m</span> starts from rest (<span class="eq">u = 0</span>) and is accelerated by a constant force <span class="eq">F</span> through a displacement <span class="eq">s</span>, reaching speed <span class="eq">v</span>.</p>
-      <p style="margin-top:.45rem">Newton’s second law: <span class="eq">F = ma</span>.</p>
-      <p>Equation of motion: <span class="eq">v<sup>2</sup> = u<sup>2</sup> + 2as = 2as</span>, so <span class="eq">s = v<sup>2</sup> / 2a</span>.</p>
-      <p>Work done by the force: <span class="eq">W = F s = (ma)(v<sup>2</sup> / 2a) = ½ m v<sup>2</sup></span>.</p>
-      <p>This work equals the kinetic energy gained, so <span class="eq">E<sub>K</sub> = ½ m v<sup>2</sup></span>.</p>
-      <p style="margin-top:.45rem">If the object already has speed <span class="eq">u</span>, the same steps give <span class="eq">W = ½ m v<sup>2</sup> − ½ m u<sup>2</sup> = ΔE<sub>K</sub></span>. This is the work–energy idea: the work done by the <em>resultant</em> force equals the change in kinetic energy.</p>
+      <span class="lbl">Derivation from the equations of motion — required by the syllabus<span class="cn">由运动方程推导 — 考纲要求</span></span>
+      <p>An object of mass <span class="eq">m</span> starts from rest (<span class="eq">u = 0</span>) and is accelerated by a constant force <span class="eq">F</span> through a displacement <span class="eq">s</span>, reaching speed <span class="eq">v</span>.<span class="cn">质量为 <span class="eq">m</span> 的物体由静止出发（<span class="eq">u = 0</span>），在恒力 <span class="eq">F</span> 作用下通过位移 <span class="eq">s</span>，达到速率 <span class="eq">v</span>。</span></p>
+      <p style="margin-top:.45rem">Newton’s second law: <span class="eq">F = ma</span>.<span class="cn">牛顿第二定律：<span class="eq">F = ma</span>。</span></p>
+      <p>Equation of motion: <span class="eq">v<sup>2</sup> = u<sup>2</sup> + 2as = 2as</span>, so <span class="eq">s = v<sup>2</sup> / 2a</span>.<span class="cn">运动方程：<span class="eq">v<sup>2</sup> = u<sup>2</sup> + 2as = 2as</span>，所以 <span class="eq">s = v<sup>2</sup> / 2a</span>。</span></p>
+      <p>Work done by the force: <span class="eq">W = F s = (ma)(v<sup>2</sup> / 2a) = ½ m v<sup>2</sup></span>.<span class="cn">该力做的功：<span class="eq">W = F s = (ma)(v<sup>2</sup> / 2a) = ½ m v<sup>2</sup></span>。</span></p>
+      <p>This work equals the kinetic energy gained, so <span class="eq">E<sub>K</sub> = ½ m v<sup>2</sup></span>.<span class="cn">这份功等于获得的动能，因此 <span class="eq">E<sub>K</sub> = ½ m v<sup>2</sup></span>。</span></p>
+      <p style="margin-top:.45rem">If the object already has speed <span class="eq">u</span>, the same steps give <span class="eq">W = ½ m v<sup>2</sup> − ½ m u<sup>2</sup> = ΔE<sub>K</sub></span>. This is the work–energy idea: the work done by the <em>resultant</em> force equals the change in kinetic energy.<span class="cn">若物体已有速率 <span class="eq">u</span>，同样步骤得到 <span class="eq">W = ½ m v<sup>2</sup> − ½ m u<sup>2</sup> = ΔE<sub>K</sub></span>。这就是功能关系：<em>合力</em>做的功等于动能的变化。</span></p>
     </div>
 
     <figure class="fig" aria-label="Kinetic energy and energy exchange">
@@ -962,52 +1032,52 @@ kbd {
         <text x="500" y="230" fill="#9a3a1c" font-size="16" font-family="Palatino, Times, serif" font-style="italic">mg Δh = ½ m v² + thermal</text>
         <text x="500" y="258" fill="#4c463d" font-size="13" font-family="-apple-system, Helvetica, sans-serif">total energy still conserved</text>
       </svg>
-      <figcaption>Fig. 10  A falling object. Without air resistance the loss in E<sub>P</sub> equals the gain in E<sub>K</sub>. With air resistance the object is slower than √(2gΔh); the “missing” energy has become thermal energy.</figcaption>
+      <figcaption>Fig. 10  A falling object. Without air resistance the loss in E<sub>P</sub> equals the gain in E<sub>K</sub>. With air resistance the object is slower than √(2gΔh); the “missing” energy has become thermal energy.<span class="cn">图 10  下落的物体。没有空气阻力时，E<sub>P</sub> 的减少等于 E<sub>K</sub> 的增加。有空气阻力时，物体比 √(2gΔh) 慢；“缺少”的能量已变为热能。</span></figcaption>
     </figure>
 
     <div class="example">
-      <div class="lbl">Worked example</div>
-      <h4>Energy transfer, with and without resistance</h4>
-      <p>An apple of mass 0.15&nbsp;kg falls 3.0&nbsp;m from rest. Take <span class="eq">g = 9.81&nbsp;m&nbsp;s<sup>−2</sup></span>.</p>
-      <p>(a) If air resistance is negligible, find its speed just before it lands.</p>
-      <p>(b) If it actually lands at 6.0&nbsp;m&nbsp;s<sup>−1</sup>, how much energy has been transferred to thermal energy?</p>
+      <div class="lbl">Worked example<span class="cn">例题</span></div>
+      <h4>Energy transfer, with and without resistance<span class="cn">有阻力与无阻力时的能量转移</span></h4>
+      <p>An apple of mass 0.15&nbsp;kg falls 3.0&nbsp;m from rest. Take <span class="eq">g = 9.81&nbsp;m&nbsp;s<sup>−2</sup></span>.<span class="cn">一个质量为 0.15 kg 的苹果从静止下落 3.0 m。取 <span class="eq">g = 9.81&nbsp;m&nbsp;s<sup>−2</sup></span>。</span></p>
+      <p>(a) If air resistance is negligible, find its speed just before it lands.<span class="cn">(a) 若空气阻力可忽略，求落地前瞬间的速率。</span></p>
+      <p>(b) If it actually lands at 6.0&nbsp;m&nbsp;s<sup>−1</sup>, how much energy has been transferred to thermal energy?<span class="cn">(b) 若它实际以 6.0 m s⁻¹ 落地，有多少能量已转移为热能？</span></p>
       <div class="ans">
-        <p>(a) Loss in <span class="eq">E<sub>P</sub></span> = gain in <span class="eq">E<sub>K</sub></span>:</p>
-        <p><span class="eq">mg Δh = ½ m v<sup>2</sup></span>  ⇒  <span class="eq">v = √(2g Δh) = √(2 × 9.81 × 3.0) = 7.67&nbsp;m&nbsp;s<sup>−1</sup></span>.</p>
-        <p>(b) Loss in <span class="eq">E<sub>P</sub> = 0.15 × 9.81 × 3.0 = 4.41&nbsp;J</span>.</p>
-        <p>Gain in <span class="eq">E<sub>K</sub> = ½ × 0.15 × (6.0)<sup>2</sup> = 2.70&nbsp;J</span>.</p>
-        <p>Energy transferred to thermal = <span class="eq">4.41 − 2.70 = 1.71&nbsp;J</span>.</p>
+        <p>(a) Loss in <span class="eq">E<sub>P</sub></span> = gain in <span class="eq">E<sub>K</sub></span>:<span class="cn">(a) <span class="eq">E<sub>P</sub></span> 的减少 = <span class="eq">E<sub>K</sub></span> 的增加：</span></p>
+        <p><span class="eq">mg Δh = ½ m v<sup>2</sup></span>  ⇒  <span class="eq">v = √(2g Δh) = √(2 × 9.81 × 3.0) = 7.67&nbsp;m&nbsp;s<sup>−1</sup></span>.<span class="cn"><span class="eq">mg Δh = ½ m v<sup>2</sup></span>  ⇒  <span class="eq">v = √(2g Δh) = √(2 × 9.81 × 3.0) = 7.67&nbsp;m&nbsp;s<sup>−1</sup></span>。</span></p>
+        <p>(b) Loss in <span class="eq">E<sub>P</sub> = 0.15 × 9.81 × 3.0 = 4.41&nbsp;J</span>.<span class="cn">(b) <span class="eq">E<sub>P</sub></span> 减少 <span class="eq">= 0.15 × 9.81 × 3.0 = 4.41&nbsp;J</span>。</span></p>
+        <p>Gain in <span class="eq">E<sub>K</sub> = ½ × 0.15 × (6.0)<sup>2</sup> = 2.70&nbsp;J</span>.<span class="cn"><span class="eq">E<sub>K</sub></span> 增加 <span class="eq">= ½ × 0.15 × (6.0)<sup>2</sup> = 2.70&nbsp;J</span>。</span></p>
+        <p>Energy transferred to thermal = <span class="eq">4.41 − 2.70 = 1.71&nbsp;J</span>.<span class="cn">转移为热能的能量 = <span class="eq">4.41 − 2.70 = 1.71&nbsp;J</span>。</span></p>
       </div>
     </div>
   </section>
 
   <!-- ===================== SUMMARY ===================== -->
   <section class="topic" id="summary">
-    <h2>Formulae to recall</h2>
-    <p>None of the equations below appear on the AS data sheet. You must remember them, including the derivations marked ★.</p>
+    <h2>Formulae to recall<span class="cn">必须记住的公式</span></h2>
+    <p>None of the equations below appear on the AS data sheet. You must remember them, including the derivations marked ★.<span class="cn">以下方程都不会出现在 AS 数据表上。你必须记住它们，包括标有 ★ 的推导。</span></p>
     <table class="summary-table">
       <thead>
-        <tr><th>Quantity</th><th>Equation</th><th>Notes</th></tr>
+        <tr><th>Quantity<span class="cn">物理量</span></th><th>Equation<span class="cn">公式</span></th><th>Notes<span class="cn">说明</span></th></tr>
       </thead>
       <tbody>
-        <tr><td>Moment of a force</td><td class="eqcell">moment = <i>F</i> <i>d</i><sub>⊥</sub> = <i>F r</i> sin&nbsp;<i>θ</i></td><td>Unit N&nbsp;m, not J. <i>d</i><sub>⊥</sub> is to the line of action.</td></tr>
-        <tr><td>Torque of a couple</td><td class="eqcell">torque = <i>F</i> <i>d</i></td><td><i>d</i> is the perpendicular separation of the two forces. Same about any point.</td></tr>
-        <tr><td>Principle of moments</td><td class="eqcell">Σ clockwise = Σ anticlockwise</td><td>For a system in equilibrium, about any one point.</td></tr>
-        <tr><td>Equilibrium</td><td class="eqcell">Σ<i>F</i> = 0 &nbsp;and&nbsp; Σ torque = 0</td><td>Both conditions are required.</td></tr>
-        <tr><td>Work done</td><td class="eqcell"><i>W</i> = <i>F s</i> cos&nbsp;<i>θ</i></td><td>Unit J. <i>θ</i> between force and displacement.</td></tr>
-        <tr><td>Efficiency</td><td class="eqcell">useful output / total input</td><td>Use energy or power. A ratio, or ×&nbsp;100%.</td></tr>
-        <tr><td>Power</td><td class="eqcell"><i>P</i> = <i>W</i>/<i>t</i> &nbsp; and &nbsp; <i>P</i> = <i>F v</i> ★</td><td>Unit W. Derive <i>P</i> = <i>Fv</i> from <i>W</i> = <i>Fs</i>.</td></tr>
-        <tr><td>Gravitational potential energy</td><td class="eqcell">Δ<i>E</i><sub>P</sub> = <i>mg</i>Δ<i>h</i> ★</td><td>Uniform field only. Derive from <i>W</i> = <i>Fs</i>.</td></tr>
-        <tr><td>Kinetic energy</td><td class="eqcell"><i>E</i><sub>K</sub> = ½ <i>m v</i><sup>2</sup> ★</td><td>Derive from the equations of motion.</td></tr>
+        <tr><td>Moment of a force<span class="cn">力矩</span></td><td class="eqcell">moment = <i>F</i> <i>d</i><sub>⊥</sub> = <i>F r</i> sin&nbsp;<i>θ</i></td><td>Unit N&nbsp;m, not J. <i>d</i><sub>⊥</sub> is to the line of action.<span class="cn">单位 N m，不是 J。d<sub>⊥</sub> 是到作用线的距离。</span></td></tr>
+        <tr><td>Torque of a couple<span class="cn">力偶矩</span></td><td class="eqcell">torque = <i>F</i> <i>d</i></td><td><i>d</i> is the perpendicular separation of the two forces. Same about any point.<span class="cn">d 是两力的垂直间隔。对任意点都相同。</span></td></tr>
+        <tr><td>Principle of moments<span class="cn">力矩原理</span></td><td class="eqcell">Σ clockwise = Σ anticlockwise</td><td>For a system in equilibrium, about any one point.<span class="cn">系统平衡时，对任意同一点成立。</span></td></tr>
+        <tr><td>Equilibrium<span class="cn">平衡</span></td><td class="eqcell">Σ<i>F</i> = 0 &nbsp;and&nbsp; Σ torque = 0</td><td>Both conditions are required.<span class="cn">两个条件都必须满足。</span></td></tr>
+        <tr><td>Work done<span class="cn">功</span></td><td class="eqcell"><i>W</i> = <i>F s</i> cos&nbsp;<i>θ</i></td><td>Unit J. <i>θ</i> between force and displacement.<span class="cn">单位 J。θ 是力与位移的夹角。</span></td></tr>
+        <tr><td>Efficiency<span class="cn">效率</span></td><td class="eqcell">useful output / total input</td><td>Use energy or power. A ratio, or ×&nbsp;100%.<span class="cn">可用能量或功率。是比值，或写成百分数。</span></td></tr>
+        <tr><td>Power<span class="cn">功率</span></td><td class="eqcell"><i>P</i> = <i>W</i>/<i>t</i> &nbsp; and &nbsp; <i>P</i> = <i>F v</i> ★</td><td>Unit W. Derive <i>P</i> = <i>Fv</i> from <i>W</i> = <i>Fs</i>.<span class="cn">单位 W。由 W = Fs 推导 P = Fv。</span></td></tr>
+        <tr><td>Gravitational potential energy<span class="cn">重力势能</span></td><td class="eqcell">Δ<i>E</i><sub>P</sub> = <i>mg</i>Δ<i>h</i> ★</td><td>Uniform field only. Derive from <i>W</i> = <i>Fs</i>.<span class="cn">仅适用于匀强场。由 W = Fs 推导。</span></td></tr>
+        <tr><td>Kinetic energy<span class="cn">动能</span></td><td class="eqcell"><i>E</i><sub>K</sub> = ½ <i>m v</i><sup>2</sup> ★</td><td>Derive from the equations of motion.<span class="cn">由运动方程推导。</span></td></tr>
       </tbody>
     </table>
 
     <div class="warn" style="margin-top:1.2rem">
-      <span class="lbl">Before the exam</span>
-      <p>Use <span class="eq">g = 9.81&nbsp;m&nbsp;s<sup>−2</sup></span> unless the question gives another value. State the point you are taking moments about. Always use the perpendicular distance. For energy, check whether resistive forces are mentioned — if they are, <span class="eq">mg Δh</span> is not equal to <span class="eq">½mv<sup>2</sup></span>.</p>
+      <span class="lbl">Before the exam<span class="cn">考前注意</span></span>
+      <p>Use <span class="eq">g = 9.81&nbsp;m&nbsp;s<sup>−2</sup></span> unless the question gives another value. State the point you are taking moments about. Always use the perpendicular distance. For energy, check whether resistive forces are mentioned — if they are, <span class="eq">mg Δh</span> is not equal to <span class="eq">½mv<sup>2</sup></span>.<span class="cn">除非题目另给数值，否则取 <span class="eq">g = 9.81&nbsp;m&nbsp;s<sup>−2</sup></span>。写明你对哪一点取矩。始终使用垂直距离。对能量问题，要看是否提到阻力 — 若有，<span class="eq">mg Δh</span> 就不等于 <span class="eq">½mv<sup>2</sup></span>。</span></p>
     </div>
 
-    <button type="button" class="to-cards" id="go-cards">Open the flashcards — test yourself on these definitions and equations</button>
+    <button type="button" class="to-cards" id="go-cards">Open the flashcards — test yourself on these definitions and equations<span class="cn">打开抽认卡 — 用这些定义和公式自测</span></button>
   </section>
 </div>
 <div id="view-cards">
@@ -1019,42 +1089,42 @@ kbd {
         <div class="bar" aria-hidden="true"><i id="prog-bar"></i></div>
       </div>
       <div class="right">
-        <button type="button" class="toolbtn" id="btn-shuffle">Shuffle</button>
-        <button type="button" class="toolbtn" id="btn-reset">Reset progress</button>
+        <button type="button" class="toolbtn" id="btn-shuffle">Shuffle · 打乱</button>
+        <button type="button" class="toolbtn" id="btn-reset">Reset progress · 重置进度</button>
       </div>
     </div>
 
     <div class="stage" id="stage">
-      <div class="flip" id="flip" tabindex="0" role="button" aria-label="Flashcard, press to flip">
+      <div class="flip" id="flip" tabindex="0" role="button" aria-label="抽认卡，按空格翻转 Flashcard, press to flip">
         <div class="face face-front">
           <div class="toprow"><span class="tag" id="front-tag"></span><span class="kind" id="front-kind"></span></div>
           <p class="q" id="front-q"></p>
-          <div class="tap">Click or press Space to flip</div>
+          <div class="tap">Click or press Space to flip<span class="cn">点击或按空格翻转</span></div>
         </div>
         <div class="face face-back">
           <div class="toprow"><span class="tag" id="back-tag"></span><span class="kind" id="back-kind"></span></div>
           <div class="a" id="back-a"></div>
-          <div class="tap">Click or press Space to flip back</div>
+          <div class="tap">Click or press Space to flip back<span class="cn">点击或按空格翻回</span></div>
         </div>
       </div>
     </div>
 
     <div class="done-box" id="done-box">
-      <h2>Round complete</h2>
+      <h2>Round complete<span class="cn">本轮完成</span></h2>
       <p id="done-msg"></p>
       <div style="display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap;margin-top:1rem">
-        <button type="button" class="toolbtn" id="btn-restudy" style="background:var(--gold-bg)">Restudy the ones I missed</button>
-        <button type="button" class="toolbtn" id="btn-again" style="background:var(--green-bg)">Start this topic again</button>
+        <button type="button" class="toolbtn" id="btn-restudy" style="background:var(--gold-bg)">Restudy the ones I missed · 重温还不会的</button>
+        <button type="button" class="toolbtn" id="btn-again" style="background:var(--green-bg)">Start this topic again · 再做一遍本主题</button>
       </div>
     </div>
 
     <div class="actions" id="actions">
       <button type="button" class="navbtn" id="btn-prev" aria-label="Previous">←</button>
-      <button type="button" class="again" id="btn-again-card">Study again</button>
-      <button type="button" class="know" id="btn-know">I know this</button>
+      <button type="button" class="again" id="btn-again-card">Study again · 再记一遍</button>
+      <button type="button" class="know" id="btn-know">I know this · 我会了</button>
       <button type="button" class="navbtn" id="btn-next" aria-label="Next">→</button>
     </div>
-    <p class="keys"><kbd>Space</kbd> flip &nbsp; <kbd>←</kbd> <kbd>→</kbd> move &nbsp; <kbd>K</kbd> I know this &nbsp; <kbd>R</kbd> study again</p>
+    <p class="keys"><kbd>Space</kbd> flip 翻转 &nbsp; <kbd>←</kbd> <kbd>→</kbd> move 切换 &nbsp; <kbd>K</kbd> I know this 我会了 &nbsp; <kbd>R</kbd> study again 再记一遍</p>
   </div>
 </div>
 </main>
@@ -1063,235 +1133,242 @@ kbd {
 const CARDS = [
   /* ---- 4.1 ---- */
   {
-    id: "41-cg", topic: "4.1", topicName: "4.1 Turning effects", kind: "Definition",
-    q: "What is the centre of gravity of an object?",
-    a: "<span class='big'>The point at which the entire weight of the object may be taken as acting.</span><p class='hint'>For a uniform, regular object this is at the geometric centre. In a uniform gravitational field it coincides with the centre of mass.</p>"
+    id: "41-cg", topic: "4.1", topicName: "4.1 Turning effects · 转动效应", kind: "Definition",
+    q: "What is the centre of gravity of an object?<span class='cn'>物体的重心是什么？</span>",
+    a: "<span class='big'>The point at which the entire weight of the object may be taken as acting.</span><span class='cn'>即物体的全部重量可视为作用在该点。</span><p class='hint'>For a uniform, regular object this is at the geometric centre. In a uniform gravitational field it coincides with the centre of mass.</p><p class='hint cn'>对于形状规则的均匀物体，重心在几何中心。在匀强重力场中，重心与质心重合。</p>"
   },
   {
-    id: "41-weight", topic: "4.1", topicName: "4.1 Turning effects", kind: "Fact",
-    q: "Where may the weight of an object be taken as acting?",
-    a: "At a single point: the <strong>centre of gravity</strong>. In a free-body diagram, draw one downward arrow <span class='big'><i>W</i> = <i>mg</i></span> from that point."
+    id: "41-weight", topic: "4.1", topicName: "4.1 Turning effects · 转动效应", kind: "Fact",
+    q: "Where may the weight of an object be taken as acting?<span class='cn'>物体的重量可视为作用在何处？</span>",
+    a: "At a single point: the <strong>centre of gravity</strong>. In a free-body diagram, draw one downward arrow <span class='big'><i>W</i> = <i>mg</i></span> from that point.<span class='cn'>作用在单一点上：即<strong>重心</strong>。在受力图中，从该点画一个向下的箭头 <i>W</i> = <i>mg</i>。</span>"
   },
   {
-    id: "41-moment-def", topic: "4.1", topicName: "4.1 Turning effects", kind: "Definition",
-    q: "Define the moment of a force about a point.",
-    a: "The product of the force and the <strong>perpendicular distance</strong> from the point to the <strong>line of action</strong> of the force."
+    id: "41-moment-def", topic: "4.1", topicName: "4.1 Turning effects · 转动效应", kind: "Definition",
+    q: "Define the moment of a force about a point.<span class='cn'>写出力对某点的力矩的定义。</span>",
+    a: "The product of the force and the <strong>perpendicular distance</strong> from the point to the <strong>line of action</strong> of the force.<span class='cn'>等于该力与从该点到力的<strong>作用线</strong>的<strong>垂直距离</strong>（力臂）的乘积。</span>"
   },
   {
-    id: "41-moment-eq", topic: "4.1", topicName: "4.1 Turning effects", kind: "Equation",
-    q: "Write the equation for the moment of a force, and state its unit.",
-    a: "<span class='big'>moment = <i>F</i> × <i>d</i><sub>⊥</sub></span>or equivalently <span class='big'>moment = <i>F r</i> sin&nbsp;<i>θ</i></span><p class='hint'>Unit: N&nbsp;m (never the joule). State the direction as clockwise or anticlockwise. <i>θ</i> is the angle between the force and the line from the point to the point of application.</p>"
+    id: "41-moment-eq", topic: "4.1", topicName: "4.1 Turning effects · 转动效应", kind: "Equation",
+    q: "Write the equation for the moment of a force, and state its unit.<span class='cn'>写出力矩的公式，并给出单位。</span>",
+    a: "<span class='big'>moment = <i>F</i> × <i>d</i><sub>⊥</sub></span>or equivalently <span class='big'>moment = <i>F r</i> sin&nbsp;<i>θ</i></span><span class='cn'>力矩 = F × d<sub>⊥</sub>，或等价地力矩 = F r sin θ。</span><p class='hint'>Unit: N&nbsp;m (never the joule). State the direction as clockwise or anticlockwise. <i>θ</i> is the angle between the force and the line from the point to the point of application.</p><p class='hint cn'>单位：N m（绝不用焦耳）。要说明方向是顺时针还是逆时针。θ 是力与“该点到施力点连线”之间的夹角。</p>"
   },
   {
-    id: "41-dperp", topic: "4.1", topicName: "4.1 Turning effects", kind: "Fact",
-    q: "In moment = F × d, what exactly is d?",
-    a: "The <strong>perpendicular</strong> distance from the pivot (or chosen point) to the <strong>line of action</strong> of the force — the infinite straight line along which the force points.<p class='hint'>It is not always the distance to the point where the force is applied. If the force is at an angle, drop a perpendicular onto the line of action: <i>d</i><sub>⊥</sub> = <i>r</i> sin&nbsp;<i>θ</i>.</p>"
+    id: "41-dperp", topic: "4.1", topicName: "4.1 Turning effects · 转动效应", kind: "Fact",
+    q: "In moment = F × d, what exactly is d?<span class='cn'>在 moment = F × d 中，d 究竟是什么？</span>",
+    a: "The <strong>perpendicular</strong> distance from the pivot (or chosen point) to the <strong>line of action</strong> of the force — the infinite straight line along which the force points.<span class='cn'>是从支点（或所选的点）到力的<strong>作用线</strong>的<strong>垂直</strong>距离 — 作用线是力所沿的那条无限长直线。</span><p class='hint'>It is not always the distance to the point where the force is applied. If the force is at an angle, drop a perpendicular onto the line of action: <i>d</i><sub>⊥</sub> = <i>r</i> sin&nbsp;<i>θ</i>.</p><p class='hint cn'>它不一定等于到施力点的距离。若力成一角度，向作用线作垂线：d<sub>⊥</sub> = r sin θ。</p>"
   },
   {
-    id: "41-unit", topic: "4.1", topicName: "4.1 Turning effects", kind: "Fact",
-    q: "Why must the unit of a moment be written N m, and not J?",
-    a: "A joule is a unit of <strong>energy</strong>. A moment is a <strong>turning effect</strong>, not a form of energy. Although 1 J = 1 N&nbsp;m, examiners will not accept “J” for a moment."
+    id: "41-unit", topic: "4.1", topicName: "4.1 Turning effects · 转动效应", kind: "Fact",
+    q: "Why must the unit of a moment be written N m, and not J?<span class='cn'>为什么力矩的单位必须写成 N m，而不能写成 J？</span>",
+    a: "A joule is a unit of <strong>energy</strong>. A moment is a <strong>turning effect</strong>, not a form of energy. Although 1 J = 1 N&nbsp;m, examiners will not accept “J” for a moment.<span class='cn'>焦耳是<strong>能量</strong>的单位。力矩是<strong>转动效应</strong>，不是一种能量。虽然 1 J = 1 N m，但阅卷人不会接受用 “J” 作为力矩的单位。</span>"
   },
   {
-    id: "41-zero", topic: "4.1", topicName: "4.1 Turning effects", kind: "Fact",
-    q: "When is the moment of a force about a point equal to zero?",
-    a: "When the line of action passes through the point, so <i>d</i><sub>⊥</sub> = 0; or when the force is parallel to the line from the point to the point of application (<i>θ</i> = 0° or 180°, so sin&nbsp;<i>θ</i> = 0).<p class='hint'>This is why taking moments about the line of action of an unknown force makes that force disappear from the equation.</p>"
+    id: "41-zero", topic: "4.1", topicName: "4.1 Turning effects · 转动效应", kind: "Fact",
+    q: "When is the moment of a force about a point equal to zero?<span class='cn'>力对某点的力矩何时等于零？</span>",
+    a: "When the line of action passes through the point, so <i>d</i><sub>⊥</sub> = 0; or when the force is parallel to the line from the point to the point of application (<i>θ</i> = 0° or 180°, so sin&nbsp;<i>θ</i> = 0).<span class='cn'>当作用线通过该点，因而 d<sub>⊥</sub> = 0；或当力与“该点到施力点连线”平行（θ = 0° 或 180°，故 sin θ = 0）。</span><p class='hint'>This is why taking moments about the line of action of an unknown force makes that force disappear from the equation.</p><p class='hint cn'>这就是为什么对未知力的作用线取矩时，该力会从方程中消失。</p>"
   },
   {
-    id: "41-couple-def", topic: "4.1", topicName: "4.1 Turning effects", kind: "Definition",
-    q: "What is a couple?",
-    a: "A pair of forces that acts to produce <strong>rotation only</strong>. The two forces are equal in magnitude, opposite in direction, and have parallel lines of action that are separated (not in the same straight line)."
+    id: "41-couple-def", topic: "4.1", topicName: "4.1 Turning effects · 转动效应", kind: "Definition",
+    q: "What is a couple?<span class='cn'>什么是力偶？</span>",
+    a: "A pair of forces that acts to produce <strong>rotation only</strong>. The two forces are equal in magnitude, opposite in direction, and have parallel lines of action that are separated (not in the same straight line).<span class='cn'>是一对只产生<strong>转动</strong>的力。这两个力大小相等、方向相反，作用线平行且彼此分开（不在同一直线上）。</span>"
   },
   {
-    id: "41-couple-why", topic: "4.1", topicName: "4.1 Turning effects", kind: "Fact",
-    q: "Why does a couple produce rotation only, with no translational acceleration?",
-    a: "The two forces are equal and opposite, so the <strong>resultant force is zero</strong> and the centre of mass does not accelerate. The lines of action are separated, so the moments do not cancel: there is a resultant torque, and the object turns."
+    id: "41-couple-why", topic: "4.1", topicName: "4.1 Turning effects · 转动效应", kind: "Fact",
+    q: "Why does a couple produce rotation only, with no translational acceleration?<span class='cn'>为什么力偶只产生转动，而没有平动加速度？</span>",
+    a: "The two forces are equal and opposite, so the <strong>resultant force is zero</strong> and the centre of mass does not accelerate. The lines of action are separated, so the moments do not cancel: there is a resultant torque, and the object turns.<span class='cn'>两个力大小相等、方向相反，所以<strong>合力为零</strong>，质心不加速。但作用线彼此分开，力矩不能抵消：存在合力矩，物体便转动。</span>"
   },
   {
-    id: "41-torque-def", topic: "4.1", topicName: "4.1 Turning effects", kind: "Definition",
-    q: "Define the torque of a couple.",
-    a: "The product of <strong>one of the forces</strong> and the <strong>perpendicular distance between the two lines of action</strong>."
+    id: "41-torque-def", topic: "4.1", topicName: "4.1 Turning effects · 转动效应", kind: "Definition",
+    q: "Define the torque of a couple.<span class='cn'>写出力偶矩的定义。</span>",
+    a: "The product of <strong>one of the forces</strong> and the <strong>perpendicular distance between the two lines of action</strong>.<span class='cn'>等于<strong>其中一个力</strong>与<strong>两条作用线之间垂直距离</strong>的乘积。</span>"
   },
   {
-    id: "41-torque-eq", topic: "4.1", topicName: "4.1 Turning effects", kind: "Equation",
-    q: "Write the equation for the torque of a couple. Does the value depend on the point you choose?",
-    a: "<span class='big'>torque = <i>F</i> × <i>d</i></span><p class='hint'>Unit: N&nbsp;m. The torque of a given couple is the <strong>same about every point</strong>.</p>"
+    id: "41-torque-eq", topic: "4.1", topicName: "4.1 Turning effects · 转动效应", kind: "Equation",
+    q: "Write the equation for the torque of a couple. Does the value depend on the point you choose?<span class='cn'>写出力偶矩的公式。它的值是否取决于所选的点？</span>",
+    a: "<span class='big'>torque = <i>F</i> × <i>d</i></span><span class='cn'>力偶矩 = F × d。</span><p class='hint'>Unit: N&nbsp;m. The torque of a given couple is the <strong>same about every point</strong>.</p><p class='hint cn'>单位：N m。给定力偶的力偶矩对<strong>任意点都相同</strong>。</p>"
   },
   {
-    id: "41-example", topic: "4.1", topicName: "4.1 Turning effects", kind: "Apply",
-    q: "A 40 N force acts on a door at 0.80 m from the hinge, at 30° to the door. What is the moment about the hinge?",
-    a: "<span class='big'>moment = <i>F r</i> sin&nbsp;30° = 40 × 0.80 × 0.50 = 16 N&nbsp;m</span><p class='hint'>The perpendicular distance is 0.80 × sin 30° = 0.40 m. Do not multiply 40 × 0.80 and forget the angle.</p>"
+    id: "41-example", topic: "4.1", topicName: "4.1 Turning effects · 转动效应", kind: "Apply",
+    q: "A 40 N force acts on a door at 0.80 m from the hinge, at 30° to the door. What is the moment about the hinge?<span class='cn'>一门上，距铰链 0.80 m 处有 40 N 的力，与门成 30°。对铰链的力矩是多少？</span>",
+    a: "<span class='big'>moment = <i>F r</i> sin&nbsp;30° = 40 × 0.80 × 0.50 = 16 N&nbsp;m</span><span class='cn'>力矩 = F r sin 30° = 40 × 0.80 × 0.50 = 16 N m。</span><p class='hint'>The perpendicular distance is 0.80 × sin 30° = 0.40 m. Do not multiply 40 × 0.80 and forget the angle.</p><p class='hint cn'>垂直距离是 0.80 × sin 30° = 0.40 m。不要只做 40 × 0.80 而忘掉角度。</p>"
   },
 
   /* ---- 4.2 ---- */
   {
-    id: "42-pom", topic: "4.2", topicName: "4.2 Equilibrium", kind: "Definition",
-    q: "State the principle of moments.",
-    a: "For a system in equilibrium, the sum of the <strong>clockwise</strong> moments about any point is equal to the sum of the <strong>anticlockwise</strong> moments about the <strong>same point</strong>."
+    id: "42-pom", topic: "4.2", topicName: "4.2 Equilibrium · 平衡", kind: "Definition",
+    q: "State the principle of moments.<span class='cn'>陈述力矩原理。</span>",
+    a: "For a system in equilibrium, the sum of the <strong>clockwise</strong> moments about any point is equal to the sum of the <strong>anticlockwise</strong> moments about the <strong>same point</strong>.<span class='cn'>对于处于平衡的系统，对任意一点的<strong>顺时针</strong>力矩之和，等于对<strong>同一点</strong>的<strong>逆时针</strong>力矩之和。</span>"
   },
   {
-    id: "42-eq-cond", topic: "4.2", topicName: "4.2 Equilibrium", kind: "Definition",
-    q: "What are the two conditions for a system to be in equilibrium?",
-    a: "There is <strong>no resultant force</strong> and <strong>no resultant torque</strong> (moment).<p class='hint'>Translational: Σ<i>F<sub>x</sub></i> = 0 and Σ<i>F<sub>y</sub></i> = 0. Rotational: Σ moments = 0 about any point. Both are required.</p>"
+    id: "42-eq-cond", topic: "4.2", topicName: "4.2 Equilibrium · 平衡", kind: "Definition",
+    q: "What are the two conditions for a system to be in equilibrium?<span class='cn'>系统处于平衡的两个条件是什么？</span>",
+    a: "There is <strong>no resultant force</strong> and <strong>no resultant torque</strong> (moment).<span class='cn'>即<strong>合力为零</strong>且<strong>合力矩为零</strong>。</span><p class='hint'>Translational: Σ<i>F<sub>x</sub></i> = 0 and Σ<i>F<sub>y</sub></i> = 0. Rotational: Σ moments = 0 about any point. Both are required.</p><p class='hint cn'>平动：ΣF<sub>x</sub> = 0 且 ΣF<sub>y</sub> = 0。转动：对任意点 Σ 力矩 = 0。两者都必须满足。</p>"
   },
   {
-    id: "42-couple-not", topic: "4.2", topicName: "4.2 Equilibrium", kind: "Fact",
-    q: "A couple has zero resultant force. Is a body acted on only by a couple in equilibrium? Why?",
-    a: "<strong>No.</strong> There is no resultant force, but there <em>is</em> a resultant torque. The body rotates (angular acceleration). Equilibrium needs both conditions."
+    id: "42-couple-not", topic: "4.2", topicName: "4.2 Equilibrium · 平衡", kind: "Fact",
+    q: "A couple has zero resultant force. Is a body acted on only by a couple in equilibrium? Why?<span class='cn'>力偶的合力为零。仅受力偶作用的物体处于平衡吗？为什么？</span>",
+    a: "<strong>No.</strong> There is no resultant force, but there <em>is</em> a resultant torque. The body rotates (angular acceleration). Equilibrium needs both conditions.<span class='cn'><strong>不是。</strong>合力为零，但<em>存在</em>合力矩。物体转动（有角加速度）。平衡需要两个条件都满足。</span>"
   },
   {
-    id: "42-pivot-choice", topic: "4.2", topicName: "4.2 Equilibrium", kind: "Fact",
-    q: "When applying the principle of moments, which point should you take moments about?",
-    a: "Any point is valid. The useful choice is often a point on the line of action of an <strong>unknown force</strong> (for example a support reaction). That force then has zero moment and drops out, so you can find the other unknowns first."
+    id: "42-pivot-choice", topic: "4.2", topicName: "4.2 Equilibrium · 平衡", kind: "Fact",
+    q: "When applying the principle of moments, which point should you take moments about?<span class='cn'>运用力矩原理时，应对哪一点取矩？</span>",
+    a: "Any point is valid. The useful choice is often a point on the line of action of an <strong>unknown force</strong> (for example a support reaction). That force then has zero moment and drops out, so you can find the other unknowns first.<span class='cn'>任意点都成立。有用的选择往往是<strong>未知力</strong>（例如支点反力）作用线上的一点。该力的力矩便为零并被消去，从而先求出其他未知量。</span>"
   },
   {
-    id: "42-triangle", topic: "4.2", topicName: "4.2 Equilibrium", kind: "Definition",
-    q: "How is a vector triangle used for coplanar forces in equilibrium?",
-    a: "The three force vectors are drawn <strong>tip-to-tail</strong>. Because the resultant is zero, the triangle <strong>closes</strong> (the tip of the last vector meets the tail of the first).<p class='hint'>Each side is parallel to one force and proportional to its magnitude. Use a scale drawing, or the sine / cosine rule, to find unknowns. For more than three forces, use a closed polygon.</p>"
+    id: "42-triangle", topic: "4.2", topicName: "4.2 Equilibrium · 平衡", kind: "Definition",
+    q: "How is a vector triangle used for coplanar forces in equilibrium?<span class='cn'>如何用矢量三角形处理处于平衡的共面力？</span>",
+    a: "The three force vectors are drawn <strong>tip-to-tail</strong>. Because the resultant is zero, the triangle <strong>closes</strong> (the tip of the last vector meets the tail of the first).<span class='cn'>把三个力矢量<strong>首尾相接</strong>画出。因为合力为零，三角形<strong>闭合</strong>（最后一个矢量的箭头接到第一个的箭尾）。</span><p class='hint'>Each side is parallel to one force and proportional to its magnitude. Use a scale drawing, or the sine / cosine rule, to find unknowns. For more than three forces, use a closed polygon.</p><p class='hint cn'>每边与一个力平行，长度与其大小成正比。可用按比例作图或正弦/余弦定理求未知量。超过三个力时，用闭合多边形。</p>"
   },
   {
-    id: "42-how-draw", topic: "4.2", topicName: "4.2 Equilibrium", kind: "Fact",
-    q: "What must you show on a vector-triangle diagram in an exam?",
-    a: "Draw it as a <strong>separate</strong> diagram, not only the free-body arrows on the object. Each side should be parallel to its force, labelled with the force’s name and magnitude if known, with angles marked. If it is a scale drawing, state the scale."
+    id: "42-how-draw", topic: "4.2", topicName: "4.2 Equilibrium · 平衡", kind: "Fact",
+    q: "What must you show on a vector-triangle diagram in an exam?<span class='cn'>考试中画矢量三角形时必须标出什么？</span>",
+    a: "Draw it as a <strong>separate</strong> diagram, not only the free-body arrows on the object. Each side should be parallel to its force, labelled with the force’s name and magnitude if known, with angles marked. If it is a scale drawing, state the scale.<span class='cn'>要画成<strong>单独</strong>的图，不要只画物体上的受力箭头。每边应与对应的力平行，标上力的名称，已知则标大小，并标出角度。若是按比例作图，要写明比例尺。</span>"
   },
   {
-    id: "42-example", topic: "4.2", topicName: "4.2 Equilibrium", kind: "Apply",
-    q: "A uniform beam AB of length 2.4 m and weight 180 N rests on a pivot 0.80 m from A, with a load W at A, in equilibrium. Find W.",
-    a: "Weight acts at the centre, 0.40 m to the right of the pivot. Moments about the pivot:<p><span class='big'><i>W</i> × 0.80 = 180 × 0.40 = 72</span><span class='big'><i>W</i> = 90 N</span></p><p class='hint'>The upward reaction is then R = 90 + 180 = 270 N, from Σ<i>F</i> = 0.</p>"
+    id: "42-example", topic: "4.2", topicName: "4.2 Equilibrium · 平衡", kind: "Apply",
+    q: "A uniform beam AB of length 2.4 m and weight 180 N rests on a pivot 0.80 m from A, with a load W at A, in equilibrium. Find W.<span class='cn'>均匀梁 AB 长 2.4 m，重量 180 N，搁在距 A 0.80 m 的支点上，A 端有载荷 W，处于平衡。求 W。</span>",
+    a: "Weight acts at the centre, 0.40 m to the right of the pivot. Moments about the pivot:<p><span class='big'><i>W</i> × 0.80 = 180 × 0.40 = 72</span><span class='big'><i>W</i> = 90 N</span></p><span class='cn'>重量作用在中心，在支点右侧 0.40 m。对支点取矩：W × 0.80 = 180 × 0.40 = 72，故 W = 90 N。</span><p class='hint'>The upward reaction is then R = 90 + 180 = 270 N, from Σ<i>F</i> = 0.</p><p class='hint cn'>由 ΣF = 0，向上的反力为 R = 90 + 180 = 270 N。</p>"
   },
   {
-    id: "42-lamp", topic: "4.2", topicName: "4.2 Equilibrium", kind: "Apply",
-    q: "A 12.0 N lamp hangs from a horizontal string (tension T₁) and a string at 30° to the horizontal (T₂). Using a vector triangle, find T₁ and T₂.",
-    a: "The forces form a closed right-angled triangle.<span class='big'><i>T</i><sub>2</sub> = 12.0 / sin 30° = 24.0 N</span><span class='big'><i>T</i><sub>1</sub> = 24.0 × cos 30° = 20.8 N</span><p class='hint'>The vertical component of T₂ supports the weight: T₂ sin 30° = 12.0 N. The horizontal component of T₂ equals T₁.</p>"
+    id: "42-lamp", topic: "4.2", topicName: "4.2 Equilibrium · 平衡", kind: "Apply",
+    q: "A 12.0 N lamp hangs from a horizontal string (tension T₁) and a string at 30° to the horizontal (T₂). Using a vector triangle, find T₁ and T₂.<span class='cn'>一个 12.0 N 的灯由水平绳（张力 T₁）和与水平成 30° 的绳（T₂）悬挂。用矢量三角形求 T₁ 和 T₂。</span>",
+    a: "The forces form a closed right-angled triangle.<span class='big'><i>T</i><sub>2</sub> = 12.0 / sin 30° = 24.0 N</span><span class='big'><i>T</i><sub>1</sub> = 24.0 × cos 30° = 20.8 N</span><span class='cn'>这些力构成闭合的直角三角形。T₂ = 12.0 / sin 30° = 24.0 N，T₁ = 24.0 × cos 30° = 20.8 N。</span><p class='hint'>The vertical component of T₂ supports the weight: T₂ sin 30° = 12.0 N. The horizontal component of T₂ equals T₁.</p><p class='hint cn'>T₂ 的竖直分量支撑重量：T₂ sin 30° = 12.0 N。T₂ 的水平分量等于 T₁。</p>"
   },
 
   /* ---- 5.1 ---- */
   {
-    id: "51-work-def", topic: "5.1", topicName: "5.1 Energy conservation", kind: "Definition",
-    q: "Define work done by a force.",
-    a: "The product of the force and the displacement <strong>in the direction of the force</strong>."
+    id: "51-work-def", topic: "5.1", topicName: "5.1 Energy conservation · 能量守恒", kind: "Definition",
+    q: "Define work done by a force.<span class='cn'>写出力所做的功的定义。</span>",
+    a: "The product of the force and the displacement <strong>in the direction of the force</strong>.<span class='cn'>等于该力与<strong>沿力的方向的位移</strong>的乘积。</span>"
   },
   {
-    id: "51-work-eq", topic: "5.1", topicName: "5.1 Energy conservation", kind: "Equation",
-    q: "Write the equation for work done, and state the unit. What is θ?",
-    a: "<span class='big'><i>W</i> = <i>F s</i> cos&nbsp;<i>θ</i></span><p class='hint'>Unit: the joule (J). 1 J = 1 N&nbsp;m. <i>θ</i> is the angle between the force and the displacement. Work is a scalar.</p>"
+    id: "51-work-eq", topic: "5.1", topicName: "5.1 Energy conservation · 能量守恒", kind: "Equation",
+    q: "Write the equation for work done, and state the unit. What is θ?<span class='cn'>写出功的公式并给出单位。θ 是什么？</span>",
+    a: "<span class='big'><i>W</i> = <i>F s</i> cos&nbsp;<i>θ</i></span><span class='cn'>W = F s cos θ。</span><p class='hint'>Unit: the joule (J). 1 J = 1 N&nbsp;m. <i>θ</i> is the angle between the force and the displacement. Work is a scalar.</p><p class='hint cn'>单位：焦耳（J）。1 J = 1 N m。θ 是力与位移之间的夹角。功是标量。</p>"
   },
   {
-    id: "51-work-zero", topic: "5.1", topicName: "5.1 Energy conservation", kind: "Fact",
-    q: "When is the work done by a force equal to zero, even though the object is moving?",
-    a: "When the force is <strong>perpendicular</strong> to the displacement: <i>θ</i> = 90°, so cos 90° = 0.<p class='hint'>Examples: the normal contact force on a level surface; the centripetal force in uniform circular motion (the force is radial, the displacement is tangential).</p>"
+    id: "51-work-zero", topic: "5.1", topicName: "5.1 Energy conservation · 能量守恒", kind: "Fact",
+    q: "When is the work done by a force equal to zero, even though the object is moving?<span class='cn'>即使物体在运动，力做的功何时仍等于零？</span>",
+    a: "When the force is <strong>perpendicular</strong> to the displacement: <i>θ</i> = 90°, so cos 90° = 0.<span class='cn'>当力与位移<strong>垂直</strong>：θ = 90°，故 cos 90° = 0。</span><p class='hint'>Examples: the normal contact force on a level surface; the centripetal force in uniform circular motion (the force is radial, the displacement is tangential).</p><p class='hint cn'>例子：水平面上的支持力；匀速圆周运动中的向心力（力沿径向，位移沿切向）。</p>"
   },
   {
-    id: "51-work-ex", topic: "5.1", topicName: "5.1 Energy conservation", kind: "Apply",
-    q: "A 50 N force pulls a crate 6.0 m along a floor, at 25° to the horizontal. How much work does this force do?",
-    a: "<span class='big'><i>W</i> = 50 × 6.0 × cos 25° = 272 J</span><p class='hint'>3 significant figures. Only the horizontal component F cos 25° does work along the displacement.</p>"
+    id: "51-work-ex", topic: "5.1", topicName: "5.1 Energy conservation · 能量守恒", kind: "Apply",
+    q: "A 50 N force pulls a crate 6.0 m along a floor, at 25° to the horizontal. How much work does this force do?<span class='cn'>用 50 N、与水平成 25° 的力，把木箱沿地面拉动 6.0 m。该力做了多少功？</span>",
+    a: "<span class='big'><i>W</i> = 50 × 6.0 × cos 25° = 272 J</span><span class='cn'>W = 50 × 6.0 × cos 25° = 272 J。</span><p class='hint'>3 significant figures. Only the horizontal component F cos 25° does work along the displacement.</p><p class='hint cn'>三位有效数字。只有水平分量 F cos 25° 沿位移做功。</p>"
   },
   {
-    id: "51-coe", topic: "5.1", topicName: "5.1 Energy conservation", kind: "Definition",
-    q: "State the principle of conservation of energy.",
-    a: "Energy cannot be created or destroyed. It can be transferred from one form to another, but the <strong>total energy of a closed system remains constant</strong>."
+    id: "51-coe", topic: "5.1", topicName: "5.1 Energy conservation · 能量守恒", kind: "Definition",
+    q: "State the principle of conservation of energy.<span class='cn'>陈述能量守恒定律。</span>",
+    a: "Energy cannot be created or destroyed. It can be transferred from one form to another, but the <strong>total energy of a closed system remains constant</strong>.<span class='cn'>能量不能被创造或消灭。它可以从一种形式转移为另一种形式，但<strong>封闭系统的总能量保持不变</strong>。</span>"
   },
   {
-    id: "51-thermal", topic: "5.1", topicName: "5.1 Energy conservation", kind: "Fact",
-    q: "If friction or air resistance acts, what happens to the “missing” mechanical energy?",
-    a: "It is transferred to <strong>thermal energy</strong> (internal energy of the object and the surroundings). The total energy is still conserved; it is no longer all mechanical.<p class='hint'>So mgΔh is then greater than ½mv², and the difference is the thermal energy transferred.</p>"
+    id: "51-thermal", topic: "5.1", topicName: "5.1 Energy conservation · 能量守恒", kind: "Fact",
+    q: "If friction or air resistance acts, what happens to the “missing” mechanical energy?<span class='cn'>若有摩擦或空气阻力，“缺少”的机械能到哪里去了？</span>",
+    a: "It is transferred to <strong>thermal energy</strong> (internal energy of the object and the surroundings). The total energy is still conserved; it is no longer all mechanical.<span class='cn'>它转移为<strong>热能</strong>（物体及周围的内能）。总能量仍然守恒，只是不再全部是机械能。</span><p class='hint'>So mgΔh is then greater than ½mv², and the difference is the thermal energy transferred.</p><p class='hint cn'>因此 mgΔh 会大于 ½mv²，差值就是转移的热能。</p>"
   },
   {
-    id: "51-eff-def", topic: "5.1", topicName: "5.1 Energy conservation", kind: "Definition",
-    q: "Define the efficiency of a system.",
-    a: "The ratio of <strong>useful energy output</strong> from the system to the <strong>total energy input</strong>. The same ratio can be written as useful power output / total power input."
+    id: "51-eff-def", topic: "5.1", topicName: "5.1 Energy conservation · 能量守恒", kind: "Definition",
+    q: "Define the efficiency of a system.<span class='cn'>写出系统效率的定义。</span>",
+    a: "The ratio of <strong>useful energy output</strong> from the system to the <strong>total energy input</strong>. The same ratio can be written as useful power output / total power input.<span class='cn'>即系统的<strong>有用能量输出</strong>与<strong>总能量输入</strong>之比。同一比值也可写成：有用功率输出 / 总功率输入。</span>"
   },
   {
-    id: "51-eff-eq", topic: "5.1", topicName: "5.1 Energy conservation", kind: "Equation",
-    q: "Write the two equivalent expressions for efficiency. Must the answer be a percentage?",
-    a: "<span class='big'>efficiency = useful energy output / total energy input</span><span class='big'>= useful power output / total power input</span><p class='hint'>It is a ratio between 0 and 1. You may write it as a percentage (× 100%) if the question asks for one, or if that is clearly expected. Real machines always have efficiency &lt; 1.</p>"
+    id: "51-eff-eq", topic: "5.1", topicName: "5.1 Energy conservation · 能量守恒", kind: "Equation",
+    q: "Write the two equivalent expressions for efficiency. Must the answer be a percentage?<span class='cn'>写出效率的两个等价表达式。答案必须是百分数吗？</span>",
+    a: "<span class='big'>efficiency = useful energy output / total energy input</span><span class='big'>= useful power output / total power input</span><span class='cn'>效率 = 有用能量输出 / 总能量输入 = 有用功率输出 / 总功率输入。</span><p class='hint'>It is a ratio between 0 and 1. You may write it as a percentage (× 100%) if the question asks for one, or if that is clearly expected. Real machines always have efficiency &lt; 1.</p><p class='hint cn'>它是 0 到 1 之间的比值。若题目要求百分数，或明显应当用百分数，再乘以 100%。实际机器的效率总是小于 1。</p>"
   },
   {
-    id: "51-eff-ex", topic: "5.1", topicName: "5.1 Energy conservation", kind: "Apply",
-    q: "A motor has input power 400 W and useful output power 280 W. What is its efficiency?",
-    a: "<span class='big'>280 / 400 = 0.70</span> (or 70%)."
+    id: "51-eff-ex", topic: "5.1", topicName: "5.1 Energy conservation · 能量守恒", kind: "Apply",
+    q: "A motor has input power 400 W and useful output power 280 W. What is its efficiency?<span class='cn'>一台电动机输入功率 400 W，有用输出功率 280 W。它的效率是多少？</span>",
+    a: "<span class='big'>280 / 400 = 0.70</span> (or 70%).<span class='cn'>280 / 400 = 0.70（或 70%）。</span>"
   },
   {
-    id: "51-power-def", topic: "5.1", topicName: "5.1 Energy conservation", kind: "Definition",
-    q: "Define power.",
-    a: "Work done <strong>per unit time</strong> — the rate of doing work, or the rate of energy transfer."
+    id: "51-power-def", topic: "5.1", topicName: "5.1 Energy conservation · 能量守恒", kind: "Definition",
+    q: "Define power.<span class='cn'>写出功率的定义。</span>",
+    a: "Work done <strong>per unit time</strong> — the rate of doing work, or the rate of energy transfer.<span class='cn'>即<strong>单位时间</strong>内做的功 — 做功的快慢，或能量转移的快慢。</span>"
   },
   {
-    id: "51-power-eq", topic: "5.1", topicName: "5.1 Energy conservation", kind: "Equation",
-    q: "Write the defining equation for power, and state its unit.",
-    a: "<span class='big'><i>P</i> = <i>W</i> / <i>t</i></span><p class='hint'>Unit: the watt (W). 1 W = 1 J s<sup>−1</sup>.</p>"
+    id: "51-power-eq", topic: "5.1", topicName: "5.1 Energy conservation · 能量守恒", kind: "Equation",
+    q: "Write the defining equation for power, and state its unit.<span class='cn'>写出功率的定义式，并给出单位。</span>",
+    a: "<span class='big'><i>P</i> = <i>W</i> / <i>t</i></span><span class='cn'>P = W / t。</span><p class='hint'>Unit: the watt (W). 1 W = 1 J s<sup>−1</sup>.</p><p class='hint cn'>单位：瓦特（W）。1 W = 1 J s⁻¹。</p>"
   },
   {
-    id: "51-fv-derive", topic: "5.1", topicName: "5.1 Energy conservation", kind: "Derivation",
-    q: "Derive P = Fv from the definition of power.",
-    a: "For a constant force <i>F</i> moving an object a distance <i>s</i> in the direction of the force, in time <i>t</i>:<span class='big'><i>P</i> = <i>W</i>/<i>t</i> = (<i>F s</i>)/<i>t</i> = <i>F</i>(<i>s</i>/<i>t</i>) = <i>F v</i></span><p class='hint'>If <i>F</i> and <i>v</i> are at an angle <i>θ</i>, then <i>P</i> = <i>F v</i> cos&nbsp;<i>θ</i>. The syllabus requires this derivation.</p>"
+    id: "51-fv-derive", topic: "5.1", topicName: "5.1 Energy conservation · 能量守恒", kind: "Derivation",
+    q: "Derive P = Fv from the definition of power.<span class='cn'>由功率的定义推导 P = Fv。</span>",
+    a: "For a constant force <i>F</i> moving an object a distance <i>s</i> in the direction of the force, in time <i>t</i>:<span class='big'><i>P</i> = <i>W</i>/<i>t</i> = (<i>F s</i>)/<i>t</i> = <i>F</i>(<i>s</i>/<i>t</i>) = <i>F v</i></span><span class='cn'>恒力 F 在时间 t 内使物体沿力的方向移动距离 s：P = W/t = (F s)/t = F(s/t) = F v。</span><p class='hint'>If <i>F</i> and <i>v</i> are at an angle <i>θ</i>, then <i>P</i> = <i>F v</i> cos&nbsp;<i>θ</i>. The syllabus requires this derivation.</p><p class='hint cn'>若 F 与 v 成夹角 θ，则 P = F v cos θ。考纲要求掌握这一推导。</p>"
   },
   {
-    id: "51-fv-ex", topic: "5.1", topicName: "5.1 Energy conservation", kind: "Apply",
-    q: "A boat’s engine provides a driving force of 1.5 kN at a constant speed of 8.0 m s⁻¹. What is the output power?",
-    a: "<span class='big'><i>P</i> = <i>F v</i> = 1.5 × 10<sup>3</sup> × 8.0 = 1.2 × 10<sup>4</sup> W</span> (12 kW).<p class='hint'>At constant speed the driving force equals the drag. Convert kN to N before multiplying.</p>"
+    id: "51-fv-ex", topic: "5.1", topicName: "5.1 Energy conservation · 能量守恒", kind: "Apply",
+    q: "A boat’s engine provides a driving force of 1.5 kN at a constant speed of 8.0 m s⁻¹. What is the output power?<span class='cn'>一艘船的发动机提供 1.5 kN 的驱动力，船以 8.0 m s⁻¹ 匀速行驶。输出功率是多少？</span>",
+    a: "<span class='big'><i>P</i> = <i>F v</i> = 1.5 × 10<sup>3</sup> × 8.0 = 1.2 × 10<sup>4</sup> W</span> (12 kW).<span class='cn'>P = F v = 1.5 × 10³ × 8.0 = 1.2 × 10⁴ W（12 kW）。</span><p class='hint'>At constant speed the driving force equals the drag. Convert kN to N before multiplying.</p><p class='hint cn'>匀速时驱动力等于阻力。相乘前要把 kN 换算成 N。</p>"
   },
 
   /* ---- 5.2 ---- */
   {
-    id: "52-ep-eq", topic: "5.2", topicName: "5.2 Eₚ and Eₖ", kind: "Equation",
-    q: "Write the formula for a change in gravitational potential energy near the Earth’s surface.",
-    a: "<span class='big'>Δ<i>E</i><sub>P</sub> = <i>mg</i>Δ<i>h</i></span><p class='hint'>Unit: J. Use <i>g</i> = 9.81 m s<sup>−2</sup> unless the question gives another value. Valid only in a uniform gravitational field.</p>"
+    id: "52-ep-eq", topic: "5.2", topicName: "5.2 Eₚ and Eₖ · 势能与动能", kind: "Equation",
+    q: "Write the formula for a change in gravitational potential energy near the Earth’s surface.<span class='cn'>写出地球表面附近重力势能变化的公式。</span>",
+    a: "<span class='big'>Δ<i>E</i><sub>P</sub> = <i>mg</i>Δ<i>h</i></span><span class='cn'>ΔE<sub>P</sub> = mgΔh。</span><p class='hint'>Unit: J. Use <i>g</i> = 9.81 m s<sup>−2</sup> unless the question gives another value. Valid only in a uniform gravitational field.</p><p class='hint cn'>单位：J。除非题目另给数值，否则取 g = 9.81 m s⁻²。仅在匀强重力场中成立。</p>"
   },
   {
-    id: "52-ep-derive", topic: "5.2", topicName: "5.2 Eₚ and Eₖ", kind: "Derivation",
-    q: "Derive ΔE<sub>P</sub> = mgΔh from W = Fs.",
-    a: "To raise a mass <i>m</i> slowly through a vertical height Δ<i>h</i> at constant speed, the applied force equals the weight <i>mg</i>.<span class='big'><i>W</i> = <i>F s</i> = <i>mg</i> × Δ<i>h</i></span>This work is stored as gravitational potential energy, so <span class='big'>Δ<i>E</i><sub>P</sub> = <i>mg</i>Δ<i>h</i></span><p class='hint'>The syllabus requires this derivation. It applies only in a uniform field, where <i>g</i> is constant.</p>"
+    id: "52-ep-derive", topic: "5.2", topicName: "5.2 Eₚ and Eₖ · 势能与动能", kind: "Derivation",
+    q: "Derive ΔE<sub>P</sub> = mgΔh from W = Fs.<span class='cn'>由 W = Fs 推导 ΔE<sub>P</sub> = mgΔh。</span>",
+    a: "To raise a mass <i>m</i> slowly through a vertical height Δ<i>h</i> at constant speed, the applied force equals the weight <i>mg</i>.<span class='big'><i>W</i> = <i>F s</i> = <i>mg</i> × Δ<i>h</i></span>This work is stored as gravitational potential energy, so <span class='big'>Δ<i>E</i><sub>P</sub> = <i>mg</i>Δ<i>h</i></span><span class='cn'>以恒定速率升高时，施加的力等于重量 mg，该力做的功 W = mgΔh 被储存为重力势能。</span><p class='hint'>The syllabus requires this derivation. It applies only in a uniform field, where <i>g</i> is constant.</p><p class='hint cn'>考纲要求掌握这一推导。它只在 g 为常量的匀强场中成立。</p>"
   },
   {
-    id: "52-uniform", topic: "5.2", topicName: "5.2 Eₚ and Eₖ", kind: "Fact",
-    q: "Why is ΔE<sub>P</sub> = mgΔh valid only in a uniform gravitational field?",
-    a: "The derivation uses a constant force <i>mg</i>. That is only true where <i>g</i> itself is constant — near the Earth’s surface. Over large distances from the Earth, <i>g</i> changes and a different (A Level) formula is needed."
+    id: "52-uniform", topic: "5.2", topicName: "5.2 Eₚ and Eₖ · 势能与动能", kind: "Fact",
+    q: "Why is ΔE<sub>P</sub> = mgΔh valid only in a uniform gravitational field?<span class='cn'>为什么 ΔE<sub>P</sub> = mgΔh 只在匀强重力场中成立？</span>",
+    a: "The derivation uses a constant force <i>mg</i>. That is only true where <i>g</i> itself is constant — near the Earth’s surface. Over large distances from the Earth, <i>g</i> changes and a different (A Level) formula is needed.<span class='cn'>推导中用了恒力 mg。这只在 g 本身为常量时成立 — 即地球表面附近。远离地球时 g 会变化，需要用另一个（A Level）公式。</span>"
   },
   {
-    id: "52-ek-eq", topic: "5.2", topicName: "5.2 Eₚ and Eₖ", kind: "Equation",
-    q: "Write the formula for kinetic energy, and the official syllabus symbol.",
-    a: "<span class='big'><i>E</i><sub>K</sub> = ½ <i>m v</i><sup>2</sup></span><p class='hint'>Unit: J. The syllabus symbol is <i>E</i><sub>K</sub> (and <i>E</i><sub>P</sub> for potential energy). This formula is not on the data sheet — you must recall it.</p>"
+    id: "52-ek-eq", topic: "5.2", topicName: "5.2 Eₚ and Eₖ · 势能与动能", kind: "Equation",
+    q: "Write the formula for kinetic energy, and the official syllabus symbol.<span class='cn'>写出动能的公式，以及考纲中的正式符号。</span>",
+    a: "<span class='big'><i>E</i><sub>K</sub> = ½ <i>m v</i><sup>2</sup></span><span class='cn'>E<sub>K</sub> = ½ m v²。</span><p class='hint'>Unit: J. The syllabus symbol is <i>E</i><sub>K</sub> (and <i>E</i><sub>P</sub> for potential energy). This formula is not on the data sheet — you must recall it.</p><p class='hint cn'>单位：J。考纲符号是 E<sub>K</sub>（势能是 E<sub>P</sub>）。这个公式不在数据表上 — 必须自己记住。</p>"
   },
   {
-    id: "52-ek-derive", topic: "5.2", topicName: "5.2 Eₚ and Eₖ", kind: "Derivation",
-    q: "Derive E<sub>K</sub> = ½mv² using the equations of motion.",
-    a: "An object of mass <i>m</i> starts from rest and is accelerated by a constant force <i>F</i> through displacement <i>s</i>, reaching speed <i>v</i>.<br><i>F</i> = <i>ma</i>. From <i>v</i><sup>2</sup> = <i>u</i><sup>2</sup> + 2<i>as</i> with <i>u</i> = 0, <i>s</i> = <i>v</i><sup>2</sup> / 2<i>a</i>.<span class='big'><i>W</i> = <i>F s</i> = (<i>ma</i>)(<i>v</i><sup>2</sup>/2<i>a</i>) = ½ <i>m v</i><sup>2</sup></span>This work is the kinetic energy gained, so <i>E</i><sub>K</sub> = ½<i>mv</i><sup>2</sup>.<p class='hint'>If the initial speed is <i>u</i>, the same steps give <i>W</i> = ½<i>mv</i><sup>2</sup> − ½<i>mu</i><sup>2</sup> = Δ<i>E</i><sub>K</sub>.</p>"
+    id: "52-ek-derive", topic: "5.2", topicName: "5.2 Eₚ and Eₖ · 势能与动能", kind: "Derivation",
+    q: "Derive E<sub>K</sub> = ½mv² using the equations of motion.<span class='cn'>用运动方程推导 E<sub>K</sub> = ½mv²。</span>",
+    a: "An object of mass <i>m</i> starts from rest and is accelerated by a constant force <i>F</i> through displacement <i>s</i>, reaching speed <i>v</i>.<br><i>F</i> = <i>ma</i>. From <i>v</i><sup>2</sup> = <i>u</i><sup>2</sup> + 2<i>as</i> with <i>u</i> = 0, <i>s</i> = <i>v</i><sup>2</sup> / 2<i>a</i>.<span class='big'><i>W</i> = <i>F s</i> = (<i>ma</i>)(<i>v</i><sup>2</sup>/2<i>a</i>) = ½ <i>m v</i><sup>2</sup></span>This work is the kinetic energy gained, so <i>E</i><sub>K</sub> = ½<i>mv</i><sup>2</sup>.<span class='cn'>由 F = ma 和运动方程 v² = 2as，得到 W = F s = ½mv²，这份功就是获得的动能。</span><p class='hint'>If the initial speed is <i>u</i>, the same steps give <i>W</i> = ½<i>mv</i><sup>2</sup> − ½<i>mu</i><sup>2</sup> = Δ<i>E</i><sub>K</sub>.</p><p class='hint cn'>若初速率为 u，同样步骤得到 W = ½mv² − ½mu² = ΔE<sub>K</sub>。</p>"
   },
   {
-    id: "52-work-energy", topic: "5.2", topicName: "5.2 Eₚ and Eₖ", kind: "Fact",
-    q: "What is the relationship between work done by the resultant force and kinetic energy?",
-    a: "The work done by the <strong>resultant force</strong> is equal to the <strong>change in kinetic energy</strong>:<span class='big'><i>W</i> = Δ<i>E</i><sub>K</sub> = ½<i>m v</i><sup>2</sup> − ½<i>m u</i><sup>2</sup></span>"
+    id: "52-work-energy", topic: "5.2", topicName: "5.2 Eₚ and Eₖ · 势能与动能", kind: "Fact",
+    q: "What is the relationship between work done by the resultant force and kinetic energy?<span class='cn'>合力做的功与动能有什么关系？</span>",
+    a: "The work done by the <strong>resultant force</strong> is equal to the <strong>change in kinetic energy</strong>:<span class='big'><i>W</i> = Δ<i>E</i><sub>K</sub> = ½<i>m v</i><sup>2</sup> − ½<i>m u</i><sup>2</sup></span><span class='cn'><strong>合力</strong>做的功等于<strong>动能的变化</strong>：W = ΔE<sub>K</sub> = ½mv² − ½mu²。</span>"
   },
   {
-    id: "52-swap", topic: "5.2", topicName: "5.2 Eₚ and Eₖ", kind: "Fact",
-    q: "An object falls through height Δh from rest, with no air resistance. Write the energy equation and the resulting speed.",
-    a: "Loss in <i>E</i><sub>P</sub> = gain in <i>E</i><sub>K</sub>:<span class='big'><i>mg</i>Δ<i>h</i> = ½ <i>m v</i><sup>2</sup></span><span class='big'><i>v</i> = √(2<i>g</i>Δ<i>h</i>)</span><p class='hint'>The mass cancels. If air resistance acts, the landing speed is smaller, and mgΔh = ½mv² + thermal energy.</p>"
+    id: "52-swap", topic: "5.2", topicName: "5.2 Eₚ and Eₖ · 势能与动能", kind: "Fact",
+    q: "An object falls through height Δh from rest, with no air resistance. Write the energy equation and the resulting speed.<span class='cn'>物体从静止下落高度 Δh，没有空气阻力。写出能量方程以及得到的速率。</span>",
+    a: "Loss in <i>E</i><sub>P</sub> = gain in <i>E</i><sub>K</sub>:<span class='big'><i>mg</i>Δ<i>h</i> = ½ <i>m v</i><sup>2</sup></span><span class='big'><i>v</i> = √(2<i>g</i>Δ<i>h</i>)</span><span class='cn'>E<sub>P</sub> 的减少 = E<sub>K</sub> 的增加：mgΔh = ½ m v²，故 v = √(2gΔh)。</span><p class='hint'>The mass cancels. If air resistance acts, the landing speed is smaller, and mgΔh = ½mv² + thermal energy.</p><p class='hint cn'>质量会约去。若有空气阻力，落地速率更小，且 mgΔh = ½mv² + 热能。</p>"
   },
   {
-    id: "52-ep-ex", topic: "5.2", topicName: "5.2 Eₚ and Eₖ", kind: "Apply",
-    q: "A 55 kg student climbs a vertical height of 12 m. Calculate the gain in gravitational potential energy. g = 9.81 m s⁻².",
-    a: "<span class='big'>Δ<i>E</i><sub>P</sub> = 55 × 9.81 × 12 = 6.47 × 10<sup>3</sup> J</span>"
+    id: "52-ep-ex", topic: "5.2", topicName: "5.2 Eₚ and Eₖ · 势能与动能", kind: "Apply",
+    q: "A 55 kg student climbs a vertical height of 12 m. Calculate the gain in gravitational potential energy. g = 9.81 m s⁻².<span class='cn'>一名 55 kg 的学生竖直攀升 12 m。求重力势能的增加。g = 9.81 m s⁻²。</span>",
+    a: "<span class='big'>Δ<i>E</i><sub>P</sub> = 55 × 9.81 × 12 = 6.47 × 10<sup>3</sup> J</span><span class='cn'>ΔE<sub>P</sub> = 55 × 9.81 × 12 = 6.47 × 10³ J。</span>"
   },
   {
-    id: "52-fall-ex", topic: "5.2", topicName: "5.2 Eₚ and Eₖ", kind: "Apply",
-    q: "A 0.15 kg apple falls 3.0 m from rest and lands at 6.0 m s⁻¹. How much energy is transferred to thermal energy? g = 9.81 m s⁻².",
-    a: "Loss in <i>E</i><sub>P</sub> = 0.15 × 9.81 × 3.0 = 4.41 J.<br>Gain in <i>E</i><sub>K</sub> = ½ × 0.15 × 6.0<sup>2</sup> = 2.70 J.<span class='big'>thermal energy = 4.41 − 2.70 = 1.71 J</span><p class='hint'>Without resistance the speed would have been √(2gΔh) = 7.67 m s⁻¹.</p>"
+    id: "52-fall-ex", topic: "5.2", topicName: "5.2 Eₚ and Eₖ · 势能与动能", kind: "Apply",
+    q: "A 0.15 kg apple falls 3.0 m from rest and lands at 6.0 m s⁻¹. How much energy is transferred to thermal energy? g = 9.81 m s⁻².<span class='cn'>一个 0.15 kg 的苹果从静止下落 3.0 m，以 6.0 m s⁻¹ 落地。有多少能量转移为热能？g = 9.81 m s⁻²。</span>",
+    a: "Loss in <i>E</i><sub>P</sub> = 0.15 × 9.81 × 3.0 = 4.41 J.<br>Gain in <i>E</i><sub>K</sub> = ½ × 0.15 × 6.0<sup>2</sup> = 2.70 J.<span class='big'>thermal energy = 4.41 − 2.70 = 1.71 J</span><span class='cn'>E<sub>P</sub> 减少 4.41 J，E<sub>K</sub> 增加 2.70 J，故热能为 4.41 − 2.70 = 1.71 J。</span><p class='hint'>Without resistance the speed would have been √(2gΔh) = 7.67 m s⁻¹.</p><p class='hint cn'>若无阻力，速率应为 √(2gΔh) = 7.67 m s⁻¹。</p>"
   },
   {
-    id: "52-datasheet", topic: "5.2", topicName: "5.2 Eₚ and Eₖ", kind: "Fact",
-    q: "Which of the Topic 4 and Topic 5 formulae appear on the AS exam data sheet?",
-    a: "<strong>None of them.</strong> Moment, torque, work, efficiency, <i>P</i> = <i>W</i>/<i>t</i>, <i>P</i> = <i>Fv</i>, Δ<i>E</i><sub>P</sub> = <i>mg</i>Δ<i>h</i> and <i>E</i><sub>K</sub> = ½<i>mv</i><sup>2</sup> must all be <strong>recalled</strong>. The data sheet does give <i>g</i> = 9.81 m s<sup>−2</sup>."
+    id: "52-datasheet", topic: "5.2", topicName: "5.2 Eₚ and Eₖ · 势能与动能", kind: "Fact",
+    q: "Which of the Topic 4 and Topic 5 formulae appear on the AS exam data sheet?<span class='cn'>主题 4 和主题 5 的哪些公式会出现在 AS 考试数据表上？</span>",
+    a: "<strong>None of them.</strong> Moment, torque, work, efficiency, <i>P</i> = <i>W</i>/<i>t</i>, <i>P</i> = <i>Fv</i>, Δ<i>E</i><sub>P</sub> = <i>mg</i>Δ<i>h</i> and <i>E</i><sub>K</sub> = ½<i>mv</i><sup>2</sup> must all be <strong>recalled</strong>. The data sheet does give <i>g</i> = 9.81 m s<sup>−2</sup>.<span class='cn'><strong>一个都没有。</strong>力矩、力偶矩、功、效率、P = W/t、P = Fv、ΔE<sub>P</sub> = mgΔh 和 E<sub>K</sub> = ½mv² 都必须<strong>自己记住</strong>。数据表会给出 g = 9.81 m s⁻²。</span>"
   }
 ];
 
+const KIND = {
+  Definition: "Definition · 定义",
+  Fact: "Fact · 要点",
+  Equation: "Equation · 公式",
+  Apply: "Apply · 应用",
+  Derivation: "Derivation · 推导"
+};
 const STORE = "cie9702-flash-v1";
 const TOPICS = [
-  { id: "all", label: "All topics" },
-  { id: "4.1", label: "4.1 Turning effects" },
-  { id: "4.2", label: "4.2 Equilibrium" },
-  { id: "5.1", label: "5.1 Work, efficiency, power" },
-  { id: "5.2", label: "5.2 Eₚ and Eₖ" }
+  { id: "all", label: "All topics · 全部" },
+  { id: "4.1", label: "4.1 Turning effects · 转动效应" },
+  { id: "4.2", label: "4.2 Equilibrium · 平衡" },
+  { id: "5.1", label: "5.1 Work, efficiency, power · 功、效率、功率" },
+  { id: "5.2", label: "5.2 Eₚ and Eₖ · 势能与动能" }
 ];
 
 let filter = "all";
@@ -1333,7 +1410,7 @@ function show() {
   const total = deck.length;
   const knownInDeck = deck.filter(id => known[id]).length;
 
-  document.getElementById("prog-text").textContent = knownInDeck + " known of " + total;
+  document.getElementById("prog-text").textContent = knownInDeck + " known of " + total + " · 已掌握 " + knownInDeck + " / " + total;
   document.getElementById("prog-bar").style.width = (total ? (100 * knownInDeck / total) : 0) + "%";
 
   if (index >= deck.length) {
@@ -1342,10 +1419,10 @@ function show() {
     done.style.display = "block";
     const missed = deck.filter(id => !known[id]).length;
     document.getElementById("done-msg").textContent = missed
-      ? ("You marked " + knownInDeck + " as known. " + missed + " still need another look.")
-      : ("You marked every card in this set as known. Nice work.");
+      ? ("You marked " + knownInDeck + " as known. " + missed + " still need another look.\n你已掌握 " + knownInDeck + " 张，还有 " + missed + " 张需要再看。")
+      : ("You marked every card in this set as known. Nice work.\n这一组你都掌握了，做得好。");
     document.getElementById("btn-restudy").style.display = missed ? "" : "none";
-    document.getElementById("prog-count").textContent = "done";
+    document.getElementById("prog-count").textContent = "done · 完成";
     return;
   }
 
@@ -1356,8 +1433,8 @@ function show() {
   const c = cardById(deck[index]);
   document.getElementById("front-tag").textContent = c.topicName;
   document.getElementById("back-tag").textContent = c.topicName;
-  document.getElementById("front-kind").textContent = c.kind;
-  document.getElementById("back-kind").textContent = c.kind;
+  document.getElementById("front-kind").textContent = KIND[c.kind] || c.kind;
+  document.getElementById("back-kind").textContent = KIND[c.kind] || c.kind;
   document.getElementById("front-q").innerHTML = "<span class=\"ainner\">" + c.q + "</span>";
   document.getElementById("back-a").innerHTML = "<span class=\"ainner\">" + c.a + "</span>";
   document.getElementById("flip").classList.toggle("is-flipped", flipped);
@@ -1365,7 +1442,7 @@ function show() {
   document.getElementById("btn-prev").disabled = index === 0;
   document.getElementById("btn-next").disabled = false;
   const knowBtn = document.getElementById("btn-know");
-  knowBtn.textContent = known[c.id] ? "Known ✓" : "I know this";
+  knowBtn.textContent = known[c.id] ? "Known ✓ 已会" : "I know this · 我会了";
 }
 
 function flip() {
