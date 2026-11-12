@@ -21,6 +21,3 @@ Bilingual (Chinese–English) interactive study notes and 43 flashcards. English
 
 Definitions follow the official syllabus wording. These energy and moment formulae are **not** on the exam data sheet and must be recalled.
 
-## License
-
-Released under the [MIT License](LICENSE).
