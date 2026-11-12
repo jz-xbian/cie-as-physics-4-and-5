@@ -358,9 +358,135 @@ figcaption .cn { margin-top: 0.4em; }
   .cn { color: #333 !important; }
 }
 
+
+/* Splash + JZX watermarks */
+body.splash-on { overflow: hidden; }
+.splash {
+  position: fixed; inset: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: center;
+  background:
+    radial-gradient(1100px 560px at 50% 38%, #f8f1e2 0%, transparent 62%),
+    radial-gradient(800px 420px at 92% 100%, #e4ecf3 0%, transparent 50%),
+    #efe8db;
+  transition: opacity .55s ease, visibility .55s ease;
+}
+.splash.is-out { opacity: 0; visibility: hidden; pointer-events: none; }
+.splash[hidden] { display: none !important; }
+.splash::before {
+  content: "JZX";
+  position: absolute; left: 50%; top: 46%;
+  transform: translate(-50%, -58%) rotate(-18deg);
+  font-family: var(--display);
+  font-size: clamp(10rem, 38vw, 22rem);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--blue);
+  opacity: 0.035;
+  pointer-events: none;
+  line-height: 1;
+  user-select: none;
+}
+.splash-inner { position: relative; text-align: center; padding: 2rem 1.5rem; }
+.splash-from {
+  font-family: var(--font);
+  font-size: clamp(0.82rem, 2vw, 1.05rem);
+  font-weight: 700;
+  letter-spacing: 0.62em;
+  color: var(--gold);
+  margin: 0 0 .45rem .62em;
+  text-transform: uppercase;
+}
+.splash-jzx {
+  font-family: var(--display);
+  font-size: clamp(5.2rem, 18vw, 9rem);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: var(--blue);
+  margin: 0;
+  line-height: 0.88;
+  text-transform: uppercase;
+}
+.splash-start {
+  appearance: none; display: inline-block;
+  margin-top: 2.4rem;
+  border: 1.5px solid var(--blue);
+  background: var(--blue);
+  color: #f6efe2;
+  font-family: var(--font);
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: 0.38em;
+  text-indent: 0.12em;
+  padding: 0.88rem 2.9rem 0.88rem 3.15rem;
+  border-radius: 999px;
+  cursor: pointer;
+  box-shadow: 0 0 0 3px #f3eee3, 0 0 0 5px #c9a227, 0 10px 28px rgba(21,58,92,.2);
+  transition: transform .15s ease, background .15s ease, box-shadow .15s ease;
+}
+.splash-start:hover, .splash-start:focus {
+  background: var(--blue-mid);
+  transform: translateY(-1px);
+  box-shadow: 0 14px 32px rgba(21,58,92,.26);
+}
+.splash-start:active { transform: translateY(0); }
+.splash-start:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 4px;
+}
+.hero, .topic { position: relative; overflow: hidden; }
+.wm {
+  position: absolute;
+  font-family: var(--display);
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--blue);
+  opacity: 0.11;
+  pointer-events: none;
+  user-select: none;
+  line-height: 1;
+  z-index: 0;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.wm-a { top: 1.05rem; right: 1.15rem; font-size: 3.15rem; transform: rotate(-17deg); }
+.wm-b { bottom: 0.5rem; left: 0.7rem; font-size: 1.85rem; transform: rotate(14deg); opacity: 0.1; }
+.wm-c { top: 1.15rem; right: 1.15rem; font-size: 3.2rem; transform: rotate(18deg); opacity: 0.1; }
+.wm-d { bottom: 0.5rem; right: 0.75rem; font-size: 2rem; transform: rotate(-11deg); opacity: 0.1; }
+.wm-e { top: 1.15rem; right: 1.05rem; font-size: 3.8rem; transform: rotate(9deg); opacity: 0.1; }
+.wm-f { bottom: 0.5rem; left: 0.7rem; font-size: 1.85rem; transform: rotate(-20deg); opacity: 0.1; }
+.wm-g { top: 1.2rem; right: 1.4rem; font-size: 3.4rem; transform: rotate(16deg); opacity: 0.1; }
+.wm-h { bottom: 0.5rem; right: 0.75rem; font-size: 1.9rem; transform: rotate(-8deg); opacity: 0.1; }
+.face::after {
+  content: "JZX";
+  position: absolute;
+  right: 1.2rem;
+  bottom: 2.45rem;
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 1.2rem;
+  letter-spacing: 0.14em;
+  color: var(--blue);
+  opacity: 0.16;
+  pointer-events: none;
+  user-select: none;
+  transform: rotate(-9deg);
+}
+@media print {
+  .splash, .wm, .face::after { display: none !important; }
+  body.splash-on { overflow: visible !important; }
+}
+
 </style>
 </head>
-<body data-view="notes">
+<body data-view="notes" class="splash-on">
+<div id="splash" class="splash" role="dialog" aria-modal="true" aria-label="FROM JZX">
+  <div class="splash-inner">
+    <p class="splash-from">FROM</p>
+    <p class="splash-jzx">JZX</p>
+    <button type="button" class="splash-start" id="splash-start">START</button>
+  </div>
+</div>
+
 <header class="top">
   <div class="brand">
     <div class="badge">9702</div>
@@ -377,6 +503,7 @@ figcaption .cn { margin-top: 0.4em; }
 <main class="wrap">
 <div id="view-notes">
   <div class="hero">
+  <span class="wm wm-a" aria-hidden="true">JZX</span>
     <p class="kicker">Cambridge International AS Level · 9702<span class="cn">剑桥国际 AS 等级</span></p>
     <h2>Turning effects, equilibrium, and work, energy &amp; power<span class="cn">转动效应、平衡，以及功、能量和功率</span></h2>
     <p>A concise teaching page for <strong>4.1 Turning effects of forces</strong>, <strong>4.2 Equilibrium of forces</strong>, and all of <strong>Topic 5 Work, energy and power</strong>, followed by interactive flashcards. Definitions and equations use the wording and symbols of the 2025–2027 syllabus. These energy and moment formulae are <em>not</em> printed on the exam data sheet — you must recall them.<span class="cn">本页简明讲解<strong>4.1 力的转动效应</strong>、<strong>4.2 力的平衡</strong>，以及整个<strong>主题 5 功、能量和功率</strong>，随后是互动抽认卡。定义和公式采用 2025–2027 考纲的措辞与符号。这些能量和力矩公式<strong>并不</strong>印在考试数据表上 — 必须自己记住。</span></p>
@@ -395,6 +522,8 @@ figcaption .cn { margin-top: 0.4em; }
 
   <!-- ===================== 4.1 ===================== -->
   <section class="topic" id="t41">
+  <span class="wm wm-a" aria-hidden="true">JZX</span>
+  <span class="wm wm-b" aria-hidden="true">JZX</span>
     <h2>4.1 Turning effects of forces<span class="cn">力的转动效应</span></h2>
     <div class="syllabus">
       You should be able to:<span class="cn">你应当能够：</span>
@@ -565,6 +694,8 @@ figcaption .cn { margin-top: 0.4em; }
 
   <!-- ===================== 4.2 ===================== -->
   <section class="topic" id="t42">
+  <span class="wm wm-c" aria-hidden="true">JZX</span>
+  <span class="wm wm-d" aria-hidden="true">JZX</span>
     <h2>4.2 Equilibrium of forces<span class="cn">力的平衡</span></h2>
     <div class="syllabus">
       You should be able to:<span class="cn">你应当能够：</span>
@@ -734,6 +865,8 @@ figcaption .cn { margin-top: 0.4em; }
   </section>
   <!-- ===================== TOPIC 5 ===================== -->
   <section class="topic" id="t5">
+  <span class="wm wm-e" aria-hidden="true">JZX</span>
+  <span class="wm wm-f" aria-hidden="true">JZX</span>
     <h2>5 Work, energy and power<span class="cn">功、能量和功率</span></h2>
     <p class="syllabus">The syllabus assumes you already know the forms of energy and energy transfers from IGCSE / O Level. Topic 5 is in two parts: <a href="#t51">5.1 Energy conservation</a> (work, conservation, efficiency, power) and <a href="#t52">5.2 Gravitational potential energy and kinetic energy</a>.<span class="cn">考纲假定你已从 IGCSE / O Level 掌握各种形式的能量及能量转移。主题 5 分两部分：<a href="#t51">5.1 能量守恒</a>（功、守恒、效率、功率）和 <a href="#t52">5.2 重力势能和动能</a>。</span></p>
 
@@ -1053,6 +1186,8 @@ figcaption .cn { margin-top: 0.4em; }
 
   <!-- ===================== SUMMARY ===================== -->
   <section class="topic" id="summary">
+  <span class="wm wm-g" aria-hidden="true">JZX</span>
+  <span class="wm wm-h" aria-hidden="true">JZX</span>
     <h2>Formulae to recall<span class="cn">必须记住的公式</span></h2>
     <p>None of the equations below appear on the AS data sheet. You must remember them, including the derivations marked ★.<span class="cn">以下方程都不会出现在 AS 数据表上。你必须记住它们，包括标有 ★ 的推导。</span></p>
     <table class="summary-table">
@@ -1130,6 +1265,30 @@ figcaption .cn { margin-top: 0.4em; }
 </main>
 
 <script>
+
+(function () {
+  const splash = document.getElementById("splash");
+  const start = document.getElementById("splash-start");
+  if (!splash || !start) return;
+  const enter = () => {
+    if (splash.classList.contains("is-out")) return;
+    splash.classList.add("is-out");
+    document.body.classList.remove("splash-on");
+    start.blur();
+    setTimeout(() => { splash.setAttribute("hidden", ""); }, 560);
+  };
+  start.addEventListener("click", enter);
+  document.addEventListener("keydown", (e) => {
+    if (splash.hasAttribute("hidden") || splash.classList.contains("is-out")) return;
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      enter();
+    }
+  });
+  start.focus();
+})();
+
+
 const CARDS = [
   /* ---- 4.1 ---- */
   {
@@ -1521,7 +1680,7 @@ document.getElementById("btn-restudy").addEventListener("click", () => {
 });
 
 document.addEventListener("keydown", e => {
-  if (document.body.dataset.view !== "cards") return;
+  if (document.body.classList.contains("splash-on") || document.body.dataset.view !== "cards") return;
   const tag = (e.target && e.target.tagName) || "";
   if (tag === "INPUT" || tag === "TEXTAREA") return;
   if (e.key === " " || e.key === "Enter") { e.preventDefault(); flip(); }
